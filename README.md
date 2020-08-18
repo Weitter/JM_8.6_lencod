@@ -15,9 +15,11 @@ void getNonAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, Pixel
 ```
  if ((n_realSize >= 1) && estimateX2) {
     for (i = 0; i < n_windowSize; i++) {
-      if (!PictureRejected[i]) {
-	  	//图像没有被限制 好厉害这部分就是在求解参数
-	  	//平方差求和最小来优化 线性回归
+      if (!PictureRejected[i]) {//没有被限制使用的图像帧作为数据集
+/*	这部分就是在求解参数
+	平方差求和最小来优化 线性回归
+	PictureMAD[i]=MADPictureC1*ReferenceMAD[i]+MADPictureC2
+*/
         a00 = a00 + 1.0;
         a01 += ReferenceMAD[i];
         a10 = a01;
@@ -40,4 +42,5 @@ void getNonAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, Pixel
       MADPictureC2=0.0;//b
       MADPictureC1=b0/a01;//W
     }
+    
    ```
