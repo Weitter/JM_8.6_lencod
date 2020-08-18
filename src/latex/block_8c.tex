@@ -1,0 +1,243 @@
+\hypertarget{block_8c}{}\doxysection{block.\+c File Reference}
+\label{block_8c}\index{block.c@{block.c}}
+
+
+Process one block.  
+
+
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}block.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}refbuf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vlc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mb\+\_\+access.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{block_8c_ad167cf5fb754fa93a787a77ef056fbbd}\label{block_8c_ad167cf5fb754fa93a787a77ef056fbbd}} 
+\#define {\bfseries Q\+\_\+\+B\+I\+TS}~15
+\item 
+\mbox{\Hypertarget{block_8c_a0bb654777ed5b1459487dd9d32f44fe1}\label{block_8c_a0bb654777ed5b1459487dd9d32f44fe1}} 
+\#define {\bfseries D\+Q\+\_\+\+B\+I\+TS}~6
+\item 
+\mbox{\Hypertarget{block_8c_aa6e753af61f3078ac5d5229e8318831f}\label{block_8c_aa6e753af61f3078ac5d5229e8318831f}} 
+\#define {\bfseries D\+Q\+\_\+\+R\+O\+U\+ND}~(1$<$$<$(D\+Q\+\_\+\+B\+I\+TS-\/1))
+\item 
+\mbox{\Hypertarget{block_8c_abd656aa126020ef16064e445a9ed8653}\label{block_8c_abd656aa126020ef16064e445a9ed8653}} 
+\#define {\bfseries P\+\_\+X}~(Pred\+Pel\mbox{[}0\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_aa190596bd9ad974a3dfb94d321ee6a37}\label{block_8c_aa190596bd9ad974a3dfb94d321ee6a37}} 
+\#define {\bfseries P\+\_\+A}~(Pred\+Pel\mbox{[}1\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_a06441a74086d94a7aa28f9b236881455}\label{block_8c_a06441a74086d94a7aa28f9b236881455}} 
+\#define {\bfseries P\+\_\+B}~(Pred\+Pel\mbox{[}2\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_ae00597328874555d852fcc641ce61e22}\label{block_8c_ae00597328874555d852fcc641ce61e22}} 
+\#define {\bfseries P\+\_\+C}~(Pred\+Pel\mbox{[}3\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_a58f6a4d69e9ac9a8bbfd16199de4171a}\label{block_8c_a58f6a4d69e9ac9a8bbfd16199de4171a}} 
+\#define {\bfseries P\+\_\+D}~(Pred\+Pel\mbox{[}4\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_a1144a9880b5f7871250ce28e6eb0eb0d}\label{block_8c_a1144a9880b5f7871250ce28e6eb0eb0d}} 
+\#define {\bfseries P\+\_\+E}~(Pred\+Pel\mbox{[}5\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_a5b10fb3e9380ea8333141eafe8ef31a3}\label{block_8c_a5b10fb3e9380ea8333141eafe8ef31a3}} 
+\#define {\bfseries P\+\_\+F}~(Pred\+Pel\mbox{[}6\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_a0fa286a619ee028391743a06f25e3cad}\label{block_8c_a0fa286a619ee028391743a06f25e3cad}} 
+\#define {\bfseries P\+\_\+G}~(Pred\+Pel\mbox{[}7\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_a681dc6971e6126505be7f1c599e88e1b}\label{block_8c_a681dc6971e6126505be7f1c599e88e1b}} 
+\#define {\bfseries P\+\_\+H}~(Pred\+Pel\mbox{[}8\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_a35500d58547d44c43c63fc00d33a8208}\label{block_8c_a35500d58547d44c43c63fc00d33a8208}} 
+\#define {\bfseries P\+\_\+I}~(Pred\+Pel\mbox{[}9\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_a878a1ddaf21c03dc8a268f2545a17fcb}\label{block_8c_a878a1ddaf21c03dc8a268f2545a17fcb}} 
+\#define {\bfseries P\+\_\+J}~(Pred\+Pel\mbox{[}10\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_ac43908c595b15be30777fcd4835bd6c6}\label{block_8c_ac43908c595b15be30777fcd4835bd6c6}} 
+\#define {\bfseries P\+\_\+K}~(Pred\+Pel\mbox{[}11\mbox{]})
+\item 
+\mbox{\Hypertarget{block_8c_aaddae9a606bbd8844e58d78e4b94ec50}\label{block_8c_aaddae9a606bbd8844e58d78e4b94ec50}} 
+\#define {\bfseries P\+\_\+L}~(Pred\+Pel\mbox{[}12\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{block_8c_a073e036ea4d1c2021e39096986e214fe}{intrapred\+\_\+luma}} (int img\+\_\+x, int img\+\_\+y, int $\ast$left\+\_\+available, int $\ast$up\+\_\+available, int $\ast$all\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Make intra 4x4 prediction according to all 9 prediction modes. The routine uses left and upper neighbouring points from previous(先前的) coded blocks to do this (if available). Notice that inaccessible(难以达到的) neighbouring points are signalled with a negative value in the predmode array . \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{block_8c_afd0fd7d0fdc48d6f935c55bc963c396c}{intrapred\+\_\+luma\+\_\+16x16}} ()
+\begin{DoxyCompactList}\small\item\em 16x16 based luma prediction 有4中预测模式 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{block_8c_a04c1084a3880539fc3e5895707c2e6f6}{dct\+\_\+luma\+\_\+16x16}} (int new\+\_\+intra\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em For new intra pred routines. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{block_8c_aadb238d0789381756e2d30190792571d}{dct\+\_\+luma}} (int block\+\_\+x, int block\+\_\+y, int $\ast$coeff\+\_\+cost, int old\+\_\+intra\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em The routine(常规) performs transform,quantization,inverse transform, adds the diff. to the prediction and writes the result to the decoded luma frame. Includes the RD constrained quantization also. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{block_8c_a4be7ef0bb0ec5acfa3f8b0ccc2f4c6cc}{dct\+\_\+chroma}} (int uv, int cr\+\_\+cbp)
+\begin{DoxyCompactList}\small\item\em Transform,quantization,inverse transform for chroma. The main reason why this is done in a separate routine is the additional 2x2 transform of D\+C-\/coeffs. This routine is called ones for each of the chroma components. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{block_8c_a1b1be0cb2ec2fc660c6343c87164c6bf}{dct\+\_\+luma\+\_\+sp}} (int block\+\_\+x, int block\+\_\+y, int $\ast$coeff\+\_\+cost)
+\begin{DoxyCompactList}\small\item\em The routine performs transform,quantization,inverse transform, adds the diff. to the prediction and writes the result to the decoded luma frame. Includes the RD constrained quantization also. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{block_8c_af75c6f27f0e8cbfc8767dd1612dec86e}{dct\+\_\+chroma\+\_\+sp}} (int uv, int cr\+\_\+cbp)
+\begin{DoxyCompactList}\small\item\em Transform,quantization,inverse transform for chroma. The main reason why this is done in a separate routine is the additional 2x2 transform of D\+C-\/coeffs. This routine is called ones for each of the chroma components. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{block_8c_a767e38454b36c4fa640b8d297f346acd}{copyblock\+\_\+sp}} (int block\+\_\+x, int block\+\_\+y)
+\begin{DoxyCompactList}\small\item\em The routine performs transform,quantization,inverse transform, adds the diff. to the prediction and writes the result to the decoded luma frame. Includes the RD constrained quantization also. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Process one block. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Inge Lille-\/\+Lang鴜 \href{mailto:inge.lille-langoy@telenor.com}{\texttt{ inge.\+lille-\/langoy@telenor.\+com}}
+\item Rickard Sjoberg \href{mailto:rickard.sjoberg@era.ericsson.se}{\texttt{ rickard.\+sjoberg@era.\+ericsson.\+se}}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}}
+\item Jani Lainema \href{mailto:jani.lainema@nokia.com}{\texttt{ jani.\+lainema@nokia.\+com}}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}}
+\item Thomas Wedi \href{mailto:wedi@tnt.uni-hannover.de}{\texttt{ wedi@tnt.\+uni-\/hannover.\+de}}
+\item Ragip Kurceren \href{mailto:ragip.kurceren@nokia.com}{\texttt{ ragip.\+kurceren@nokia.\+com}}
+\item Greg Conklin \href{mailto:gregc@real.com}{\texttt{ gregc@real.\+com}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{block_8c_a767e38454b36c4fa640b8d297f346acd}\label{block_8c_a767e38454b36c4fa640b8d297f346acd}} 
+\index{block.c@{block.c}!copyblock\_sp@{copyblock\_sp}}
+\index{copyblock\_sp@{copyblock\_sp}!block.c@{block.c}}
+\doxysubsubsection{\texorpdfstring{copyblock\_sp()}{copyblock\_sp()}}
+{\footnotesize\ttfamily void copyblock\+\_\+sp (\begin{DoxyParamCaption}\item[{int}]{block\+\_\+x,  }\item[{int}]{block\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+The routine performs transform,quantization,inverse transform, adds the diff. to the prediction and writes the result to the decoded luma frame. Includes the RD constrained quantization also. 
+
+\begin{DoxyParagraph}{Input\+:}
+block\+\_\+x,block\+\_\+y\+: Block position inside a macro block (0,4,8,12).
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+nonzero\+: 0 if no levels are nonzero. 1 if there are nonzero levels. ~\newline
+ coeff\+\_\+cost\+: Counter for nonzero coefficients, used to discard expencive levels. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{block_8c_a4be7ef0bb0ec5acfa3f8b0ccc2f4c6cc}\label{block_8c_a4be7ef0bb0ec5acfa3f8b0ccc2f4c6cc}} 
+\index{block.c@{block.c}!dct\_chroma@{dct\_chroma}}
+\index{dct\_chroma@{dct\_chroma}!block.c@{block.c}}
+\doxysubsubsection{\texorpdfstring{dct\_chroma()}{dct\_chroma()}}
+{\footnotesize\ttfamily int dct\+\_\+chroma (\begin{DoxyParamCaption}\item[{int}]{uv,  }\item[{int}]{cr\+\_\+cbp }\end{DoxyParamCaption})}
+
+
+
+Transform,quantization,inverse transform for chroma. The main reason why this is done in a separate routine is the additional 2x2 transform of D\+C-\/coeffs. This routine is called ones for each of the chroma components. 
+
+\begin{DoxyParagraph}{Input\+:}
+uv \+: Make difference between the U and V chroma component ~\newline
+ cr\+\_\+cbp\+: chroma coded block pattern
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+cr\+\_\+cbp\+: Updated chroma coded block pattern. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{block_8c_af75c6f27f0e8cbfc8767dd1612dec86e}\label{block_8c_af75c6f27f0e8cbfc8767dd1612dec86e}} 
+\index{block.c@{block.c}!dct\_chroma\_sp@{dct\_chroma\_sp}}
+\index{dct\_chroma\_sp@{dct\_chroma\_sp}!block.c@{block.c}}
+\doxysubsubsection{\texorpdfstring{dct\_chroma\_sp()}{dct\_chroma\_sp()}}
+{\footnotesize\ttfamily int dct\+\_\+chroma\+\_\+sp (\begin{DoxyParamCaption}\item[{int}]{uv,  }\item[{int}]{cr\+\_\+cbp }\end{DoxyParamCaption})}
+
+
+
+Transform,quantization,inverse transform for chroma. The main reason why this is done in a separate routine is the additional 2x2 transform of D\+C-\/coeffs. This routine is called ones for each of the chroma components. 
+
+\begin{DoxyParagraph}{Input\+:}
+uv \+: Make difference between the U and V chroma component ~\newline
+ cr\+\_\+cbp\+: chroma coded block pattern
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+cr\+\_\+cbp\+: Updated chroma coded block pattern. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{block_8c_aadb238d0789381756e2d30190792571d}\label{block_8c_aadb238d0789381756e2d30190792571d}} 
+\index{block.c@{block.c}!dct\_luma@{dct\_luma}}
+\index{dct\_luma@{dct\_luma}!block.c@{block.c}}
+\doxysubsubsection{\texorpdfstring{dct\_luma()}{dct\_luma()}}
+{\footnotesize\ttfamily int dct\+\_\+luma (\begin{DoxyParamCaption}\item[{int}]{block\+\_\+x,  }\item[{int}]{block\+\_\+y,  }\item[{int $\ast$}]{coeff\+\_\+cost,  }\item[{int}]{old\+\_\+intra\+\_\+mode }\end{DoxyParamCaption})}
+
+
+
+The routine(常规) performs transform,quantization,inverse transform, adds the diff. to the prediction and writes the result to the decoded luma frame. Includes the RD constrained quantization also. 
+
+\begin{DoxyParagraph}{Input\+:}
+block\+\_\+x,block\+\_\+y\+: Block position inside a macro block (0,4,8,12).
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+\_\+}
+nonzero\+: 0 if no levels are nonzero. 1 if there are nonzero levels. ~\newline
+ coeff\+\_\+cost\+: Counter for nonzero coefficients, used to discard expencive levels. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{block_8c_a04c1084a3880539fc3e5895707c2e6f6}\label{block_8c_a04c1084a3880539fc3e5895707c2e6f6}} 
+\index{block.c@{block.c}!dct\_luma\_16x16@{dct\_luma\_16x16}}
+\index{dct\_luma\_16x16@{dct\_luma\_16x16}!block.c@{block.c}}
+\doxysubsubsection{\texorpdfstring{dct\_luma\_16x16()}{dct\_luma\_16x16()}}
+{\footnotesize\ttfamily int dct\+\_\+luma\+\_\+16x16 (\begin{DoxyParamCaption}\item[{int}]{new\+\_\+intra\+\_\+mode }\end{DoxyParamCaption})}
+
+
+
+For new intra pred routines. 
+
+\begin{DoxyParagraph}{Input\+:}
+Image par, 16x16 based intra mode
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+none 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{block_8c_a1b1be0cb2ec2fc660c6343c87164c6bf}\label{block_8c_a1b1be0cb2ec2fc660c6343c87164c6bf}} 
+\index{block.c@{block.c}!dct\_luma\_sp@{dct\_luma\_sp}}
+\index{dct\_luma\_sp@{dct\_luma\_sp}!block.c@{block.c}}
+\doxysubsubsection{\texorpdfstring{dct\_luma\_sp()}{dct\_luma\_sp()}}
+{\footnotesize\ttfamily int dct\+\_\+luma\+\_\+sp (\begin{DoxyParamCaption}\item[{int}]{block\+\_\+x,  }\item[{int}]{block\+\_\+y,  }\item[{int $\ast$}]{coeff\+\_\+cost }\end{DoxyParamCaption})}
+
+
+
+The routine performs transform,quantization,inverse transform, adds the diff. to the prediction and writes the result to the decoded luma frame. Includes the RD constrained quantization also. 
+
+\begin{DoxyParagraph}{Input\+:}
+block\+\_\+x,block\+\_\+y\+: Block position inside a macro block (0,4,8,12).
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+nonzero\+: 0 if no levels are nonzero. 1 if there are nonzero levels. ~\newline
+ coeff\+\_\+cost\+: Counter for nonzero coefficients, used to discard expencive levels. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{block_8c_a073e036ea4d1c2021e39096986e214fe}\label{block_8c_a073e036ea4d1c2021e39096986e214fe}} 
+\index{block.c@{block.c}!intrapred\_luma@{intrapred\_luma}}
+\index{intrapred\_luma@{intrapred\_luma}!block.c@{block.c}}
+\doxysubsubsection{\texorpdfstring{intrapred\_luma()}{intrapred\_luma()}}
+{\footnotesize\ttfamily void intrapred\+\_\+luma (\begin{DoxyParamCaption}\item[{int}]{img\+\_\+x,  }\item[{int}]{img\+\_\+y,  }\item[{int $\ast$}]{left\+\_\+available,  }\item[{int $\ast$}]{up\+\_\+available,  }\item[{int $\ast$}]{all\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Make intra 4x4 prediction according to all 9 prediction modes. The routine uses left and upper neighbouring points from previous(先前的) coded blocks to do this (if available). Notice that inaccessible(难以达到的) neighbouring points are signalled with a negative value in the predmode array . 
+
+\begin{DoxyParagraph}{Input\+:}
+Starting point of current 4x4 block image posision
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+none 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{block_8c_afd0fd7d0fdc48d6f935c55bc963c396c}\label{block_8c_afd0fd7d0fdc48d6f935c55bc963c396c}} 
+\index{block.c@{block.c}!intrapred\_luma\_16x16@{intrapred\_luma\_16x16}}
+\index{intrapred\_luma\_16x16@{intrapred\_luma\_16x16}!block.c@{block.c}}
+\doxysubsubsection{\texorpdfstring{intrapred\_luma\_16x16()}{intrapred\_luma\_16x16()}}
+{\footnotesize\ttfamily void intrapred\+\_\+luma\+\_\+16x16 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+16x16 based luma prediction 有4中预测模式 
+
+\begin{DoxyParagraph}{Input\+:}
+Image parameters
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+none 
+\end{DoxyParagraph}
+$<$ pixel position p(0,-\/1)
+
+$<$ pixel positions p(-\/1, -\/1..15)

@@ -1,0 +1,208 @@
+\hypertarget{decoder_8c}{}\doxysection{decoder.\+c File Reference}
+\label{decoder_8c}\index{decoder.c@{decoder.c}}
+
+
+Contains functions that implement the \char`\"{}decoders in the encoder\char`\"{} concept for the rate-\/distortion optimization with losses.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}refbuf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{decoder_8c_a7786a7eed4be036d11e9dc801b60d48d}{decode\+\_\+one\+\_\+b8block}} (int decoder, int mbmode, int b8block, int b8mode, int b8ref)
+\begin{DoxyCompactList}\small\item\em decodes one 8x8 partition \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{decoder_8c_a4c13da72c0a128bf0b2fafaad640ace8}\label{decoder_8c_a4c13da72c0a128bf0b2fafaad640ace8}} 
+void \mbox{\hyperlink{decoder_8c_a4c13da72c0a128bf0b2fafaad640ace8}{decode\+\_\+one\+\_\+mb}} (int decoder, Macroblock $\ast$curr\+MB)
+\begin{DoxyCompactList}\small\item\em decodes one macroblock \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{decoder_8c_af8b9e42ec4d531471a325b03d627f941}{Get\+\_\+\+Reference\+\_\+\+Block}} (byte $\ast$$\ast$imY, int block\+\_\+y, int block\+\_\+x, int mvhor, int mvver, byte $\ast$$\ast$out)
+\begin{DoxyCompactList}\small\item\em Finds the reference MB given the decoded reference frame. \end{DoxyCompactList}\item 
+byte \mbox{\hyperlink{decoder_8c_ab67b9344853ec0b507fbdeb56a63c407}{Get\+\_\+\+Reference\+\_\+\+Pixel}} (byte $\ast$$\ast$imY, int y\+\_\+pos, int x\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Finds a pixel (y,x) of the upsampled reference frame. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{decoder_8c_a8f4ea3b2d267449aff86b529ac5ce748}\label{decoder_8c_a8f4ea3b2d267449aff86b529ac5ce748}} 
+void \mbox{\hyperlink{decoder_8c_a8f4ea3b2d267449aff86b529ac5ce748}{Update\+Decoders}} ()
+\begin{DoxyCompactList}\small\item\em Performs the simulation of the packet losses, calls the error concealment funcs and copies the decoded images to the reference frame buffers of the decoders. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{decoder_8c_ad6206f231148e8a0634befb6c7359995}{Dec\+One\+Forth\+Pix}} (byte $\ast$$\ast$dY, byte $\ast$$\ast$$\ast$dref)
+\begin{DoxyCompactList}\small\item\em Copies one (reconstructed) image to the respective reference frame buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{decoder_8c_a73615af5374935a9f2447e7f4c72f285}\label{decoder_8c_a73615af5374935a9f2447e7f4c72f285}} 
+void \mbox{\hyperlink{decoder_8c_a73615af5374935a9f2447e7f4c72f285}{compute\+\_\+residue\+\_\+b8block}} (int b8block, int i16mode)
+\begin{DoxyCompactList}\small\item\em Gives the prediction residue for a 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{decoder_8c_a4adb0618f93a1b6106e4a618f7a3b2df}\label{decoder_8c_a4adb0618f93a1b6106e4a618f7a3b2df}} 
+void \mbox{\hyperlink{decoder_8c_a4adb0618f93a1b6106e4a618f7a3b2df}{compute\+\_\+residue\+\_\+mb}} (int i16mode)
+\begin{DoxyCompactList}\small\item\em Gives the prediction residue for a macroblock. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{decoder_8c_acb1b61f0c2b0e15504b0c9a2df7a1007}{Build\+\_\+\+Status\+\_\+\+Map}} (byte $\ast$$\ast$s\+\_\+map)
+\begin{DoxyCompactList}\small\item\em Builds a random status map showing whether each MB is received or lost, based on the packet loss rate and the slice structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{decoder_8c_a0073527abfbf6d6baa0f7cf871eacbc2}{Error\+\_\+\+Concealment}} (byte $\ast$$\ast$inY, byte $\ast$$\ast$s\+\_\+map, byte $\ast$$\ast$$\ast$refY)
+\begin{DoxyCompactList}\small\item\em Performs some sort of error concealment for the areas that are lost according to the status\+\_\+map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{decoder_8c_a4126401e06637c6c3afdc8921eaadbbd}{Conceal\+\_\+\+Error}} (byte $\ast$$\ast$inY, int mb\+\_\+y, int mb\+\_\+x, byte $\ast$$\ast$$\ast$refY, byte $\ast$$\ast$s\+\_\+map)
+\begin{DoxyCompactList}\small\item\em Copies a certain MB (mb\+\_\+y,mb\+\_\+x) of the frame inY\mbox{[}\mbox{]}\mbox{[}\mbox{]} from the previous frame. For the time there is no better EC... \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains functions that implement the \char`\"{}decoders in the encoder\char`\"{} concept for the rate-\/distortion optimization with losses. 
+
+\begin{DoxyDate}{Date}
+October 22nd, 2001
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Dimitrios Kontopodis \href{mailto:dkonto@eikon.tum.de}{\texttt{ dkonto@eikon.\+tum.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{decoder_8c_acb1b61f0c2b0e15504b0c9a2df7a1007}\label{decoder_8c_acb1b61f0c2b0e15504b0c9a2df7a1007}} 
+\index{decoder.c@{decoder.c}!Build\_Status\_Map@{Build\_Status\_Map}}
+\index{Build\_Status\_Map@{Build\_Status\_Map}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Build\_Status\_Map()}{Build\_Status\_Map()}}
+{\footnotesize\ttfamily void Build\+\_\+\+Status\+\_\+\+Map (\begin{DoxyParamCaption}\item[{byte $\ast$$\ast$}]{s\+\_\+map }\end{DoxyParamCaption})}
+
+
+
+Builds a random status map showing whether each MB is received or lost, based on the packet loss rate and the slice structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s\+\_\+map} & The status map to be filled \\
+\hline
+\end{DoxyParams}
+Packet OK\mbox{\Hypertarget{decoder_8c_a4126401e06637c6c3afdc8921eaadbbd}\label{decoder_8c_a4126401e06637c6c3afdc8921eaadbbd}} 
+\index{decoder.c@{decoder.c}!Conceal\_Error@{Conceal\_Error}}
+\index{Conceal\_Error@{Conceal\_Error}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Conceal\_Error()}{Conceal\_Error()}}
+{\footnotesize\ttfamily void Conceal\+\_\+\+Error (\begin{DoxyParamCaption}\item[{byte $\ast$$\ast$}]{inY,  }\item[{int}]{mb\+\_\+y,  }\item[{int}]{mb\+\_\+x,  }\item[{byte $\ast$$\ast$$\ast$}]{refY,  }\item[{byte $\ast$$\ast$}]{s\+\_\+map }\end{DoxyParamCaption})}
+
+
+
+Copies a certain MB (mb\+\_\+y,mb\+\_\+x) of the frame inY\mbox{[}\mbox{]}\mbox{[}\mbox{]} from the previous frame. For the time there is no better EC... 
+
+whole slice lost (at least partition A lost)
+
+partition B and partition C lost
+
+Copy motion vectors
+
+Residuum ist set to zero ~\newline
+
+
+not first frame
+
+if copy mb
+
+if inter mb
+
+first frame; up to now set value to grey, may integrate nokia EC
+
+Partition C lost
+
+Copy motion vectors
+
+Residuum ist set to zero ~\newline
+
+
+if copy mb
+
+if inter mb
+
+Partition B lost
+
+first frame; up to now set value to grey, may integrate nokia EC
+
+End Switch\mbox{\Hypertarget{decoder_8c_a7786a7eed4be036d11e9dc801b60d48d}\label{decoder_8c_a7786a7eed4be036d11e9dc801b60d48d}} 
+\index{decoder.c@{decoder.c}!decode\_one\_b8block@{decode\_one\_b8block}}
+\index{decode\_one\_b8block@{decode\_one\_b8block}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{decode\_one\_b8block()}{decode\_one\_b8block()}}
+{\footnotesize\ttfamily void decode\+\_\+one\+\_\+b8block (\begin{DoxyParamCaption}\item[{int}]{decoder,  }\item[{int}]{mbmode,  }\item[{int}]{b8block,  }\item[{int}]{b8mode,  }\item[{int}]{b8ref }\end{DoxyParamCaption})}
+
+
+
+decodes one 8x8 partition 
+
+\begin{DoxyNote}{Note}
+Gives the expected value in the decoder of one 8x8 block. This is done based on the stored reconstructed residue decs-\/$>$resY\mbox{[}\mbox{]}\mbox{[}\mbox{]}, the reconstructed values imgY\mbox{[}\mbox{]}\mbox{[}\mbox{]} and the motion vectors. The decoded 8x8 block is moved to decs-\/$>$decY\mbox{[}\mbox{]}\mbox{[}\mbox{]}. 
+\end{DoxyNote}
+\mbox{\Hypertarget{decoder_8c_ad6206f231148e8a0634befb6c7359995}\label{decoder_8c_ad6206f231148e8a0634befb6c7359995}} 
+\index{decoder.c@{decoder.c}!DecOneForthPix@{DecOneForthPix}}
+\index{DecOneForthPix@{DecOneForthPix}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{DecOneForthPix()}{DecOneForthPix()}}
+{\footnotesize\ttfamily void Dec\+One\+Forth\+Pix (\begin{DoxyParamCaption}\item[{byte $\ast$$\ast$}]{dY,  }\item[{byte $\ast$$\ast$$\ast$}]{dref }\end{DoxyParamCaption})}
+
+
+
+Copies one (reconstructed) image to the respective reference frame buffer. 
+
+\begin{DoxyNote}{Note}
+This is used at the \char`\"{}many decoders in the encoder\char`\"{} 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em dY} & The reconstructed image \\
+\hline
+{\em dref} & The reference buffer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{decoder_8c_a0073527abfbf6d6baa0f7cf871eacbc2}\label{decoder_8c_a0073527abfbf6d6baa0f7cf871eacbc2}} 
+\index{decoder.c@{decoder.c}!Error\_Concealment@{Error\_Concealment}}
+\index{Error\_Concealment@{Error\_Concealment}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Concealment()}{Error\_Concealment()}}
+{\footnotesize\ttfamily void Error\+\_\+\+Concealment (\begin{DoxyParamCaption}\item[{byte $\ast$$\ast$}]{inY,  }\item[{byte $\ast$$\ast$}]{s\+\_\+map,  }\item[{byte $\ast$$\ast$$\ast$}]{refY }\end{DoxyParamCaption})}
+
+
+
+Performs some sort of error concealment for the areas that are lost according to the status\+\_\+map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em inY} & Error concealment is performed on this frame imY\mbox{[}\mbox{]}\mbox{[}\mbox{]} \\
+\hline
+{\em s\+\_\+map} & The status map shows which areas are lost. \\
+\hline
+{\em refY} & The set of reference frames -\/ may be used for the error concealment. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{decoder_8c_af8b9e42ec4d531471a325b03d627f941}\label{decoder_8c_af8b9e42ec4d531471a325b03d627f941}} 
+\index{decoder.c@{decoder.c}!Get\_Reference\_Block@{Get\_Reference\_Block}}
+\index{Get\_Reference\_Block@{Get\_Reference\_Block}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Get\_Reference\_Block()}{Get\_Reference\_Block()}}
+{\footnotesize\ttfamily void Get\+\_\+\+Reference\+\_\+\+Block (\begin{DoxyParamCaption}\item[{byte $\ast$$\ast$}]{imY,  }\item[{int}]{block\+\_\+y,  }\item[{int}]{block\+\_\+x,  }\item[{int}]{mvhor,  }\item[{int}]{mvver,  }\item[{byte $\ast$$\ast$}]{out }\end{DoxyParamCaption})}
+
+
+
+Finds the reference MB given the decoded reference frame. 
+
+\begin{DoxyNote}{Note}
+This is based on the function Unified\+One\+Forth\+Pix, only it is modified to be used at the \char`\"{}many decoders in the encoder\char`\"{} RD optimization. In this case we dont want to keep full upsampled reference frames for all decoders, so we just upsample when it is necessary. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em imY} & The frame to be upsampled \\
+\hline
+{\em block\+\_\+y} & The row of the block, whose prediction we want to find \\
+\hline
+{\em block\+\_\+x} & The column of the block, whose prediction we want to track \\
+\hline
+{\em mvhor} & Motion vector, horizontal part \\
+\hline
+{\em mvver} & Motion vector, vertical part \\
+\hline
+{\em out} & Output\+: The prediction for the block (block\+\_\+y, block\+\_\+x) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{decoder_8c_ab67b9344853ec0b507fbdeb56a63c407}\label{decoder_8c_ab67b9344853ec0b507fbdeb56a63c407}} 
+\index{decoder.c@{decoder.c}!Get\_Reference\_Pixel@{Get\_Reference\_Pixel}}
+\index{Get\_Reference\_Pixel@{Get\_Reference\_Pixel}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Get\_Reference\_Pixel()}{Get\_Reference\_Pixel()}}
+{\footnotesize\ttfamily byte Get\+\_\+\+Reference\+\_\+\+Pixel (\begin{DoxyParamCaption}\item[{byte $\ast$$\ast$}]{imY,  }\item[{int}]{y\+\_\+pos,  }\item[{int}]{x\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Finds a pixel (y,x) of the upsampled reference frame. 
+
+\begin{DoxyNote}{Note}
+This is based on the function Unified\+One\+Forth\+Pix, only it is modified to be used at the \char`\"{}many decoders in the encoder\char`\"{} RD optimization. In this case we dont want to keep full upsampled reference frames for all decoders, so we just upsample when it is necessary. 
+\end{DoxyNote}

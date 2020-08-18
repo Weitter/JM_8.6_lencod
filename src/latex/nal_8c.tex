@@ -1,0 +1,75 @@
+\hypertarget{nal_8c}{}\doxysection{nal.\+c File Reference}
+\label{nal_8c}\index{nal.c@{nal.c}}
+
+
+Handles the operations on converting String of Data Bits (S\+O\+DB) to Raw Byte Sequence Payload (R\+B\+SP), and then onto Encapsulate Byte Sequence Payload (E\+B\+SP).  
+
+
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$sys/timeb.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{nal_8c_a03ceb793be4c5bd44d6e1afb06870351}\label{nal_8c_a03ceb793be4c5bd44d6e1afb06870351}} 
+void {\bfseries S\+O\+D\+Bto\+R\+B\+SP} (Bitstream $\ast$curr\+Stream)
+\item 
+int \mbox{\hyperlink{nal_8c_a50bf0c7a83434ae11a840c6b3cd582e5}{R\+B\+S\+Pto\+E\+B\+SP}} (byte $\ast$stream\+Buffer, int begin\+\_\+bytepos, int end\+\_\+bytepos, int min\+\_\+num\+\_\+bytes)
+\begin{DoxyCompactList}\small\item\em This function converts a R\+B\+SP payload to an E\+B\+SP payload. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{nal_8c_ad7822668040568b0c88abaf3c0e8b62a}\label{nal_8c_ad7822668040568b0c88abaf3c0e8b62a}} 
+void \mbox{\hyperlink{nal_8c_ad7822668040568b0c88abaf3c0e8b62a}{Alloc\+Nal\+Payload\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Initializes N\+AL module (allocates N\+A\+L\+\_\+\+Payload\+\_\+buffer) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{nal_8c_a463822efd0650318ede2256ca6b1b64f}\label{nal_8c_a463822efd0650318ede2256ca6b1b64f}} 
+void \mbox{\hyperlink{nal_8c_a463822efd0650318ede2256ca6b1b64f}{Free\+Nal\+Payload\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Finits N\+AL module (frees N\+A\+L\+\_\+\+Payload\+\_\+buffer) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles the operations on converting String of Data Bits (S\+O\+DB) to Raw Byte Sequence Payload (R\+B\+SP), and then onto Encapsulate Byte Sequence Payload (E\+B\+SP). 
+
+\mbox{\hyperlink{nal_8c}{nal.\+c}} \begin{DoxyDate}{Date}
+14 June 2002 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Shankar Regunathan \href{mailto:shanre@microsoft.de}{\texttt{ shanre@microsoft.\+de}}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{nal_8c_a50bf0c7a83434ae11a840c6b3cd582e5}\label{nal_8c_a50bf0c7a83434ae11a840c6b3cd582e5}} 
+\index{nal.c@{nal.c}!RBSPtoEBSP@{RBSPtoEBSP}}
+\index{RBSPtoEBSP@{RBSPtoEBSP}!nal.c@{nal.c}}
+\doxysubsubsection{\texorpdfstring{RBSPtoEBSP()}{RBSPtoEBSP()}}
+{\footnotesize\ttfamily int R\+B\+S\+Pto\+E\+B\+SP (\begin{DoxyParamCaption}\item[{byte $\ast$}]{stream\+Buffer,  }\item[{int}]{begin\+\_\+bytepos,  }\item[{int}]{end\+\_\+bytepos,  }\item[{int}]{min\+\_\+num\+\_\+bytes }\end{DoxyParamCaption})}
+
+
+
+This function converts a R\+B\+SP payload to an E\+B\+SP payload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream\+Buffer} & pointer to data bits \\
+\hline
+{\em begin\+\_\+bytepos} & The byte position after start-\/code, after which stuffing to prevent start-\/code emulation begins. \\
+\hline
+{\em end\+\_\+bytepos} & Size of stream\+Buffer in bytes. \\
+\hline
+{\em min\+\_\+num\+\_\+bytes} & Minimum number of bytes in payload. Should be 0 for V\+LC entropy coding mode. Determines number of stuffed words for C\+A\+B\+AC mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size of stream\+Buffer after stuffing. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+N\+A\+L\+\_\+\+Payload\+\_\+buffer is used as temporary buffer to store data. 
+\end{DoxyNote}

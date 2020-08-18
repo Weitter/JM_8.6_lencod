@@ -1,0 +1,392 @@
+\hypertarget{vlc_8c}{}\doxysection{vlc.\+c File Reference}
+\label{vlc_8c}\index{vlc.c@{vlc.c}}
+
+
+(CA)V\+LC coding functions  
+
+
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}elements.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vlc.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{vlc_8c_a012f05fda1b13afb5282bbf941feac40}\label{vlc_8c_a012f05fda1b13afb5282bbf941feac40}} 
+\#define {\bfseries S\+Y\+M\+T\+R\+A\+C\+E\+S\+T\+R\+I\+NG}(s)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{vlc_8c_a4d133771b69d55b58a63aeadaff04c56}{ue\+\_\+v}} (char $\ast$tracestring, int value, Data\+Partition $\ast$part)
+\begin{DoxyCompactList}\small\item\em ue\+\_\+v, writes an ue(v) syntax element, returns the length in bits \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{vlc_8c_abb958c6a923a3cf6ede691a5b0c52adc}{se\+\_\+v}} (char $\ast$tracestring, int value, Data\+Partition $\ast$part)
+\begin{DoxyCompactList}\small\item\em se\+\_\+v, writes an se(v) syntax element, returns the length in bits \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{vlc_8c_a9ccc7926ae31afd2bc9b0ecea0dc3663}{u\+\_\+1}} (char $\ast$tracestring, int value, Data\+Partition $\ast$part)
+\begin{DoxyCompactList}\small\item\em u\+\_\+1, writes a flag (u(1) syntax element, returns the length in bits, always 1 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{vlc_8c_a6815efc63e6272f4a124e6ed9cdf52d9}{u\+\_\+v}} (int n, char $\ast$tracestring, int value, Data\+Partition $\ast$part)
+\begin{DoxyCompactList}\small\item\em u\+\_\+v, writes a a n bit fixed length syntax element, returns the length in bits, \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vlc_8c_a1595991e231ec1501d1e557501b7510b}{ue\+\_\+linfo}} (int ue, int dummy, int $\ast$len, int $\ast$info)
+\begin{DoxyCompactList}\small\item\em mapping for ue(v) syntax elements \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vlc_8c_a32c9242b5dbf5a17d3eea343b0c0a3d6}{se\+\_\+linfo}} (int se, int dummy, int $\ast$len, int $\ast$info)
+\begin{DoxyCompactList}\small\item\em mapping for se(v) syntax elements \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vlc_8c_a7bd50cc463ec0acf84af8b2868dbfb28}{cbp\+\_\+linfo\+\_\+intra}} (int cbp, int dummy, int $\ast$len, int $\ast$info)
+\item 
+void \mbox{\hyperlink{vlc_8c_a767ed9d9c6d5a2be26a9201bb1dacfba}{cbp\+\_\+linfo\+\_\+inter}} (int cbp, int dummy, int $\ast$len, int $\ast$info)
+\item 
+void \mbox{\hyperlink{vlc_8c_a23737410441462b5a8d18a54e1ddb421}{levrun\+\_\+linfo\+\_\+c2x2}} (int level, int run, int $\ast$len, int $\ast$info)
+\begin{DoxyCompactList}\small\item\em 2x2 transform of chroma DC \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vlc_8c_abbc86331140480fc73c68cee9debdf85}{levrun\+\_\+linfo\+\_\+inter}} (int level, int run, int $\ast$len, int $\ast$info)
+\begin{DoxyCompactList}\small\item\em Single scan coefficients. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vlc_8c_a1af8c94aa76c1e97263b61b20e8e2142}{levrun\+\_\+linfo\+\_\+intra}} (int level, int run, int $\ast$len, int $\ast$info)
+\begin{DoxyCompactList}\small\item\em Double scan coefficients. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{vlc_8c_a584d42f09ffa3df0c50df77890bf0305}{symbol2uvlc}} (Syntax\+Element $\ast$sym)
+\begin{DoxyCompactList}\small\item\em Makes code word and passes it back A code word has the following format\+: 0 0 0 ... 1 Xn ...X2 X1 X0. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_a29afaa6c9e5b3b9da092120090849419}\label{vlc_8c_a29afaa6c9e5b3b9da092120090849419}} 
+int \mbox{\hyperlink{vlc_8c_a29afaa6c9e5b3b9da092120090849419}{write\+Syntax\+Element\+\_\+\+U\+V\+LC}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em generates U\+V\+LC code and passes the codeword to the buffer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_a59ffc09ae68be9948d2f2e0702a9a59f}\label{vlc_8c_a59ffc09ae68be9948d2f2e0702a9a59f}} 
+int \mbox{\hyperlink{vlc_8c_a59ffc09ae68be9948d2f2e0702a9a59f}{write\+Syntax\+Element\+\_\+fixed}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em passes the fixed codeword to the buffer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_ab144aecb6b830f610bdb4e500c7bb5a0}\label{vlc_8c_ab144aecb6b830f610bdb4e500c7bb5a0}} 
+int \mbox{\hyperlink{vlc_8c_ab144aecb6b830f610bdb4e500c7bb5a0}{write\+Syntax\+Element\+\_\+\+Intra4x4\+Prediction\+Mode}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em generates code and passes the codeword to the buffer \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{vlc_8c_ac8cc175726b820af6dfb2afaecf4c177}{write\+Syntax\+Element2\+Buf\+\_\+\+U\+V\+LC}} (Syntax\+Element $\ast$se, Bitstream $\ast$this\+\_\+stream\+Buffer)
+\begin{DoxyCompactList}\small\item\em generates U\+V\+LC code and passes the codeword to the buffer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_abb261ad2be1fda99faf812f22413a99f}\label{vlc_8c_abb261ad2be1fda99faf812f22413a99f}} 
+void \mbox{\hyperlink{vlc_8c_abb261ad2be1fda99faf812f22413a99f}{write\+U\+V\+L\+C2buffer}} (Syntax\+Element $\ast$se, Bitstream $\ast$curr\+Stream)
+\begin{DoxyCompactList}\small\item\em writes U\+V\+LC code to the appropriate buffer \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{vlc_8c_ad644c3df1ba20fbf3c90f7d6a5bda8cc}{write\+Syntax\+Element2\+Buf\+\_\+\+Fixed}} (Syntax\+Element $\ast$se, Bitstream $\ast$this\+\_\+stream\+Buffer)
+\begin{DoxyCompactList}\small\item\em generates U\+V\+LC code and passes the codeword to the buffer \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{vlc_8c_a85e42092acfc8a9bec3ce6cbef47d5c0}{symbol2vlc}} (Syntax\+Element $\ast$sym)
+\begin{DoxyCompactList}\small\item\em Makes code word and passes it back. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_a80f14ddf03215e08b8dee3980626ef5c}\label{vlc_8c_a80f14ddf03215e08b8dee3980626ef5c}} 
+int \mbox{\hyperlink{vlc_8c_a80f14ddf03215e08b8dee3980626ef5c}{write\+Syntax\+Element\+\_\+\+V\+LC}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em generates V\+LC code and passes the codeword to the buffer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_a5ba8fb26bfe2392c3c6c3dbccd9a9c73}\label{vlc_8c_a5ba8fb26bfe2392c3c6c3dbccd9a9c73}} 
+int \mbox{\hyperlink{vlc_8c_a5ba8fb26bfe2392c3c6c3dbccd9a9c73}{write\+Syntax\+Element\+\_\+\+Num\+Coeff\+Trailing\+Ones}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em write V\+LC for Num\+Coeff and Trailing\+Ones \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_ab1b1b96402c9a289deb418218ea4786c}\label{vlc_8c_ab1b1b96402c9a289deb418218ea4786c}} 
+int \mbox{\hyperlink{vlc_8c_ab1b1b96402c9a289deb418218ea4786c}{write\+Syntax\+Element\+\_\+\+Num\+Coeff\+Trailing\+Ones\+Chroma\+DC}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em write V\+LC for Num\+Coeff and Trailing\+Ones for Chroma DC \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_aebf66bba98713932dbbf402553ad6eef}\label{vlc_8c_aebf66bba98713932dbbf402553ad6eef}} 
+int \mbox{\hyperlink{vlc_8c_aebf66bba98713932dbbf402553ad6eef}{write\+Syntax\+Element\+\_\+\+Total\+Zeros}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em write V\+LC for Total\+Zeros \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_a02b1dfd1ab517fb58b2d51cd25645798}\label{vlc_8c_a02b1dfd1ab517fb58b2d51cd25645798}} 
+int \mbox{\hyperlink{vlc_8c_a02b1dfd1ab517fb58b2d51cd25645798}{write\+Syntax\+Element\+\_\+\+Total\+Zeros\+Chroma\+DC}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em write V\+LC for Total\+Zeros for Chroma DC \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_ab3b538ddbfb0dc746424ec390be9f34d}\label{vlc_8c_ab3b538ddbfb0dc746424ec390be9f34d}} 
+int \mbox{\hyperlink{vlc_8c_ab3b538ddbfb0dc746424ec390be9f34d}{write\+Syntax\+Element\+\_\+\+Run}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em write V\+LC for Run Before Next Coefficient, V\+L\+C0 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_a152776b72e323ce9cf3627870596912a}\label{vlc_8c_a152776b72e323ce9cf3627870596912a}} 
+int \mbox{\hyperlink{vlc_8c_a152776b72e323ce9cf3627870596912a}{write\+Syntax\+Element\+\_\+\+Level\+\_\+\+V\+L\+C1}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em write V\+LC for Coeff Level (V\+L\+C1) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vlc_8c_ab6fb36d18d61eb9c29e5e6574da27726}\label{vlc_8c_ab6fb36d18d61eb9c29e5e6574da27726}} 
+int \mbox{\hyperlink{vlc_8c_ab6fb36d18d61eb9c29e5e6574da27726}{write\+Syntax\+Element\+\_\+\+Level\+\_\+\+V\+L\+CN}} (Syntax\+Element $\ast$se, int vlc, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em write V\+LC for Coeff Level \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vlc_8c_af2d4550c105f2cfc691414dcead85bef}{write\+Vlc\+Byte\+Align}} (Bitstream $\ast$curr\+Stream)
+\begin{DoxyCompactList}\small\item\em Write out a trace string on the trace file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+(CA)V\+LC coding functions 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Inge Lille-\/\+Lang鴜 \href{mailto:inge.lille-langoy@telenor.com}{\texttt{ inge.\+lille-\/langoy@telenor.\+com}}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{vlc_8c_a767ed9d9c6d5a2be26a9201bb1dacfba}\label{vlc_8c_a767ed9d9c6d5a2be26a9201bb1dacfba}} 
+\index{vlc.c@{vlc.c}!cbp\_linfo\_inter@{cbp\_linfo\_inter}}
+\index{cbp\_linfo\_inter@{cbp\_linfo\_inter}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{cbp\_linfo\_inter()}{cbp\_linfo\_inter()}}
+{\footnotesize\ttfamily void cbp\+\_\+linfo\+\_\+inter (\begin{DoxyParamCaption}\item[{int}]{cbp,  }\item[{int}]{dummy,  }\item[{int $\ast$}]{len,  }\item[{int $\ast$}]{info }\end{DoxyParamCaption})}
+
+\begin{DoxyParagraph}{Input\+:}
+Number in the code table 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+length and info 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{vlc_8c_a7bd50cc463ec0acf84af8b2868dbfb28}\label{vlc_8c_a7bd50cc463ec0acf84af8b2868dbfb28}} 
+\index{vlc.c@{vlc.c}!cbp\_linfo\_intra@{cbp\_linfo\_intra}}
+\index{cbp\_linfo\_intra@{cbp\_linfo\_intra}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{cbp\_linfo\_intra()}{cbp\_linfo\_intra()}}
+{\footnotesize\ttfamily void cbp\+\_\+linfo\+\_\+intra (\begin{DoxyParamCaption}\item[{int}]{cbp,  }\item[{int}]{dummy,  }\item[{int $\ast$}]{len,  }\item[{int $\ast$}]{info }\end{DoxyParamCaption})}
+
+\begin{DoxyParagraph}{Input\+:}
+Number in the code table 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+length and info 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{vlc_8c_a23737410441462b5a8d18a54e1ddb421}\label{vlc_8c_a23737410441462b5a8d18a54e1ddb421}} 
+\index{vlc.c@{vlc.c}!levrun\_linfo\_c2x2@{levrun\_linfo\_c2x2}}
+\index{levrun\_linfo\_c2x2@{levrun\_linfo\_c2x2}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{levrun\_linfo\_c2x2()}{levrun\_linfo\_c2x2()}}
+{\footnotesize\ttfamily void levrun\+\_\+linfo\+\_\+c2x2 (\begin{DoxyParamCaption}\item[{int}]{level,  }\item[{int}]{run,  }\item[{int $\ast$}]{len,  }\item[{int $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+2x2 transform of chroma DC 
+
+\begin{DoxyParagraph}{Input\+:}
+level and run for coefficients 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+length and info 
+\end{DoxyParagraph}
+\begin{DoxyNote}{Note}
+see I\+TU document for bit assignment 
+\end{DoxyNote}
+\mbox{\Hypertarget{vlc_8c_abbc86331140480fc73c68cee9debdf85}\label{vlc_8c_abbc86331140480fc73c68cee9debdf85}} 
+\index{vlc.c@{vlc.c}!levrun\_linfo\_inter@{levrun\_linfo\_inter}}
+\index{levrun\_linfo\_inter@{levrun\_linfo\_inter}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{levrun\_linfo\_inter()}{levrun\_linfo\_inter()}}
+{\footnotesize\ttfamily void levrun\+\_\+linfo\+\_\+inter (\begin{DoxyParamCaption}\item[{int}]{level,  }\item[{int}]{run,  }\item[{int $\ast$}]{len,  }\item[{int $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+Single scan coefficients. 
+
+\begin{DoxyParagraph}{Input\+:}
+level and run for coefficiets 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+lenght and info 
+\end{DoxyParagraph}
+\begin{DoxyNote}{Note}
+see I\+TU document for bit assignment 
+\end{DoxyNote}
+\mbox{\Hypertarget{vlc_8c_a1af8c94aa76c1e97263b61b20e8e2142}\label{vlc_8c_a1af8c94aa76c1e97263b61b20e8e2142}} 
+\index{vlc.c@{vlc.c}!levrun\_linfo\_intra@{levrun\_linfo\_intra}}
+\index{levrun\_linfo\_intra@{levrun\_linfo\_intra}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{levrun\_linfo\_intra()}{levrun\_linfo\_intra()}}
+{\footnotesize\ttfamily void levrun\+\_\+linfo\+\_\+intra (\begin{DoxyParamCaption}\item[{int}]{level,  }\item[{int}]{run,  }\item[{int $\ast$}]{len,  }\item[{int $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+Double scan coefficients. 
+
+\begin{DoxyParagraph}{Input\+:}
+level and run for coefficiets 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+lenght and info 
+\end{DoxyParagraph}
+\begin{DoxyNote}{Note}
+see I\+TU document for bit assignment 
+\end{DoxyNote}
+\mbox{\Hypertarget{vlc_8c_a32c9242b5dbf5a17d3eea343b0c0a3d6}\label{vlc_8c_a32c9242b5dbf5a17d3eea343b0c0a3d6}} 
+\index{vlc.c@{vlc.c}!se\_linfo@{se\_linfo}}
+\index{se\_linfo@{se\_linfo}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{se\_linfo()}{se\_linfo()}}
+{\footnotesize\ttfamily void se\+\_\+linfo (\begin{DoxyParamCaption}\item[{int}]{se,  }\item[{int}]{dummy,  }\item[{int $\ast$}]{len,  }\item[{int $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+mapping for se(v) syntax elements 
+
+
+\begin{DoxyParams}{Parameters}
+{\em se} & value to be mapped \\
+\hline
+{\em dummy} & dummy argument \\
+\hline
+{\em len} & returns mapped value length \\
+\hline
+{\em info} & returns mapped value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{vlc_8c_abb958c6a923a3cf6ede691a5b0c52adc}\label{vlc_8c_abb958c6a923a3cf6ede691a5b0c52adc}} 
+\index{vlc.c@{vlc.c}!se\_v@{se\_v}}
+\index{se\_v@{se\_v}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{se\_v()}{se\_v()}}
+{\footnotesize\ttfamily int se\+\_\+v (\begin{DoxyParamCaption}\item[{char $\ast$}]{tracestring,  }\item[{int}]{value,  }\item[{Data\+Partition $\ast$}]{part }\end{DoxyParamCaption})}
+
+
+
+se\+\_\+v, writes an se(v) syntax element, returns the length in bits 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracestring} & the string for the trace file \\
+\hline
+{\em value} & the value to be coded \\
+\hline
+{\em part} & the Data Partition the value should be coded into\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bits used by the coded syntax element
+\end{DoxyReturn}
+\textbackslash{} note This function writes always the bit buffer for the progressive scan flag, and should not be used (or should be modified appropriately) for the interlace crap When used in the context of the Parameter Sets, this is obviously not a problem. \mbox{\Hypertarget{vlc_8c_a584d42f09ffa3df0c50df77890bf0305}\label{vlc_8c_a584d42f09ffa3df0c50df77890bf0305}} 
+\index{vlc.c@{vlc.c}!symbol2uvlc@{symbol2uvlc}}
+\index{symbol2uvlc@{symbol2uvlc}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{symbol2uvlc()}{symbol2uvlc()}}
+{\footnotesize\ttfamily int symbol2uvlc (\begin{DoxyParamCaption}\item[{Syntax\+Element $\ast$}]{sym }\end{DoxyParamCaption})}
+
+
+
+Makes code word and passes it back A code word has the following format\+: 0 0 0 ... 1 Xn ...X2 X1 X0. 
+
+\begin{DoxyParagraph}{Input\+:}
+Info \+: Xn..X2 X1 X0 ~\newline
+ Length \+: Total number of bits in the codeword 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{vlc_8c_a85e42092acfc8a9bec3ce6cbef47d5c0}\label{vlc_8c_a85e42092acfc8a9bec3ce6cbef47d5c0}} 
+\index{vlc.c@{vlc.c}!symbol2vlc@{symbol2vlc}}
+\index{symbol2vlc@{symbol2vlc}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{symbol2vlc()}{symbol2vlc()}}
+{\footnotesize\ttfamily int symbol2vlc (\begin{DoxyParamCaption}\item[{Syntax\+Element $\ast$}]{sym }\end{DoxyParamCaption})}
+
+
+
+Makes code word and passes it back. 
+
+\begin{DoxyParagraph}{Input\+:}
+Info \+: Xn..X2 X1 X0 ~\newline
+ Length \+: Total number of bits in the codeword 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{vlc_8c_a9ccc7926ae31afd2bc9b0ecea0dc3663}\label{vlc_8c_a9ccc7926ae31afd2bc9b0ecea0dc3663}} 
+\index{vlc.c@{vlc.c}!u\_1@{u\_1}}
+\index{u\_1@{u\_1}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{u\_1()}{u\_1()}}
+{\footnotesize\ttfamily int u\+\_\+1 (\begin{DoxyParamCaption}\item[{char $\ast$}]{tracestring,  }\item[{int}]{value,  }\item[{Data\+Partition $\ast$}]{part }\end{DoxyParamCaption})}
+
+
+
+u\+\_\+1, writes a flag (u(1) syntax element, returns the length in bits, always 1 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracestring} & the string for the trace file \\
+\hline
+{\em value} & the value to be coded \\
+\hline
+{\em part} & the Data Partition the value should be coded into\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bits used by the coded syntax element (always 1)
+\end{DoxyReturn}
+\textbackslash{} note This function writes always the bit buffer for the progressive scan flag, and should not be used (or should be modified appropriately) for the interlace crap When used in the context of the Parameter Sets, this is obviously not a problem. \mbox{\Hypertarget{vlc_8c_a6815efc63e6272f4a124e6ed9cdf52d9}\label{vlc_8c_a6815efc63e6272f4a124e6ed9cdf52d9}} 
+\index{vlc.c@{vlc.c}!u\_v@{u\_v}}
+\index{u\_v@{u\_v}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{u\_v()}{u\_v()}}
+{\footnotesize\ttfamily int u\+\_\+v (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{char $\ast$}]{tracestring,  }\item[{int}]{value,  }\item[{Data\+Partition $\ast$}]{part }\end{DoxyParamCaption})}
+
+
+
+u\+\_\+v, writes a a n bit fixed length syntax element, returns the length in bits, 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & length in bits \\
+\hline
+{\em tracestring} & the string for the trace file \\
+\hline
+{\em value} & the value to be coded \\
+\hline
+{\em part} & the Data Partition the value should be coded into\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bits used by the coded syntax element
+\end{DoxyReturn}
+\textbackslash{} note This function writes always the bit buffer for the progressive scan flag, and should not be used (or should be modified appropriately) for the interlace crap When used in the context of the Parameter Sets, this is obviously not a problem. \mbox{\Hypertarget{vlc_8c_a1595991e231ec1501d1e557501b7510b}\label{vlc_8c_a1595991e231ec1501d1e557501b7510b}} 
+\index{vlc.c@{vlc.c}!ue\_linfo@{ue\_linfo}}
+\index{ue\_linfo@{ue\_linfo}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{ue\_linfo()}{ue\_linfo()}}
+{\footnotesize\ttfamily void ue\+\_\+linfo (\begin{DoxyParamCaption}\item[{int}]{ue,  }\item[{int}]{dummy,  }\item[{int $\ast$}]{len,  }\item[{int $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+mapping for ue(v) syntax elements 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ue} & value to be mapped \\
+\hline
+{\em dummy} & dummy parameter \\
+\hline
+{\em info} & returns mapped value \\
+\hline
+{\em len} & returns mapped value length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{vlc_8c_a4d133771b69d55b58a63aeadaff04c56}\label{vlc_8c_a4d133771b69d55b58a63aeadaff04c56}} 
+\index{vlc.c@{vlc.c}!ue\_v@{ue\_v}}
+\index{ue\_v@{ue\_v}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{ue\_v()}{ue\_v()}}
+{\footnotesize\ttfamily int ue\+\_\+v (\begin{DoxyParamCaption}\item[{char $\ast$}]{tracestring,  }\item[{int}]{value,  }\item[{Data\+Partition $\ast$}]{part }\end{DoxyParamCaption})}
+
+
+
+ue\+\_\+v, writes an ue(v) syntax element, returns the length in bits 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracestring} & the string for the trace file \\
+\hline
+{\em value} & the value to be coded \\
+\hline
+{\em part} & the Data Partition （存储编码的比特流）the value should be coded into\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bits used by the coded syntax element
+\end{DoxyReturn}
+\textbackslash{} note This function writes always the bit buffer for the progressive scan flag, and should not be used (or should be modified appropriately) for the interlace crap When used in the context of the Parameter Sets, this is obviously not a problem. \mbox{\Hypertarget{vlc_8c_ad644c3df1ba20fbf3c90f7d6a5bda8cc}\label{vlc_8c_ad644c3df1ba20fbf3c90f7d6a5bda8cc}} 
+\index{vlc.c@{vlc.c}!writeSyntaxElement2Buf\_Fixed@{writeSyntaxElement2Buf\_Fixed}}
+\index{writeSyntaxElement2Buf\_Fixed@{writeSyntaxElement2Buf\_Fixed}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{writeSyntaxElement2Buf\_Fixed()}{writeSyntaxElement2Buf\_Fixed()}}
+{\footnotesize\ttfamily int write\+Syntax\+Element2\+Buf\+\_\+\+Fixed (\begin{DoxyParamCaption}\item[{Syntax\+Element $\ast$}]{se,  }\item[{Bitstream $\ast$}]{this\+\_\+stream\+Buffer }\end{DoxyParamCaption})}
+
+
+
+generates U\+V\+LC code and passes the codeword to the buffer 
+
+\begin{DoxyAuthor}{Author}
+Tian Dong 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{vlc_8c_ac8cc175726b820af6dfb2afaecf4c177}\label{vlc_8c_ac8cc175726b820af6dfb2afaecf4c177}} 
+\index{vlc.c@{vlc.c}!writeSyntaxElement2Buf\_UVLC@{writeSyntaxElement2Buf\_UVLC}}
+\index{writeSyntaxElement2Buf\_UVLC@{writeSyntaxElement2Buf\_UVLC}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{writeSyntaxElement2Buf\_UVLC()}{writeSyntaxElement2Buf\_UVLC()}}
+{\footnotesize\ttfamily int write\+Syntax\+Element2\+Buf\+\_\+\+U\+V\+LC (\begin{DoxyParamCaption}\item[{Syntax\+Element $\ast$}]{se,  }\item[{Bitstream $\ast$}]{this\+\_\+stream\+Buffer }\end{DoxyParamCaption})}
+
+
+
+generates U\+V\+LC code and passes the codeword to the buffer 
+
+\begin{DoxyAuthor}{Author}
+Tian Dong 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{vlc_8c_af2d4550c105f2cfc691414dcead85bef}\label{vlc_8c_af2d4550c105f2cfc691414dcead85bef}} 
+\index{vlc.c@{vlc.c}!writeVlcByteAlign@{writeVlcByteAlign}}
+\index{writeVlcByteAlign@{writeVlcByteAlign}!vlc.c@{vlc.c}}
+\doxysubsubsection{\texorpdfstring{writeVlcByteAlign()}{writeVlcByteAlign()}}
+{\footnotesize\ttfamily void write\+Vlc\+Byte\+Align (\begin{DoxyParamCaption}\item[{Bitstream $\ast$}]{curr\+Stream }\end{DoxyParamCaption})}
+
+
+
+Write out a trace string on the trace file. 
+
+puts the less than 8 bits in the byte buffer of the Bitstream into the stream\+Buffer. ~\newline
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+Stream} & the Bitstream the alignment should be established \\
+\hline
+\end{DoxyParams}

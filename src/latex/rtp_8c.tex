@@ -1,0 +1,213 @@
+\hypertarget{rtp_8c}{}\doxysection{rtp.\+c File Reference}
+\label{rtp_8c}\index{rtp.c@{rtp.c}}
+
+
+Functions to handle R\+TP headers and packets per R\+F\+C1889 and R\+TP N\+AL spec Functions support little endian systems only (Intel, not Motorola/\+Sparc)  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include $<$malloc.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}rtp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}elements.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fmo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parsetcommon.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parset.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nalucommon.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{rtp_8c_a012f05fda1b13afb5282bbf941feac40}\label{rtp_8c_a012f05fda1b13afb5282bbf941feac40}} 
+\#define {\bfseries S\+Y\+M\+T\+R\+A\+C\+E\+S\+T\+R\+I\+NG}(s)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{rtp_8c_abf5f3bb2d6ed2284264d00f4ae59bd54}{Compose\+R\+T\+P\+Packet}} (R\+T\+Ppacket\+\_\+t $\ast$p)
+\begin{DoxyCompactList}\small\item\em Compose\+R\+T\+Ppacket composes the complete R\+TP packet using the various structure members of the R\+T\+Ppacket\+\_\+t structure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtp_8c_a6eab9fdcd8ac081fd69a8ef41427567a}{Write\+R\+T\+P\+Packet}} (R\+T\+Ppacket\+\_\+t $\ast$p, F\+I\+LE $\ast$\mbox{\hyperlink{rtp_8c_a3efb0e1a16208deecbd84c15401f7cf8}{f}})
+\begin{DoxyCompactList}\small\item\em Write\+R\+T\+P\+Packet writes the supplied R\+TP packet to the output file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtp_8c_a6aa7bbaaf23a77a767a82d828d06385a}{Write\+R\+T\+P\+N\+A\+LU}} (N\+A\+L\+U\+\_\+t $\ast$n)
+\begin{DoxyCompactList}\small\item\em int R\+T\+P\+Write\+N\+A\+LU write a N\+A\+LU to the R\+TP file \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtp_8c_af0174c81abc47a2e3b1c02d29a94b80b}{R\+T\+P\+Update\+Timestamp}} (int tr)
+\begin{DoxyCompactList}\small\item\em R\+T\+P\+Update\+Timestamp\+: patches the R\+TP timestamp depending on the TR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtp_8c_a020041e133cb6d4b19120877bfd83ad4}{Open\+R\+T\+P\+File}} (char $\ast$Filename)
+\begin{DoxyCompactList}\small\item\em Opens the output file for the R\+TP packet stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtp_8c_a48f8d1954529fc41ee05cfe6eaacf90f}{Close\+R\+T\+P\+File}} ()
+\begin{DoxyCompactList}\small\item\em Closes the output file for the R\+TP packet stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{rtp_8c_a75b1c6c93fdb72d23fccefbb1f9b2815}\label{rtp_8c_a75b1c6c93fdb72d23fccefbb1f9b2815}} 
+int {\bfseries Current\+R\+T\+P\+Timestamp} = 0
+\item 
+int \mbox{\hyperlink{rtp_8c_a28d141332913c0991a5418700e3d0cd5}{Current\+R\+T\+P\+Sequence\+Number}} = 0
+\item 
+F\+I\+LE $\ast$ \mbox{\hyperlink{rtp_8c_a3efb0e1a16208deecbd84c15401f7cf8}{f}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions to handle R\+TP headers and packets per R\+F\+C1889 and R\+TP N\+AL spec Functions support little endian systems only (Intel, not Motorola/\+Sparc) 
+
+\begin{DoxyDate}{Date}
+30 September 2001
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rtp_8c_a48f8d1954529fc41ee05cfe6eaacf90f}\label{rtp_8c_a48f8d1954529fc41ee05cfe6eaacf90f}} 
+\index{rtp.c@{rtp.c}!CloseRTPFile@{CloseRTPFile}}
+\index{CloseRTPFile@{CloseRTPFile}!rtp.c@{rtp.c}}
+\doxysubsubsection{\texorpdfstring{CloseRTPFile()}{CloseRTPFile()}}
+{\footnotesize\ttfamily void Close\+R\+T\+P\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the output file for the R\+TP packet stream. 
+
+\begin{DoxyReturn}{Returns}
+none. Function terminates the program in case of an error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtp_8c_abf5f3bb2d6ed2284264d00f4ae59bd54}\label{rtp_8c_abf5f3bb2d6ed2284264d00f4ae59bd54}} 
+\index{rtp.c@{rtp.c}!ComposeRTPPacket@{ComposeRTPPacket}}
+\index{ComposeRTPPacket@{ComposeRTPPacket}!rtp.c@{rtp.c}}
+\doxysubsubsection{\texorpdfstring{ComposeRTPPacket()}{ComposeRTPPacket()}}
+{\footnotesize\ttfamily int Compose\+R\+T\+P\+Packet (\begin{DoxyParamCaption}\item[{R\+T\+Ppacket\+\_\+t $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Compose\+R\+T\+Ppacket composes the complete R\+TP packet using the various structure members of the R\+T\+Ppacket\+\_\+t structure. 
+
+\begin{DoxyReturn}{Returns}
+0 in case of success negative error code in case of failure
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Parameters}
+Caller is responsible to allocate enough memory for the generated packet in parameter-\/$>$packet. Typically a malloc of 12+paylen bytes is sufficient
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Side effects}
+none
+\end{DoxyParagraph}
+\begin{DoxyNote}{Note}
+Function contains assert() tests for debug purposes (consistency checks for R\+TP header fields
+\end{DoxyNote}
+\begin{DoxyDate}{Date}
+30 Spetember 2001
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{rtp_8c_a020041e133cb6d4b19120877bfd83ad4}\label{rtp_8c_a020041e133cb6d4b19120877bfd83ad4}} 
+\index{rtp.c@{rtp.c}!OpenRTPFile@{OpenRTPFile}}
+\index{OpenRTPFile@{OpenRTPFile}!rtp.c@{rtp.c}}
+\doxysubsubsection{\texorpdfstring{OpenRTPFile()}{OpenRTPFile()}}
+{\footnotesize\ttfamily void Open\+R\+T\+P\+File (\begin{DoxyParamCaption}\item[{char $\ast$}]{Filename }\end{DoxyParamCaption})}
+
+
+
+Opens the output file for the R\+TP packet stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filename} & The filename of the file to be opened\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. Function terminates the program in case of an error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtp_8c_af0174c81abc47a2e3b1c02d29a94b80b}\label{rtp_8c_af0174c81abc47a2e3b1c02d29a94b80b}} 
+\index{rtp.c@{rtp.c}!RTPUpdateTimestamp@{RTPUpdateTimestamp}}
+\index{RTPUpdateTimestamp@{RTPUpdateTimestamp}!rtp.c@{rtp.c}}
+\doxysubsubsection{\texorpdfstring{RTPUpdateTimestamp()}{RTPUpdateTimestamp()}}
+{\footnotesize\ttfamily void R\+T\+P\+Update\+Timestamp (\begin{DoxyParamCaption}\item[{int}]{tr }\end{DoxyParamCaption})}
+
+
+
+R\+T\+P\+Update\+Timestamp\+: patches the R\+TP timestamp depending on the TR. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tr} & T\+Rof the following N\+A\+L\+Us\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. ~\newline
+ 
+\end{DoxyReturn}
+This is a violation of the security req. of R\+TP (random timestamp), but easier to debug
+
+The following code assumes a wrap around of TR at 256, and needs to be changed as soon as this is no more true.
+
+The support for B frames is a bit tricky, because it is not easy to distinguish between a natural wrap-\/around of the tr, and the intentional going back of the tr because of a B frame. It is solved here by a heuristic means\+: It is assumed that B frames are never \char`\"{}older\char`\"{} than 10 tr ticks. Everything higher than 10 is considered a wrap around.\mbox{\Hypertarget{rtp_8c_a6aa7bbaaf23a77a767a82d828d06385a}\label{rtp_8c_a6aa7bbaaf23a77a767a82d828d06385a}} 
+\index{rtp.c@{rtp.c}!WriteRTPNALU@{WriteRTPNALU}}
+\index{WriteRTPNALU@{WriteRTPNALU}!rtp.c@{rtp.c}}
+\doxysubsubsection{\texorpdfstring{WriteRTPNALU()}{WriteRTPNALU()}}
+{\footnotesize\ttfamily int Write\+R\+T\+P\+N\+A\+LU (\begin{DoxyParamCaption}\item[{N\+A\+L\+U\+\_\+t $\ast$}]{n }\end{DoxyParamCaption})}
+
+
+
+int R\+T\+P\+Write\+N\+A\+LU write a N\+A\+LU to the R\+TP file 
+
+\begin{DoxyReturn}{Returns}
+Number of bytes written to output file
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Side effects}
+Packet written, R\+T\+P\+Sequence\+Number and R\+T\+P\+Timestamp updated
+\end{DoxyParagraph}
+\begin{DoxyDate}{Date}
+December 13, 2002
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyAuthor}
+For error resilience work, we need the correct marker bit. Introduce a nalu-\/$>$marker and set it in \mbox{\hyperlink{slice_8c_a52c3ee904fa4614482ef4c207f03fe92}{terminate\+\_\+slice()}}?\mbox{\Hypertarget{rtp_8c_a6eab9fdcd8ac081fd69a8ef41427567a}\label{rtp_8c_a6eab9fdcd8ac081fd69a8ef41427567a}} 
+\index{rtp.c@{rtp.c}!WriteRTPPacket@{WriteRTPPacket}}
+\index{WriteRTPPacket@{WriteRTPPacket}!rtp.c@{rtp.c}}
+\doxysubsubsection{\texorpdfstring{WriteRTPPacket()}{WriteRTPPacket()}}
+{\footnotesize\ttfamily int Write\+R\+T\+P\+Packet (\begin{DoxyParamCaption}\item[{R\+T\+Ppacket\+\_\+t $\ast$}]{p,  }\item[{F\+I\+LE $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Write\+R\+T\+P\+Packet writes the supplied R\+TP packet to the output file. 
+
+\begin{DoxyReturn}{Returns}
+0 in case of access $<$0 in case of write failure (typically fatal)
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & the R\+TP packet to be written (after \mbox{\hyperlink{rtp_8c_abf5f3bb2d6ed2284264d00f4ae59bd54}{Compose\+R\+T\+P\+Packet()}} ) \\
+\hline
+{\em f} & output file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+October 23, 2001
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{rtp_8c_a28d141332913c0991a5418700e3d0cd5}\label{rtp_8c_a28d141332913c0991a5418700e3d0cd5}} 
+\index{rtp.c@{rtp.c}!CurrentRTPSequenceNumber@{CurrentRTPSequenceNumber}}
+\index{CurrentRTPSequenceNumber@{CurrentRTPSequenceNumber}!rtp.c@{rtp.c}}
+\doxysubsubsection{\texorpdfstring{CurrentRTPSequenceNumber}{CurrentRTPSequenceNumber}}
+{\footnotesize\ttfamily int Current\+R\+T\+P\+Sequence\+Number = 0}
+
+The R\+TP timestamp of the current packet, incremented with all P and I frames \mbox{\Hypertarget{rtp_8c_a3efb0e1a16208deecbd84c15401f7cf8}\label{rtp_8c_a3efb0e1a16208deecbd84c15401f7cf8}} 
+\index{rtp.c@{rtp.c}!f@{f}}
+\index{f@{f}!rtp.c@{rtp.c}}
+\doxysubsubsection{\texorpdfstring{f}{f}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ f}
+
+The R\+TP sequence number of the current packet incremented by one for each sent packet 

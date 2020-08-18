@@ -1,0 +1,367 @@
+\hypertarget{lencod_8c}{}\doxysection{lencod.\+c File Reference}
+\label{lencod_8c}\index{lencod.c@{lencod.c}}
+
+
+H.\+264/\+A\+VC reference encoder project \mbox{\hyperlink{lencod_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main()}}  
+
+
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$sys/timeb.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}configfile.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}leaky\+\_\+bucket.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memalloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}intrarefresh.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fmo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sei.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parset.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}output.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fast\+\_\+me.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ratectl.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lencod_8c_a3a59a1868988fcc13a1c6c3b9f400556}\label{lencod_8c_a3a59a1868988fcc13a1c6c3b9f400556}} 
+\#define {\bfseries JM}~\char`\"{}8\char`\"{}
+\item 
+\mbox{\Hypertarget{lencod_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}\label{lencod_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}} 
+\#define {\bfseries V\+E\+R\+S\+I\+ON}~\char`\"{}8.\+6\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lencod_8c_a36a45b3e172cbf23c4a2a5c81bd2aedd}\label{lencod_8c_a36a45b3e172cbf23c4a2a5c81bd2aedd}} 
+void \mbox{\hyperlink{lencod_8c_a36a45b3e172cbf23c4a2a5c81bd2aedd}{Init\+\_\+\+Motion\+\_\+\+Search\+\_\+\+Module}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the motion search. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_ac39f0c73e2098d49e0b482a837c2e870}\label{lencod_8c_ac39f0c73e2098d49e0b482a837c2e870}} 
+void \mbox{\hyperlink{lencod_8c_ac39f0c73e2098d49e0b482a837c2e870}{Clear\+\_\+\+Motion\+\_\+\+Search\+\_\+\+Module}} ()
+\begin{DoxyCompactList}\small\item\em Free memory used by motion search. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lencod_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Main function for encoder. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_a105f34dacb42ae79491bd702e1c716b3}\label{lencod_8c_a105f34dacb42ae79491bd702e1c716b3}} 
+void \mbox{\hyperlink{lencod_8c_a105f34dacb42ae79491bd702e1c716b3}{report\+\_\+stats\+\_\+on\+\_\+error}} ()
+\begin{DoxyCompactList}\small\item\em Terminates and reports statistics on error. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_a6190a603712b3dc9c878f54a8f7b325b}\label{lencod_8c_a6190a603712b3dc9c878f54a8f7b325b}} 
+void \mbox{\hyperlink{lencod_8c_a6190a603712b3dc9c878f54a8f7b325b}{init\+\_\+poc}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the P\+OC structure with appropriate parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lencod_8c_abc4ff8a0e9243d2c170d13d6d4601370}{C\+A\+V\+L\+C\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the img-\/$>$nz\+\_\+coeff. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lencod_8c_a66993f8f3a0b85ae5fdd1b381b2263ca}{init\+\_\+img}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the Image structure with appropriate parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lencod_8c_ad3b0208c57348cb2178d9c3377ef7499}{free\+\_\+img}} ()
+\begin{DoxyCompactList}\small\item\em Free the Image structures. \end{DoxyCompactList}\item 
+Picture $\ast$ \mbox{\hyperlink{lencod_8c_aebf13e92cf97185c3e7d770927973b07}{malloc\+\_\+picture}} ()
+\begin{DoxyCompactList}\small\item\em Allocates the picture structure along with its dependent data structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lencod_8c_a3c6625c8b4b78e54444d0abf4edcb5b3}{free\+\_\+picture}} (Picture $\ast$pic)
+\begin{DoxyCompactList}\small\item\em Frees a picture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lencod_8c_ae4499ee0125936e10dde278b4a18c289}{report}} ()
+\begin{DoxyCompactList}\small\item\em Reports the gathered information to appropriate outputs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lencod_8c_a81661b95d5f1cf945c53b64be52293f3}{information\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Prints the header of the protocol. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lencod_8c_a0fd0ddaa5c0993e4337e7d144b1d7def}{init\+\_\+global\+\_\+buffers}} ()
+\begin{DoxyCompactList}\small\item\em Dynamic memory allocation of frame size related global buffers buffers are defined in global.\+h, allocated memory must be freed in void \mbox{\hyperlink{lencod_8c_ab0ce270ef36abd0d4b01cdef7324d914}{free\+\_\+global\+\_\+buffers()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lencod_8c_ab0ce270ef36abd0d4b01cdef7324d914}{free\+\_\+global\+\_\+buffers}} ()
+\begin{DoxyCompactList}\small\item\em Free allocated memory of frame size related global buffers buffers are defined in global.\+h, allocated memory is allocated in int get\+\_\+mem4global\+\_\+buffers() \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lencod_8c_aa58a7d4d156008183b3a569309f9b8c0}{get\+\_\+mem\+\_\+mv}} (int $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$mv)
+\begin{DoxyCompactList}\small\item\em Allocate memory for mv. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lencod_8c_a9ea82cb0ff6bbceddf0994388e193de4}{free\+\_\+mem\+\_\+mv}} (int $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$mv)
+\begin{DoxyCompactList}\small\item\em Free memory from mv. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_a65f51e960abc8cb228e11681e9dea185}\label{lencod_8c_a65f51e960abc8cb228e11681e9dea185}} 
+int \mbox{\hyperlink{lencod_8c_a65f51e960abc8cb228e11681e9dea185}{get\+\_\+mem\+\_\+\+A\+Ccoeff}} (int $\ast$$\ast$$\ast$$\ast$$\ast$cof\+AC)
+\begin{DoxyCompactList}\small\item\em Allocate memory for AC coefficients. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_a0a38068c47f52f88ef4db0e7bc55a0fe}\label{lencod_8c_a0a38068c47f52f88ef4db0e7bc55a0fe}} 
+int \mbox{\hyperlink{lencod_8c_a0a38068c47f52f88ef4db0e7bc55a0fe}{get\+\_\+mem\+\_\+\+D\+Ccoeff}} (int $\ast$$\ast$$\ast$$\ast$cof\+DC)
+\begin{DoxyCompactList}\small\item\em Allocate memory for DC coefficients. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_a90a7d940f42cea81fdde4603498b8542}\label{lencod_8c_a90a7d940f42cea81fdde4603498b8542}} 
+void \mbox{\hyperlink{lencod_8c_a90a7d940f42cea81fdde4603498b8542}{free\+\_\+mem\+\_\+\+A\+Ccoeff}} (int $\ast$$\ast$$\ast$$\ast$cof\+AC)
+\begin{DoxyCompactList}\small\item\em Free memory of AC coefficients. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_ae44275da0885f0fb371b6fbce06b6da8}\label{lencod_8c_ae44275da0885f0fb371b6fbce06b6da8}} 
+void \mbox{\hyperlink{lencod_8c_ae44275da0885f0fb371b6fbce06b6da8}{free\+\_\+mem\+\_\+\+D\+Ccoeff}} (int $\ast$$\ast$$\ast$cof\+DC)
+\begin{DoxyCompactList}\small\item\em Free memory of DC coefficients. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_ad28d1e6d6568bdb83e955e686648bb21}\label{lencod_8c_ad28d1e6d6568bdb83e955e686648bb21}} 
+void \mbox{\hyperlink{lencod_8c_ad28d1e6d6568bdb83e955e686648bb21}{combine\+\_\+field}} ()
+\begin{DoxyCompactList}\small\item\em form frame picture from two field pictures \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_a0123801b8454ec7db3743b02a6750c58}\label{lencod_8c_a0123801b8454ec7db3743b02a6750c58}} 
+int \mbox{\hyperlink{lencod_8c_a0123801b8454ec7db3743b02a6750c58}{decide\+\_\+fld\+\_\+frame}} (float snr\+\_\+frame\+\_\+Y, float snr\+\_\+field\+\_\+Y, int bit\+\_\+field, int bit\+\_\+frame, double lambda\+\_\+picture)
+\begin{DoxyCompactList}\small\item\em RD decision of frame and field coding. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_a2fc2833c822c21a35f5071c3c56ed057}\label{lencod_8c_a2fc2833c822c21a35f5071c3c56ed057}} 
+void \mbox{\hyperlink{lencod_8c_a2fc2833c822c21a35f5071c3c56ed057}{process\+\_\+2nd\+\_\+\+I\+G\+OP}} ()
+\begin{DoxyCompactList}\small\item\em Do some initializaiton work for encoding the 2nd I\+G\+OP. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{lencod_8c_a6fab665a13746b2c2cf5e2bc2a3cda61}\label{lencod_8c_a6fab665a13746b2c2cf5e2bc2a3cda61}} 
+void \mbox{\hyperlink{lencod_8c_a6fab665a13746b2c2cf5e2bc2a3cda61}{Set\+Img\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Set the image type for I,P and SP pictures (not B!) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lencod_8c_a2a5656abf1f76b8ca621849151701b95}\label{lencod_8c_a2a5656abf1f76b8ca621849151701b95}} 
+Input\+Parameters {\bfseries inputs}
+\item 
+\mbox{\Hypertarget{lencod_8c_a1a303bdfcf151e5f3bc011cedb60e291}\label{lencod_8c_a1a303bdfcf151e5f3bc011cedb60e291}} 
+Input\+Parameters $\ast$ {\bfseries input} = \&inputs
+\item 
+\mbox{\Hypertarget{lencod_8c_ace4ac060c136ed5355181e52882f76a8}\label{lencod_8c_ace4ac060c136ed5355181e52882f76a8}} 
+Image\+Parameters {\bfseries images}
+\item 
+\mbox{\Hypertarget{lencod_8c_ae83f8c7ee6c790227c6e54645f3d6bdf}\label{lencod_8c_ae83f8c7ee6c790227c6e54645f3d6bdf}} 
+Image\+Parameters $\ast$ {\bfseries img} = \&images
+\item 
+\mbox{\Hypertarget{lencod_8c_a4ff79c970da06a6d9d632ba5db5329e6}\label{lencod_8c_a4ff79c970da06a6d9d632ba5db5329e6}} 
+Stat\+Parameters {\bfseries stats}
+\item 
+\mbox{\Hypertarget{lencod_8c_a00f5b74c4fbc02e397c871a003a9f446}\label{lencod_8c_a00f5b74c4fbc02e397c871a003a9f446}} 
+Stat\+Parameters $\ast$ {\bfseries stat} = \&stats
+\item 
+\mbox{\Hypertarget{lencod_8c_a30b21ca8b71bffe58a71ced474725eca}\label{lencod_8c_a30b21ca8b71bffe58a71ced474725eca}} 
+S\+N\+R\+Parameters {\bfseries snrs}
+\item 
+\mbox{\Hypertarget{lencod_8c_a5e97dd84aa7da96260c87c2168dada0a}\label{lencod_8c_a5e97dd84aa7da96260c87c2168dada0a}} 
+S\+N\+R\+Parameters $\ast$ {\bfseries snr} = \&snrs
+\item 
+\mbox{\Hypertarget{lencod_8c_afc03ecd1dbaa40a76ff979158c474733}\label{lencod_8c_afc03ecd1dbaa40a76ff979158c474733}} 
+Decoders {\bfseries decoders}
+\item 
+\mbox{\Hypertarget{lencod_8c_a228b59d3e1dd3fd8da2b03e422a7b552}\label{lencod_8c_a228b59d3e1dd3fd8da2b03e422a7b552}} 
+Decoders $\ast$ {\bfseries decs} =\&decoders
+\item 
+\mbox{\Hypertarget{lencod_8c_a641f925ecdadd0241ea7c34a1992bcfb}\label{lencod_8c_a641f925ecdadd0241ea7c34a1992bcfb}} 
+Boolean {\bfseries In2nd\+I\+G\+OP} = F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{lencod_8c_a30f6dfb529645c938413bca7f1487344}\label{lencod_8c_a30f6dfb529645c938413bca7f1487344}} 
+int {\bfseries start\+\_\+frame\+\_\+no\+\_\+in\+\_\+this\+\_\+\+I\+G\+OP} = 0
+\item 
+\mbox{\Hypertarget{lencod_8c_a46fb9bba89764f490625cf9452c26ad1}\label{lencod_8c_a46fb9bba89764f490625cf9452c26ad1}} 
+int {\bfseries start\+\_\+tr\+\_\+in\+\_\+this\+\_\+\+I\+G\+OP} = 0
+\item 
+\mbox{\Hypertarget{lencod_8c_a6825e783234ccc523513c32274d158bc}\label{lencod_8c_a6825e783234ccc523513c32274d158bc}} 
+int {\bfseries First\+Frame\+In2nd\+I\+G\+OP} =0
+\item 
+\mbox{\Hypertarget{lencod_8c_aa0b81989ee6ecef31fde42f0ff0dc005}\label{lencod_8c_aa0b81989ee6ecef31fde42f0ff0dc005}} 
+int {\bfseries cabac\+\_\+encoding} = 0
+\item 
+\mbox{\Hypertarget{lencod_8c_a6cb19d3cc47256c79bf137a84f316255}\label{lencod_8c_a6cb19d3cc47256c79bf137a84f316255}} 
+Colocated\+Params $\ast$ {\bfseries Co\+\_\+located}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+H.\+264/\+A\+VC reference encoder project \mbox{\hyperlink{lencod_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main()}} 
+
+\mbox{\hyperlink{lencod_8c}{lencod.\+c}} \begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Inge Lille-\/\+Langøy \href{mailto:inge.lille-langoy@telenor.com}{\texttt{ inge.\+lille-\/langoy@telenor.\+com}}
+\item Rickard Sjoberg \href{mailto:rickard.sjoberg@era.ericsson.se}{\texttt{ rickard.\+sjoberg@era.\+ericsson.\+se}}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}}
+\item Jani Lainema \href{mailto:jani.lainema@nokia.com}{\texttt{ jani.\+lainema@nokia.\+com}}
+\item Byeong-\/\+Moon Jeon \href{mailto:jeonbm@lge.com}{\texttt{ jeonbm@lge.\+com}}
+\item Yoon-\/\+Seong Soh \href{mailto:yunsung@lge.com}{\texttt{ yunsung@lge.\+com}}
+\item Thomas Stockhammer \href{mailto:stockhammer@ei.tum.de}{\texttt{ stockhammer@ei.\+tum.\+de}}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}}
+\item Guido Heising \href{mailto:heising@hhi.de}{\texttt{ heising@hhi.\+de}}
+\item Karsten Suehring \href{mailto:suehring@hhi.de}{\texttt{ suehring@hhi.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lencod_8c_abc4ff8a0e9243d2c170d13d6d4601370}\label{lencod_8c_abc4ff8a0e9243d2c170d13d6d4601370}} 
+\index{lencod.c@{lencod.c}!CAVLC\_init@{CAVLC\_init}}
+\index{CAVLC\_init@{CAVLC\_init}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{CAVLC\_init()}{CAVLC\_init()}}
+{\footnotesize\ttfamily void C\+A\+V\+L\+C\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the img-\/$>$nz\+\_\+coeff. 
+
+\begin{DoxyParagraph}{Input\+:}
+none 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+none \textbackslash{} side effects sets omg-\/$>$nz\+\_\+coef\mbox{[}\mbox{]}\mbox{[}\mbox{]}\mbox{[}\mbox{]}\mbox{[}\mbox{]} to -\/1 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lencod_8c_ab0ce270ef36abd0d4b01cdef7324d914}\label{lencod_8c_ab0ce270ef36abd0d4b01cdef7324d914}} 
+\index{lencod.c@{lencod.c}!free\_global\_buffers@{free\_global\_buffers}}
+\index{free\_global\_buffers@{free\_global\_buffers}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{free\_global\_buffers()}{free\_global\_buffers()}}
+{\footnotesize\ttfamily void free\+\_\+global\+\_\+buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Free allocated memory of frame size related global buffers buffers are defined in global.\+h, allocated memory is allocated in int get\+\_\+mem4global\+\_\+buffers() 
+
+\begin{DoxyParagraph}{Input\+:}
+Input Parameters struct inp\+\_\+par $\ast$inp, ~\newline
+ Image Parameters struct img\+\_\+par $\ast$img 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+none 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lencod_8c_ad3b0208c57348cb2178d9c3377ef7499}\label{lencod_8c_ad3b0208c57348cb2178d9c3377ef7499}} 
+\index{lencod.c@{lencod.c}!free\_img@{free\_img}}
+\index{free\_img@{free\_img}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{free\_img()}{free\_img()}}
+{\footnotesize\ttfamily void free\+\_\+img (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Free the Image structures. 
+
+\begin{DoxyParagraph}{Input\+:}
+Image Parameters struct img\+\_\+par $\ast$img 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lencod_8c_a9ea82cb0ff6bbceddf0994388e193de4}\label{lencod_8c_a9ea82cb0ff6bbceddf0994388e193de4}} 
+\index{lencod.c@{lencod.c}!free\_mem\_mv@{free\_mem\_mv}}
+\index{free\_mem\_mv@{free\_mem\_mv}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{free\_mem\_mv()}{free\_mem\_mv()}}
+{\footnotesize\ttfamily void free\+\_\+mem\+\_\+mv (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$}]{mv }\end{DoxyParamCaption})}
+
+
+
+Free memory from mv. 
+
+\begin{DoxyParagraph}{Input\+:}
+int$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ mv 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lencod_8c_a3c6625c8b4b78e54444d0abf4edcb5b3}\label{lencod_8c_a3c6625c8b4b78e54444d0abf4edcb5b3}} 
+\index{lencod.c@{lencod.c}!free\_picture@{free\_picture}}
+\index{free\_picture@{free\_picture}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{free\_picture()}{free\_picture()}}
+{\footnotesize\ttfamily void free\+\_\+picture (\begin{DoxyParamCaption}\item[{Picture $\ast$}]{pic }\end{DoxyParamCaption})}
+
+
+
+Frees a picture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & P\+Ointer to a Picture to be freed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lencod_8c_aa58a7d4d156008183b3a569309f9b8c0}\label{lencod_8c_aa58a7d4d156008183b3a569309f9b8c0}} 
+\index{lencod.c@{lencod.c}!get\_mem\_mv@{get\_mem\_mv}}
+\index{get\_mem\_mv@{get\_mem\_mv}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{get\_mem\_mv()}{get\_mem\_mv()}}
+{\footnotesize\ttfamily int get\+\_\+mem\+\_\+mv (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$}]{mv }\end{DoxyParamCaption})}
+
+
+
+Allocate memory for mv. 
+
+\begin{DoxyParagraph}{Input\+:}
+Image Parameters struct img\+\_\+par $\ast$img ~\newline
+ int$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ mv 
+\end{DoxyParagraph}
+\begin{DoxyReturn}{Returns}
+memory size in bytes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lencod_8c_a81661b95d5f1cf945c53b64be52293f3}\label{lencod_8c_a81661b95d5f1cf945c53b64be52293f3}} 
+\index{lencod.c@{lencod.c}!information\_init@{information\_init}}
+\index{information\_init@{information\_init}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{information\_init()}{information\_init()}}
+{\footnotesize\ttfamily void information\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the header of the protocol. 
+
+\begin{DoxyParagraph}{Input\+:}
+struct inp\+\_\+par $\ast$inp 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+none 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lencod_8c_a0fd0ddaa5c0993e4337e7d144b1d7def}\label{lencod_8c_a0fd0ddaa5c0993e4337e7d144b1d7def}} 
+\index{lencod.c@{lencod.c}!init\_global\_buffers@{init\_global\_buffers}}
+\index{init\_global\_buffers@{init\_global\_buffers}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{init\_global\_buffers()}{init\_global\_buffers()}}
+{\footnotesize\ttfamily int init\+\_\+global\+\_\+buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Dynamic memory allocation of frame size related global buffers buffers are defined in global.\+h, allocated memory must be freed in void \mbox{\hyperlink{lencod_8c_ab0ce270ef36abd0d4b01cdef7324d914}{free\+\_\+global\+\_\+buffers()}} 
+
+\begin{DoxyParagraph}{Input\+:}
+Input Parameters struct inp\+\_\+par $\ast$inp, ~\newline
+ Image Parameters struct img\+\_\+par $\ast$img 
+\end{DoxyParagraph}
+\begin{DoxyReturn}{Returns}
+Number of allocated bytes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lencod_8c_a66993f8f3a0b85ae5fdd1b381b2263ca}\label{lencod_8c_a66993f8f3a0b85ae5fdd1b381b2263ca}} 
+\index{lencod.c@{lencod.c}!init\_img@{init\_img}}
+\index{init\_img@{init\_img}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{init\_img()}{init\_img()}}
+{\footnotesize\ttfamily void init\+\_\+img (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the Image structure with appropriate parameters. 
+
+\begin{DoxyParagraph}{Input\+:}
+Input Parameters struct inp\+\_\+par $\ast$inp 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+Image Parameters struct img\+\_\+par $\ast$img 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lencod_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{lencod_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{lencod.c@{lencod.c}!main@{main}}
+\index{main@{main}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Main function for encoder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & number of command line arguments \\
+\hline
+{\em argv} & command line arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+exit code 
+\end{DoxyReturn}
+somewhere here the disposable flag was set -- B frames are always disposable in this encoder. This happens now in \mbox{\hyperlink{slice_8c}{slice.\+c}}, terminate\+\_\+slice, where the nal\+\_\+reference\+\_\+idc is set up\mbox{\Hypertarget{lencod_8c_aebf13e92cf97185c3e7d770927973b07}\label{lencod_8c_aebf13e92cf97185c3e7d770927973b07}} 
+\index{lencod.c@{lencod.c}!malloc\_picture@{malloc\_picture}}
+\index{malloc\_picture@{malloc\_picture}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{malloc\_picture()}{malloc\_picture()}}
+{\footnotesize\ttfamily Picture$\ast$ malloc\+\_\+picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Allocates the picture structure along with its dependent data structures. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to a Picture 
+\end{DoxyReturn}
+Note\+: slice structures are allocated as needed in code\+\_\+a\+\_\+picture\mbox{\Hypertarget{lencod_8c_ae4499ee0125936e10dde278b4a18c289}\label{lencod_8c_ae4499ee0125936e10dde278b4a18c289}} 
+\index{lencod.c@{lencod.c}!report@{report}}
+\index{report@{report}!lencod.c@{lencod.c}}
+\doxysubsubsection{\texorpdfstring{report()}{report()}}
+{\footnotesize\ttfamily void report (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reports the gathered information to appropriate outputs. 
+
+\begin{DoxyParagraph}{Input\+:}
+struct inp\+\_\+par $\ast$inp, ~\newline
+ struct img\+\_\+par $\ast$img, ~\newline
+ struct stat\+\_\+par $\ast$stat, ~\newline
+ struct stat\+\_\+par $\ast$stat ~\newline
+ 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+None 
+\end{DoxyParagraph}
+Currently adding N\+VB bits on P rate. Maybe additional stat info should be created instead and added in log file

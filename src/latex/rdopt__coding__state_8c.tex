@@ -1,0 +1,41 @@
+\hypertarget{rdopt__coding__state_8c}{}\doxysection{rdopt\+\_\+coding\+\_\+state.\+c File Reference}
+\label{rdopt__coding__state_8c}\index{rdopt\_coding\_state.c@{rdopt\_coding\_state.c}}
+
+
+Storing/restoring coding state for Rate-\/\+Distortion optimized mode decision.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}rdopt\+\_\+coding\+\_\+state.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cabac.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{rdopt__coding__state_8c_a9b5f9169e62917fe740daa4dc234d032}\label{rdopt__coding__state_8c_a9b5f9169e62917fe740daa4dc234d032}} 
+void \mbox{\hyperlink{rdopt__coding__state_8c_a9b5f9169e62917fe740daa4dc234d032}{delete\+\_\+coding\+\_\+state}} (C\+Sptr cs)
+\begin{DoxyCompactList}\small\item\em delete structure for storing coding state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt__coding__state_8c_a3193cd0a86d020ec8b28bba8251435e9}\label{rdopt__coding__state_8c_a3193cd0a86d020ec8b28bba8251435e9}} 
+C\+Sptr \mbox{\hyperlink{rdopt__coding__state_8c_a3193cd0a86d020ec8b28bba8251435e9}{create\+\_\+coding\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em create structure for storing coding state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt__coding__state_8c_ad24f90d807cd326d3a10d446c2725ec7}\label{rdopt__coding__state_8c_ad24f90d807cd326d3a10d446c2725ec7}} 
+void \mbox{\hyperlink{rdopt__coding__state_8c_ad24f90d807cd326d3a10d446c2725ec7}{store\+\_\+coding\+\_\+state}} (C\+Sptr cs)
+\begin{DoxyCompactList}\small\item\em store coding state (for rd-\/optimized mode decision) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt__coding__state_8c_a24c869fbe4bfddd53aab2ddbe0b7dc64}\label{rdopt__coding__state_8c_a24c869fbe4bfddd53aab2ddbe0b7dc64}} 
+void \mbox{\hyperlink{rdopt__coding__state_8c_a24c869fbe4bfddd53aab2ddbe0b7dc64}{reset\+\_\+coding\+\_\+state}} (C\+Sptr cs)
+\begin{DoxyCompactList}\small\item\em restore coding state (for rd-\/optimized mode decision) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Storing/restoring coding state for Rate-\/\+Distortion optimized mode decision. 
+
+\begin{DoxyAuthor}{Author}
+Heiko Schwarz
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+
+\begin{DoxyEnumerate}
+\item April 2001 
+\end{DoxyEnumerate}
+\end{DoxyDate}

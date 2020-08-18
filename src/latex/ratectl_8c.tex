@@ -1,0 +1,138 @@
+\hypertarget{ratectl_8c}{}\doxysection{ratectl.\+c File Reference}
+\label{ratectl_8c}\index{ratectl.c@{ratectl.c}}
+
+
+Rate Control algorithm.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ratectl.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ratectl_8c_a256d63075935c18c427ab8b70e0443b9}\label{ratectl_8c_a256d63075935c18c427ab8b70e0443b9}} 
+void {\bfseries rc\+\_\+init\+\_\+seq} ()
+\item 
+\mbox{\Hypertarget{ratectl_8c_a77b982f6a15be0f64d1fd7f05dc8e67f}\label{ratectl_8c_a77b982f6a15be0f64d1fd7f05dc8e67f}} 
+void {\bfseries rc\+\_\+init\+\_\+\+G\+OP} (int np, int nb)
+\item 
+\mbox{\Hypertarget{ratectl_8c_a73e6dc34df12b31658588a407a92271c}\label{ratectl_8c_a73e6dc34df12b31658588a407a92271c}} 
+void {\bfseries rc\+\_\+init\+\_\+pict} (int fieldpic, int topfield, int targetcomputation)
+\item 
+\mbox{\Hypertarget{ratectl_8c_a5d8381d36e998067bc84d716fdeaef30}\label{ratectl_8c_a5d8381d36e998067bc84d716fdeaef30}} 
+double {\bfseries calc\+\_\+\+M\+AD} ()
+\item 
+\mbox{\Hypertarget{ratectl_8c_a311e83ae6d6977439b218ef3ef57bb4a}\label{ratectl_8c_a311e83ae6d6977439b218ef3ef57bb4a}} 
+void {\bfseries rc\+\_\+update\+\_\+pict} (int nbits)
+\item 
+\mbox{\Hypertarget{ratectl_8c_a1fb18eaaa91fc2f2b983b2b4a63b6f26}\label{ratectl_8c_a1fb18eaaa91fc2f2b983b2b4a63b6f26}} 
+void {\bfseries rc\+\_\+update\+\_\+pict\+\_\+frame} (int nbits)
+\item 
+\mbox{\Hypertarget{ratectl_8c_aa56dc125ae8ca3729fbb7bc7424a122a}\label{ratectl_8c_aa56dc125ae8ca3729fbb7bc7424a122a}} 
+void {\bfseries setbitscount} (int nbits)
+\item 
+\mbox{\Hypertarget{ratectl_8c_a8a5fc63357565f5455b5feff683630c0}\label{ratectl_8c_a8a5fc63357565f5455b5feff683630c0}} 
+int {\bfseries update\+Quantization\+Parameter} (int topfield)
+\item 
+\mbox{\Hypertarget{ratectl_8c_a1c294aaabdfeb52fd381e784e6ad91d8}\label{ratectl_8c_a1c294aaabdfeb52fd381e784e6ad91d8}} 
+void {\bfseries update\+R\+C\+Model} ()
+\item 
+\mbox{\Hypertarget{ratectl_8c_a863ce0805389161f7b995a56ecdb001b}\label{ratectl_8c_a863ce0805389161f7b995a56ecdb001b}} 
+void {\bfseries R\+C\+Model\+Estimator} (int n\+\_\+window\+Size)
+\item 
+\mbox{\Hypertarget{ratectl_8c_a54f9a044a97000871062676c2b412f01}\label{ratectl_8c_a54f9a044a97000871062676c2b412f01}} 
+double {\bfseries Compute\+Frame\+M\+AD} ()
+\item 
+\mbox{\Hypertarget{ratectl_8c_a04cd41d586a858ef013bb8b60199826f}\label{ratectl_8c_a04cd41d586a858ef013bb8b60199826f}} 
+void {\bfseries update\+M\+A\+D\+Model} ()
+\item 
+\mbox{\Hypertarget{ratectl_8c_a7f19270f545206a00d8f12f2652318e6}\label{ratectl_8c_a7f19270f545206a00d8f12f2652318e6}} 
+void {\bfseries M\+A\+D\+Model\+Estimator} (int n\+\_\+window\+Size)
+\item 
+\mbox{\Hypertarget{ratectl_8c_a789887251a8dad4026958aea2c11be41}\label{ratectl_8c_a789887251a8dad4026958aea2c11be41}} 
+double {\bfseries Q\+P2\+Qstep} (int QP)
+\item 
+\mbox{\Hypertarget{ratectl_8c_ab8f555eb8367550fda4a430449881f9a}\label{ratectl_8c_ab8f555eb8367550fda4a430449881f9a}} 
+int {\bfseries Qstep2\+QP} (double Qstep)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ratectl_8c_ab39aad73b7feecae78826b23f3484d76}\label{ratectl_8c_ab39aad73b7feecae78826b23f3484d76}} 
+const double {\bfseries T\+H\+E\+TA} =1.\+3636
+\item 
+\mbox{\Hypertarget{ratectl_8c_a9e870838c9470f7222cc400301460e6c}\label{ratectl_8c_a9e870838c9470f7222cc400301460e6c}} 
+const int {\bfseries Switch} =0
+\item 
+\mbox{\Hypertarget{ratectl_8c_a6bb99fb861a96ba7b4adcb209e177e02}\label{ratectl_8c_a6bb99fb861a96ba7b4adcb209e177e02}} 
+int {\bfseries Iprev\+\_\+bits} =0
+\item 
+\mbox{\Hypertarget{ratectl_8c_af0b90c3b6c52a4fde65a3eb1e28c4011}\label{ratectl_8c_af0b90c3b6c52a4fde65a3eb1e28c4011}} 
+int {\bfseries Pprev\+\_\+bits} =0
+\item 
+\mbox{\Hypertarget{ratectl_8c_ad233d29b0816163fd8cd88f7a694a5a2}\label{ratectl_8c_ad233d29b0816163fd8cd88f7a694a5a2}} 
+int {\bfseries Xp}
+\item 
+\mbox{\Hypertarget{ratectl_8c_adaa2d1abf73e1b2a4a5310db375a134c}\label{ratectl_8c_adaa2d1abf73e1b2a4a5310db375a134c}} 
+int {\bfseries Xb}
+\item 
+\mbox{\Hypertarget{ratectl_8c_ae31325b9b017e221b74ddb67907709c3}\label{ratectl_8c_ae31325b9b017e221b74ddb67907709c3}} 
+long {\bfseries T}
+\item 
+\mbox{\Hypertarget{ratectl_8c_adec0914c3af7ffe224c16cae9f5cca25}\label{ratectl_8c_adec0914c3af7ffe224c16cae9f5cca25}} 
+long {\bfseries T1}
+\item 
+\mbox{\Hypertarget{ratectl_8c_ac2d0842b5c6db781843f714445de9ba0}\label{ratectl_8c_ac2d0842b5c6db781843f714445de9ba0}} 
+long {\bfseries Upper\+Bound1}
+\item 
+\mbox{\Hypertarget{ratectl_8c_afa7abfcec03491a8e333bc319fca0a53}\label{ratectl_8c_afa7abfcec03491a8e333bc319fca0a53}} 
+long {\bfseries Upper\+Bound2}
+\item 
+\mbox{\Hypertarget{ratectl_8c_aa5b969599a6582dbd8ce8d4f90674aaf}\label{ratectl_8c_aa5b969599a6582dbd8ce8d4f90674aaf}} 
+long {\bfseries Lower\+Bound}
+\item 
+\mbox{\Hypertarget{ratectl_8c_a7861c147c14a6aafb2aef2e1442ddfbc}\label{ratectl_8c_a7861c147c14a6aafb2aef2e1442ddfbc}} 
+double {\bfseries Initial\+Delay\+Offset}
+\item 
+\mbox{\Hypertarget{ratectl_8c_a92d2a1131548f20324c64962570f8c63}\label{ratectl_8c_a92d2a1131548f20324c64962570f8c63}} 
+const double {\bfseries O\+M\+E\+GA} =0.\+9
+\item 
+\mbox{\Hypertarget{ratectl_8c_ab1d53a2319825f2b62832465de633d8c}\label{ratectl_8c_ab1d53a2319825f2b62832465de633d8c}} 
+double {\bfseries Wp}
+\item 
+\mbox{\Hypertarget{ratectl_8c_a32e7fae90550bffe9cab5e92c85daced}\label{ratectl_8c_a32e7fae90550bffe9cab5e92c85daced}} 
+double {\bfseries Wb}
+\item 
+\mbox{\Hypertarget{ratectl_8c_a200a1a20cdd5a9e67ecb0cd2809147aa}\label{ratectl_8c_a200a1a20cdd5a9e67ecb0cd2809147aa}} 
+int {\bfseries Total\+P\+Frame}
+\item 
+\mbox{\Hypertarget{ratectl_8c_ac78c62075f7fef18760c3737ab158938}\label{ratectl_8c_ac78c62075f7fef18760c3737ab158938}} 
+int {\bfseries Duant\+Qp}
+\item 
+\mbox{\Hypertarget{ratectl_8c_a37621cdaced99769d7e8dd31b4b71d42}\label{ratectl_8c_a37621cdaced99769d7e8dd31b4b71d42}} 
+int {\bfseries P\+Duant\+Qp}
+\item 
+\mbox{\Hypertarget{ratectl_8c_a97a626a734c2ada286dc3857f04ffba0}\label{ratectl_8c_a97a626a734c2ada286dc3857f04ffba0}} 
+F\+I\+LE $\ast$ {\bfseries Bit\+Rate}
+\item 
+\mbox{\Hypertarget{ratectl_8c_a198012b277f990715a2ad500c5baee26}\label{ratectl_8c_a198012b277f990715a2ad500c5baee26}} 
+double {\bfseries DeltaP}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rate Control algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Siwei Ma \href{mailto:swma@jdl.ac.cn}{\texttt{ swma@jdl.\+ac.\+cn}}
+\item Zhengguo LI\href{mailto:ezgli@lit.a-star.edu.sg}{\texttt{ ezgli@lit.\+a-\/star.\+edu.\+sg}}
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+16 Jan. 2003 
+\end{DoxyDate}

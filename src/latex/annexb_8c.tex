@@ -1,0 +1,81 @@
+\hypertarget{annexb_8c}{}\doxysection{annexb.\+c File Reference}
+\label{annexb_8c}\index{annexb.c@{annexb.c}}
+
+
+Annex B Byte Stream format N\+AL Unit writing routines.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nalucommon.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{annexb_8c_a3ef8d7df88302594a106244c8fb3b22a}{Write\+Annexb\+N\+A\+LU}} (N\+A\+L\+U\+\_\+t $\ast$n)
+\begin{DoxyCompactList}\small\item\em Writes a N\+A\+LU to the Annex B Byte Stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{annexb_8c_a142c85c6c4264d74bae6cca0a0cbd0cd}{Open\+Annexb\+File}} (char $\ast$Filename)
+\begin{DoxyCompactList}\small\item\em Opens the output file for the bytestream ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{annexb_8c_a80e30f58e9e68b0716f2b7b6389ba755}{Close\+Annexb\+File}} ()
+\begin{DoxyCompactList}\small\item\em Closes the output bit stream file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Annex B Byte Stream format N\+AL Unit writing routines. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{annexb_8c_a80e30f58e9e68b0716f2b7b6389ba755}\label{annexb_8c_a80e30f58e9e68b0716f2b7b6389ba755}} 
+\index{annexb.c@{annexb.c}!CloseAnnexbFile@{CloseAnnexbFile}}
+\index{CloseAnnexbFile@{CloseAnnexbFile}!annexb.c@{annexb.c}}
+\doxysubsubsection{\texorpdfstring{CloseAnnexbFile()}{CloseAnnexbFile()}}
+{\footnotesize\ttfamily void Close\+Annexb\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the output bit stream file. 
+
+\begin{DoxyReturn}{Returns}
+none. Funtion trerminates the program in case of an error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{annexb_8c_a142c85c6c4264d74bae6cca0a0cbd0cd}\label{annexb_8c_a142c85c6c4264d74bae6cca0a0cbd0cd}} 
+\index{annexb.c@{annexb.c}!OpenAnnexbFile@{OpenAnnexbFile}}
+\index{OpenAnnexbFile@{OpenAnnexbFile}!annexb.c@{annexb.c}}
+\doxysubsubsection{\texorpdfstring{OpenAnnexbFile()}{OpenAnnexbFile()}}
+{\footnotesize\ttfamily void Open\+Annexb\+File (\begin{DoxyParamCaption}\item[{char $\ast$}]{Filename }\end{DoxyParamCaption})}
+
+
+
+Opens the output file for the bytestream ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filename} & The filename of the file to be opened\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. Function terminates the program in case of an error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{annexb_8c_a3ef8d7df88302594a106244c8fb3b22a}\label{annexb_8c_a3ef8d7df88302594a106244c8fb3b22a}} 
+\index{annexb.c@{annexb.c}!WriteAnnexbNALU@{WriteAnnexbNALU}}
+\index{WriteAnnexbNALU@{WriteAnnexbNALU}!annexb.c@{annexb.c}}
+\doxysubsubsection{\texorpdfstring{WriteAnnexbNALU()}{WriteAnnexbNALU()}}
+{\footnotesize\ttfamily int Write\+Annexb\+N\+A\+LU (\begin{DoxyParamCaption}\item[{N\+A\+L\+U\+\_\+t $\ast$}]{n }\end{DoxyParamCaption})}
+
+
+
+Writes a N\+A\+LU to the Annex B Byte Stream. 
+
+\begin{DoxyReturn}{Returns}
+number of bits written 
+\end{DoxyReturn}

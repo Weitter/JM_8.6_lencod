@@ -1,0 +1,441 @@
+\hypertarget{sei_8c}{}\doxysection{sei.\+c File Reference}
+\label{sei_8c}\index{sei.c@{sei.c}}
+
+
+implementation of S\+EI related functions  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memalloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rtp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sei.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vlc.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sei_8c_a1461825b97fa548d8a16d102789da55f}\label{sei_8c_a1461825b97fa548d8a16d102789da55f}} 
+void {\bfseries Init\+S\+E\+I\+Messages} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a436c846bad7e57615c7727001f9a9f8b}\label{sei_8c_a436c846bad7e57615c7727001f9a9f8b}} 
+void {\bfseries Close\+S\+E\+I\+Messages} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a5d76343044be554d6efdb204d94efa3a}\label{sei_8c_a5d76343044be554d6efdb204d94efa3a}} 
+Boolean {\bfseries Have\+Aggregation\+S\+EI} ()
+\item 
+void \mbox{\hyperlink{sei_8c_a5532c8169bb9382b58c05b57221116d3}{write\+\_\+sei\+\_\+message}} (int id, byte $\ast$payload, int payload\+\_\+size, int payload\+\_\+type)
+\begin{DoxyCompactList}\small\item\em write one sei payload to the sei message \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sei_8c_a7902782fcec696a885f75ffd29f75a00}{finalize\+\_\+sei\+\_\+message}} (int id)
+\begin{DoxyCompactList}\small\item\em write rbsp\+\_\+trailing\+\_\+bits to the sei message \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sei_8c_a52a26531c47f6f919e12dfbc841212f7}{clear\+\_\+sei\+\_\+message}} (int id)
+\begin{DoxyCompactList}\small\item\em empty the sei message buffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sei_8c_aeff9e76d327a071ab5a9bf73ab2f5d76}{Append\+Tmpbits2\+Buf}} (Bitstream $\ast$dest, Bitstream $\ast$source)
+\begin{DoxyCompactList}\small\item\em copy the bits from one bitstream buffer to another one \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_a0aa655c7e52eb0fc94fff50ee1e782e4}\label{sei_8c_a0aa655c7e52eb0fc94fff50ee1e782e4}} 
+void \mbox{\hyperlink{sei_8c_a0aa655c7e52eb0fc94fff50ee1e782e4}{Init\+Spare\+Picture}} ()
+\begin{DoxyCompactList}\small\item\em Init the global variables for spare picture information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_a6df86126697a9a42d955b396ea72f603}\label{sei_8c_a6df86126697a9a42d955b396ea72f603}} 
+void \mbox{\hyperlink{sei_8c_a6df86126697a9a42d955b396ea72f603}{Close\+Spare\+Picture}} ()
+\begin{DoxyCompactList}\small\item\em Close the global variables for spare picture information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sei_8c_acab2eb57f6421a11858b2dac88fe1961}{Calculate\+Spare\+Picture}} ()
+\begin{DoxyCompactList}\small\item\em Calculate the spare picture info, save the result in map\+\_\+sp then compose the spare picture information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sei_8c_a662b904476f59c43f2e6a965e5fc6acb}{Compose\+Spare\+Picture\+Message}} (int delta\+\_\+spare\+\_\+frame\+\_\+num, int ref\+\_\+area\+\_\+indicator, Bitstream $\ast$tmp\+Bitstream)
+\begin{DoxyCompactList}\small\item\em compose the spare picture information. \end{DoxyCompactList}\item 
+Boolean \mbox{\hyperlink{sei_8c_aa308f936424a324facc5c4a88586516d}{Compress\+Spare\+M\+B\+Map}} (unsigned char $\ast$$\ast$map\+\_\+sp, Bitstream $\ast$bitstream)
+\begin{DoxyCompactList}\small\item\em test if the compressed spare mb map will occupy less mem and fill the payload buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sei_8c_a1a8c12edf49f0b319ae787973f15b198}{Finalize\+Spare\+M\+B\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Finalize the spare picture S\+EI payload. The spare picture paylaod will be ready for encapsulation, and it should be called before current picture packetized. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_a38f4af83dfca0ee25e84c078520b9be1}\label{sei_8c_a38f4af83dfca0ee25e84c078520b9be1}} 
+void \mbox{\hyperlink{sei_8c_a38f4af83dfca0ee25e84c078520b9be1}{Init\+Subseq\+Info}} (int curr\+Layer)
+\begin{DoxyCompactList}\small\item\em init subseqence info \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_aff065d0b729ba6c2e84bb14da46cb901}\label{sei_8c_aff065d0b729ba6c2e84bb14da46cb901}} 
+void \mbox{\hyperlink{sei_8c_aff065d0b729ba6c2e84bb14da46cb901}{Update\+Subseq\+Info}} (int curr\+Layer)
+\begin{DoxyCompactList}\small\item\em update subseqence info \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_a1e115e32060095e57eb614d010ed294a}\label{sei_8c_a1e115e32060095e57eb614d010ed294a}} 
+void \mbox{\hyperlink{sei_8c_a1e115e32060095e57eb614d010ed294a}{Finalize\+Subseq\+Info}} (int curr\+Layer)
+\begin{DoxyCompactList}\small\item\em Finalize subseqence info. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_a8245f3d66f8c821c238e0da907067c1d}\label{sei_8c_a8245f3d66f8c821c238e0da907067c1d}} 
+void \mbox{\hyperlink{sei_8c_a8245f3d66f8c821c238e0da907067c1d}{Clear\+Subseq\+Info\+Payload}} (int curr\+Layer)
+\begin{DoxyCompactList}\small\item\em Clear the payload buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_ae33e268519ac843699ba75d3b2f2071d}\label{sei_8c_ae33e268519ac843699ba75d3b2f2071d}} 
+void \mbox{\hyperlink{sei_8c_ae33e268519ac843699ba75d3b2f2071d}{Close\+Subseq\+Info}} (int curr\+Layer)
+\begin{DoxyCompactList}\small\item\em Close the global variables for spare picture information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_a07f2330437aa086f3d45fd9b3dfaf12a}\label{sei_8c_a07f2330437aa086f3d45fd9b3dfaf12a}} 
+void \mbox{\hyperlink{sei_8c_a07f2330437aa086f3d45fd9b3dfaf12a}{Init\+Subseq\+Layer\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Init the global variables for spare picture information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_ab7bd08ea89186a846b65bd992aeceb72}\label{sei_8c_ab7bd08ea89186a846b65bd992aeceb72}} 
+void {\bfseries Close\+Subseq\+Layer\+Info} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a0f55c7543f5809632c9e708b04f289f2}\label{sei_8c_a0f55c7543f5809632c9e708b04f289f2}} 
+void \mbox{\hyperlink{sei_8c_a0f55c7543f5809632c9e708b04f289f2}{Finalize\+Subseq\+Layer\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Write the data to buffer, which is byte aligned. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sei_8c_a3d33170883f617838789f38c1541f1bc}\label{sei_8c_a3d33170883f617838789f38c1541f1bc}} 
+void {\bfseries Init\+Subseq\+Char} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a8ec1f0a5e7af74882ecfe9b70d7e1196}\label{sei_8c_a8ec1f0a5e7af74882ecfe9b70d7e1196}} 
+void {\bfseries Clear\+Subseq\+Char\+Payload} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a929fc97aa534dcf7b78284c5710ece87}\label{sei_8c_a929fc97aa534dcf7b78284c5710ece87}} 
+void {\bfseries Update\+Subseq\+Char} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a375f0151237e36f2997961ed0b412d60}\label{sei_8c_a375f0151237e36f2997961ed0b412d60}} 
+void {\bfseries Finalize\+Subseq\+Char} ()
+\item 
+\mbox{\Hypertarget{sei_8c_aec1c258db1101ab45b5d26f15764f81c}\label{sei_8c_aec1c258db1101ab45b5d26f15764f81c}} 
+void {\bfseries Close\+Subseq\+Char} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a8e8a3b29a1c96e88f14821c93d187b54}\label{sei_8c_a8e8a3b29a1c96e88f14821c93d187b54}} 
+void {\bfseries Init\+Scene\+Information} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a1f1bd98d7165cfb637ebd43bcbcde78a}\label{sei_8c_a1f1bd98d7165cfb637ebd43bcbcde78a}} 
+void {\bfseries Close\+Scene\+Information} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a6905fa753cd196d866a58fbeb86759c0}\label{sei_8c_a6905fa753cd196d866a58fbeb86759c0}} 
+void {\bfseries Finalize\+Scene\+Information} ()
+\item 
+\mbox{\Hypertarget{sei_8c_af103e9d1f8c7d805609e6466283cfac7}\label{sei_8c_af103e9d1f8c7d805609e6466283cfac7}} 
+void {\bfseries Update\+Scene\+Information} (Boolean Has\+Scene\+Information, int scene\+ID, int scene\+Trans\+Type, int second\+Scene\+ID)
+\item 
+\mbox{\Hypertarget{sei_8c_a1ef18e64bf332f304644b8f75378aff5}\label{sei_8c_a1ef18e64bf332f304644b8f75378aff5}} 
+void {\bfseries Init\+Pan\+Scan\+Rect\+Info} ()
+\item 
+\mbox{\Hypertarget{sei_8c_ae97e9e5b35965272cf67e50e288bc451}\label{sei_8c_ae97e9e5b35965272cf67e50e288bc451}} 
+void {\bfseries Clear\+Pan\+Scan\+Rect\+Info\+Payload} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a5f083ebb9f4b0c3f889b226bc9a23bda}\label{sei_8c_a5f083ebb9f4b0c3f889b226bc9a23bda}} 
+void {\bfseries Update\+Pan\+Scan\+Rect\+Info} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a2740f27e62123e7d7504dba24f45301b}\label{sei_8c_a2740f27e62123e7d7504dba24f45301b}} 
+void {\bfseries Finalize\+Pan\+Scan\+Rect\+Info} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a7d14cb28733e78734eefba895705c5bf}\label{sei_8c_a7d14cb28733e78734eefba895705c5bf}} 
+void {\bfseries Close\+Pan\+Scan\+Rect\+Info} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a8b0b20f7205a3b97fb2c6c9e325b4405}\label{sei_8c_a8b0b20f7205a3b97fb2c6c9e325b4405}} 
+void {\bfseries Init\+User\+\_\+data\+\_\+unregistered} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a96328ed6e73f7f54648c63779d79941f}\label{sei_8c_a96328ed6e73f7f54648c63779d79941f}} 
+void {\bfseries Clear\+User\+\_\+data\+\_\+unregistered} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a4bb16edac908c512c1f9805e3b4475a5}\label{sei_8c_a4bb16edac908c512c1f9805e3b4475a5}} 
+void {\bfseries Update\+User\+\_\+data\+\_\+unregistered} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a3605b628b31bad732f175d65fe0f3482}\label{sei_8c_a3605b628b31bad732f175d65fe0f3482}} 
+void {\bfseries Finalize\+User\+\_\+data\+\_\+unregistered} ()
+\item 
+\mbox{\Hypertarget{sei_8c_aac2cdb61a8f76b7b440638b2222f7cbc}\label{sei_8c_aac2cdb61a8f76b7b440638b2222f7cbc}} 
+void {\bfseries Close\+User\+\_\+data\+\_\+unregistered} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a44ba260559e84f9b851027e2972244ac}\label{sei_8c_a44ba260559e84f9b851027e2972244ac}} 
+void {\bfseries Init\+User\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35} ()
+\item 
+\mbox{\Hypertarget{sei_8c_abb68a405df1623a9feb6c7975b926a7f}\label{sei_8c_abb68a405df1623a9feb6c7975b926a7f}} 
+void {\bfseries Clear\+User\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a72acde38b90615c07241e1fa4c4f7393}\label{sei_8c_a72acde38b90615c07241e1fa4c4f7393}} 
+void {\bfseries Update\+User\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a5c42228a742cf460547479974432d1b4}\label{sei_8c_a5c42228a742cf460547479974432d1b4}} 
+void {\bfseries Finalize\+User\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a0420ae76039d5bad0511bfff72c28d34}\label{sei_8c_a0420ae76039d5bad0511bfff72c28d34}} 
+void {\bfseries Close\+User\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35} ()
+\item 
+\mbox{\Hypertarget{sei_8c_aec373bd1861f0972ca0db988de41cc60}\label{sei_8c_aec373bd1861f0972ca0db988de41cc60}} 
+void {\bfseries Init\+Random\+Access} ()
+\item 
+\mbox{\Hypertarget{sei_8c_af3ee8a5f7ae659d7eaafa72a775bcabc}\label{sei_8c_af3ee8a5f7ae659d7eaafa72a775bcabc}} 
+void {\bfseries Clear\+Random\+Access} ()
+\item 
+\mbox{\Hypertarget{sei_8c_ab2c419e08df4e374b0a5414c74eaabd4}\label{sei_8c_ab2c419e08df4e374b0a5414c74eaabd4}} 
+void {\bfseries Update\+Random\+Access} ()
+\item 
+\mbox{\Hypertarget{sei_8c_a19ff69484c351d9f71c3fab354ff43b6}\label{sei_8c_a19ff69484c351d9f71c3fab354ff43b6}} 
+void {\bfseries Finalize\+Random\+Access} ()
+\item 
+\mbox{\Hypertarget{sei_8c_ae112bd531f70b383a7c39e53aa3d854a}\label{sei_8c_ae112bd531f70b383a7c39e53aa3d854a}} 
+void {\bfseries Close\+Random\+Access} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sei_8c_a5c4e3c390d7a83e5bd08d942cc922bb2}\label{sei_8c_a5c4e3c390d7a83e5bd08d942cc922bb2}} 
+Boolean {\bfseries sei\+Has\+Temporal\+\_\+reference} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_ab4282725d29344e7f7d081f02faa574e}\label{sei_8c_ab4282725d29344e7f7d081f02faa574e}} 
+Boolean {\bfseries sei\+Has\+Clock\+\_\+timestamp} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a7d173252304af68541b13ed59ce3e822}\label{sei_8c_a7d173252304af68541b13ed59ce3e822}} 
+Boolean {\bfseries sei\+Has\+Panscan\+\_\+rect} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a5b104d219a76fe3eef89a4be79419f22}\label{sei_8c_a5b104d219a76fe3eef89a4be79419f22}} 
+Boolean {\bfseries sei\+Has\+Buffering\+\_\+period} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a86f4955f72f311a192e29658aa3d2cb4}\label{sei_8c_a86f4955f72f311a192e29658aa3d2cb4}} 
+Boolean {\bfseries sei\+Has\+Hrd\+\_\+picture} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a0706b7539453fa94bede2dfa9a5fb1be}\label{sei_8c_a0706b7539453fa94bede2dfa9a5fb1be}} 
+Boolean {\bfseries sei\+Has\+Filler\+\_\+payload} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a37aa7f18599302bd94093076dd6dcbcf}\label{sei_8c_a37aa7f18599302bd94093076dd6dcbcf}} 
+Boolean {\bfseries sei\+Has\+User\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_ae5e6c2632c64f4dd9bf18b7422b20b78}\label{sei_8c_ae5e6c2632c64f4dd9bf18b7422b20b78}} 
+Boolean {\bfseries sei\+Has\+User\+\_\+data\+\_\+unregistered} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a687f861d65ad0db92152a9637ccd2c21}\label{sei_8c_a687f861d65ad0db92152a9637ccd2c21}} 
+Boolean {\bfseries sei\+Has\+Random\+\_\+access\+\_\+point} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a994e00e31231271b9128f8de716985ff}\label{sei_8c_a994e00e31231271b9128f8de716985ff}} 
+Boolean {\bfseries sei\+Has\+Ref\+\_\+pic\+\_\+buffer\+\_\+management\+\_\+repetition} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a5a329f4819b5e08804152d191e5b6fc7}\label{sei_8c_a5a329f4819b5e08804152d191e5b6fc7}} 
+Boolean {\bfseries sei\+Has\+Spare\+\_\+picture} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a4bfd03f7565b93d38fb6ba9e7cbb5090}\label{sei_8c_a4bfd03f7565b93d38fb6ba9e7cbb5090}} 
+Boolean {\bfseries sei\+Has\+Scene\+Information} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a065429b3957e851ad6fdb707d3b09e3e}\label{sei_8c_a065429b3957e851ad6fdb707d3b09e3e}} 
+Boolean {\bfseries sei\+Has\+Subseq\+\_\+information} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_aa977737466c1d8791522969d2bcf5c71}\label{sei_8c_aa977737466c1d8791522969d2bcf5c71}} 
+Boolean {\bfseries sei\+Has\+Subseq\+\_\+layer\+\_\+characteristics} =F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a9d1ffa371f81868977d0d38a33a070dc}\label{sei_8c_a9d1ffa371f81868977d0d38a33a070dc}} 
+Boolean {\bfseries sei\+Has\+Subseq\+\_\+characteristics} =F\+A\+L\+SE
+\item 
+sei\+\_\+struct \mbox{\hyperlink{sei_8c_a7c5a538c82f4151194ac903f4fcc69f6}{sei\+\_\+message}} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{sei_8c_ada3c3f13cbf5ce2282dcb3e16efe3ba3}\label{sei_8c_ada3c3f13cbf5ce2282dcb3e16efe3ba3}} 
+Boolean {\bfseries sei\+Has\+Spare\+Picture} = F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_ae27aca20165700ccafdf479dad518f16}\label{sei_8c_ae27aca20165700ccafdf479dad518f16}} 
+spare\+\_\+picture\+\_\+struct {\bfseries sei\+Spare\+Picture\+Payload}
+\item 
+\mbox{\Hypertarget{sei_8c_a051e2c312879d95ce0e37d9f188d35d2}\label{sei_8c_a051e2c312879d95ce0e37d9f188d35d2}} 
+Boolean {\bfseries sei\+Has\+Subseq\+Info} = F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a37c5a63078e9045e9a35665e6ab876ca}\label{sei_8c_a37c5a63078e9045e9a35665e6ab876ca}} 
+subseq\+\_\+information\+\_\+struct {\bfseries sei\+Subseq\+Info} \mbox{[}M\+A\+X\+\_\+\+L\+A\+Y\+E\+R\+\_\+\+N\+U\+M\+B\+ER\mbox{]}
+\item 
+\mbox{\Hypertarget{sei_8c_a27523e319f4097522086f3ee3d644b0e}\label{sei_8c_a27523e319f4097522086f3ee3d644b0e}} 
+Boolean {\bfseries sei\+Has\+Subseq\+Layer\+Info} = F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_ad6a380f3dfb5225f08a30fafa1bf4021}\label{sei_8c_ad6a380f3dfb5225f08a30fafa1bf4021}} 
+subseq\+\_\+layer\+\_\+information\+\_\+struct {\bfseries sei\+Subseq\+Layer\+Info}
+\item 
+\mbox{\Hypertarget{sei_8c_abdc1f0b4aee6f6a6b7ae53acafe634a7}\label{sei_8c_abdc1f0b4aee6f6a6b7ae53acafe634a7}} 
+Boolean {\bfseries sei\+Has\+Subseq\+Char} = F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_af80896ca7868cd58b04ac42d26c1fd81}\label{sei_8c_af80896ca7868cd58b04ac42d26c1fd81}} 
+subseq\+\_\+char\+\_\+information\+\_\+struct {\bfseries sei\+Subseq\+Char}
+\item 
+\mbox{\Hypertarget{sei_8c_a88d8c977b7347ed3a95c2291c374cab4}\label{sei_8c_a88d8c977b7347ed3a95c2291c374cab4}} 
+scene\+\_\+information\+\_\+struct {\bfseries sei\+Scene\+Information}
+\item 
+\mbox{\Hypertarget{sei_8c_a006a4a0ec8ab04207e501f322fded597}\label{sei_8c_a006a4a0ec8ab04207e501f322fded597}} 
+Boolean {\bfseries sei\+Has\+Pan\+Scan\+Rect\+Info} = F\+A\+L\+SE
+\item 
+\mbox{\Hypertarget{sei_8c_a50ceb68bffd831ca512b15f1723f5f1e}\label{sei_8c_a50ceb68bffd831ca512b15f1723f5f1e}} 
+panscanrect\+\_\+information\+\_\+struct {\bfseries sei\+Pan\+Scan\+Rect\+Info}
+\item 
+\mbox{\Hypertarget{sei_8c_a8b634886ce92ec3e469d3bf80c2d27f2}\label{sei_8c_a8b634886ce92ec3e469d3bf80c2d27f2}} 
+Boolean {\bfseries sei\+Has\+User\+\_\+data\+\_\+unregistered\+\_\+info}
+\item 
+\mbox{\Hypertarget{sei_8c_a9d485b1f5f99af47c22c5b7852fdf712}\label{sei_8c_a9d485b1f5f99af47c22c5b7852fdf712}} 
+user\+\_\+data\+\_\+unregistered\+\_\+information\+\_\+struct {\bfseries sei\+User\+\_\+data\+\_\+unregistered}
+\item 
+\mbox{\Hypertarget{sei_8c_ad3833749bcac9bd396d50e02608c5c1f}\label{sei_8c_ad3833749bcac9bd396d50e02608c5c1f}} 
+Boolean {\bfseries sei\+Has\+User\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35\+\_\+info}
+\item 
+\mbox{\Hypertarget{sei_8c_a1acd71e566593c8fb355911b17e0ada2}\label{sei_8c_a1acd71e566593c8fb355911b17e0ada2}} 
+user\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35\+\_\+information\+\_\+struct {\bfseries sei\+User\+\_\+data\+\_\+registered\+\_\+itu\+\_\+t\+\_\+t35}
+\item 
+\mbox{\Hypertarget{sei_8c_ad3930a32b1e6e38ad4d8a7ba76188ead}\label{sei_8c_ad3930a32b1e6e38ad4d8a7ba76188ead}} 
+Boolean {\bfseries sei\+Has\+Random\+Access\+\_\+info}
+\item 
+\mbox{\Hypertarget{sei_8c_ad155dcee66c9491357e17f431600f9d7}\label{sei_8c_ad155dcee66c9491357e17f431600f9d7}} 
+randomaccess\+\_\+information\+\_\+struct {\bfseries sei\+Random\+Access}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implementation of S\+EI related functions 
+
+\mbox{\hyperlink{sei_8c}{sei.\+c}} \begin{DoxyAuthor}{Author}
+(s)
+\begin{DoxyItemize}
+\item Dong Tian \href{mailto:tian@cs.tut.fi}{\texttt{ tian@cs.\+tut.\+fi}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sei_8c_aeff9e76d327a071ab5a9bf73ab2f5d76}\label{sei_8c_aeff9e76d327a071ab5a9bf73ab2f5d76}} 
+\index{sei.c@{sei.c}!AppendTmpbits2Buf@{AppendTmpbits2Buf}}
+\index{AppendTmpbits2Buf@{AppendTmpbits2Buf}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{AppendTmpbits2Buf()}{AppendTmpbits2Buf()}}
+{\footnotesize\ttfamily void Append\+Tmpbits2\+Buf (\begin{DoxyParamCaption}\item[{Bitstream $\ast$}]{dest,  }\item[{Bitstream $\ast$}]{source }\end{DoxyParamCaption})}
+
+
+
+copy the bits from one bitstream buffer to another one 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & pointer to the dest bitstream buffer \\
+\hline
+{\em source} & pointer to the source bitstream buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Output}
+the content of the dest bitstream is changed. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{sei_8c_acab2eb57f6421a11858b2dac88fe1961}\label{sei_8c_acab2eb57f6421a11858b2dac88fe1961}} 
+\index{sei.c@{sei.c}!CalculateSparePicture@{CalculateSparePicture}}
+\index{CalculateSparePicture@{CalculateSparePicture}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{CalculateSparePicture()}{CalculateSparePicture()}}
+{\footnotesize\ttfamily void Calculate\+Spare\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate the spare picture info, save the result in map\+\_\+sp then compose the spare picture information. 
+
+\begin{DoxyParagraph}{Output}
+the spare picture payload is available in {\itshape sei\+Spare\+Picture\+Payload} the syntax elements in the loop (see F\+CD), excluding the two elements at the beginning. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{sei_8c_a52a26531c47f6f919e12dfbc841212f7}\label{sei_8c_a52a26531c47f6f919e12dfbc841212f7}} 
+\index{sei.c@{sei.c}!clear\_sei\_message@{clear\_sei\_message}}
+\index{clear\_sei\_message@{clear\_sei\_message}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{clear\_sei\_message()}{clear\_sei\_message()}}
+{\footnotesize\ttfamily void clear\+\_\+sei\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+empty the sei message buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & 0, if this is the normal packet ~\newline
+ 1, if this is a aggregation packet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Output}
+the content of the sei message is cleared and ready for storing new messages 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{sei_8c_a662b904476f59c43f2e6a965e5fc6acb}\label{sei_8c_a662b904476f59c43f2e6a965e5fc6acb}} 
+\index{sei.c@{sei.c}!ComposeSparePictureMessage@{ComposeSparePictureMessage}}
+\index{ComposeSparePictureMessage@{ComposeSparePictureMessage}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{ComposeSparePictureMessage()}{ComposeSparePictureMessage()}}
+{\footnotesize\ttfamily void Compose\+Spare\+Picture\+Message (\begin{DoxyParamCaption}\item[{int}]{delta\+\_\+spare\+\_\+frame\+\_\+num,  }\item[{int}]{ref\+\_\+area\+\_\+indicator,  }\item[{Bitstream $\ast$}]{tmp\+Bitstream }\end{DoxyParamCaption})}
+
+
+
+compose the spare picture information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+\_\+spare\+\_\+frame\+\_\+num} & see F\+CD \\
+\hline
+{\em ref\+\_\+area\+\_\+indicator} & Indicate how to represent the spare mb map \\
+\hline
+{\em tmp\+Bitstream} & pointer to a buffer to save the payload \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Output}
+bitstream\+: the composed spare picture payload are ready to put into the sei\+\_\+message. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{sei_8c_aa308f936424a324facc5c4a88586516d}\label{sei_8c_aa308f936424a324facc5c4a88586516d}} 
+\index{sei.c@{sei.c}!CompressSpareMBMap@{CompressSpareMBMap}}
+\index{CompressSpareMBMap@{CompressSpareMBMap}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{CompressSpareMBMap()}{CompressSpareMBMap()}}
+{\footnotesize\ttfamily Boolean Compress\+Spare\+M\+B\+Map (\begin{DoxyParamCaption}\item[{unsigned char $\ast$$\ast$}]{map\+\_\+sp,  }\item[{Bitstream $\ast$}]{bitstream }\end{DoxyParamCaption})}
+
+
+
+test if the compressed spare mb map will occupy less mem and fill the payload buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map\+\_\+sp} & in which the spare picture information are stored. \\
+\hline
+{\em bitstream} & pointer to a buffer to save the payload \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\+R\+UE\+: If it is compressed version, ~\newline
+ F\+A\+L\+SE\+: If it is not compressed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sei_8c_a7902782fcec696a885f75ffd29f75a00}\label{sei_8c_a7902782fcec696a885f75ffd29f75a00}} 
+\index{sei.c@{sei.c}!finalize\_sei\_message@{finalize\_sei\_message}}
+\index{finalize\_sei\_message@{finalize\_sei\_message}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{finalize\_sei\_message()}{finalize\_sei\_message()}}
+{\footnotesize\ttfamily void finalize\+\_\+sei\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+write rbsp\+\_\+trailing\+\_\+bits to the sei message 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & 0, if this is the normal packet ~\newline
+ 1, if this is a aggregation packet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Output}
+the content of the sei message is updated and ready for packetisation 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{sei_8c_a1a8c12edf49f0b319ae787973f15b198}\label{sei_8c_a1a8c12edf49f0b319ae787973f15b198}} 
+\index{sei.c@{sei.c}!FinalizeSpareMBMap@{FinalizeSpareMBMap}}
+\index{FinalizeSpareMBMap@{FinalizeSpareMBMap}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{FinalizeSpareMBMap()}{FinalizeSpareMBMap()}}
+{\footnotesize\ttfamily void Finalize\+Spare\+M\+B\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finalize the spare picture S\+EI payload. The spare picture paylaod will be ready for encapsulation, and it should be called before current picture packetized. 
+
+\begin{DoxyParagraph}{Input}
+sei\+Spare\+Picture\+Payload.\+data\+: points to the payload starting from delta\+\_\+spare\+\_\+frame\+\_\+num. (See F\+CD) 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output}
+sei\+Spare\+Picture\+Payload.\+data is updated, pointing to the whole spare picture information\+: spare\+\_\+picture( Payload\+Size ) (See F\+CD) Make sure it is byte aligned. 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{sei_8c_a5532c8169bb9382b58c05b57221116d3}\label{sei_8c_a5532c8169bb9382b58c05b57221116d3}} 
+\index{sei.c@{sei.c}!write\_sei\_message@{write\_sei\_message}}
+\index{write\_sei\_message@{write\_sei\_message}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{write\_sei\_message()}{write\_sei\_message()}}
+{\footnotesize\ttfamily void write\+\_\+sei\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{byte $\ast$}]{payload,  }\item[{int}]{payload\+\_\+size,  }\item[{int}]{payload\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+write one sei payload to the sei message 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & 0, if this is the normal packet ~\newline
+ 1, if this is a aggregation packet \\
+\hline
+{\em payload} & a pointer that point to the sei payload. Note that the bitstream should have be byte aligned already. \\
+\hline
+{\em payload\+\_\+size} & the size of the sei payload \\
+\hline
+{\em payload\+\_\+type} & the type of the sei payload \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Output}
+the content of the sei message (sei\+\_\+message\mbox{[}id\mbox{]}) is updated. 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{sei_8c_a7c5a538c82f4151194ac903f4fcc69f6}\label{sei_8c_a7c5a538c82f4151194ac903f4fcc69f6}} 
+\index{sei.c@{sei.c}!sei\_message@{sei\_message}}
+\index{sei\_message@{sei\_message}!sei.c@{sei.c}}
+\doxysubsubsection{\texorpdfstring{sei\_message}{sei\_message}}
+{\footnotesize\ttfamily sei\+\_\+struct sei\+\_\+message\mbox{[}2\mbox{]}}
+
+sei\+\_\+message\mbox{[}0\mbox{]}\+: this struct is to store the sei message packetized independently sei\+\_\+message\mbox{[}1\mbox{]}\+: this struct is to store the sei message packetized together with slice data 

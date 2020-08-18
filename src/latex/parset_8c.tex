@@ -1,0 +1,195 @@
+\hypertarget{parset_8c}{}\doxysection{parset.\+c File Reference}
+\label{parset_8c}\index{parset.c@{parset.c}}
+
+
+Picture and Sequence Parameter set generation and handling.  
+
+
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include $<$malloc.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parsetcommon.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nalu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parset.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fmo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vlc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{parset_8c_a4f3d2bb7e7970f24b1f5c2e86aefabcb}{Generate\+Parameter\+Sets}} ()
+\begin{DoxyCompactList}\small\item\em generates a sequence and picture parameter set and stores these in global active\+\_\+sps and active\+\_\+pps \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parset_8c_a2a31602a3ebbedf60e8963bf1bd8e1be}{Free\+Parameter\+Sets}} ()
+\begin{DoxyCompactList}\small\item\em frees global parameter sets active\+\_\+sps and active\+\_\+pps \end{DoxyCompactList}\item 
+N\+A\+L\+U\+\_\+t $\ast$ \mbox{\hyperlink{parset_8c_a2758c89416acfb769f1fdd74e750ee1b}{Generate\+Seq\+\_\+parameter\+\_\+set\+\_\+\+N\+A\+LU}} ()
+\begin{DoxyCompactList}\small\item\em int Generate\+Seq\+\_\+parameter\+\_\+set\+\_\+\+N\+A\+LU (); \end{DoxyCompactList}\item 
+N\+A\+L\+U\+\_\+t $\ast$ \mbox{\hyperlink{parset_8c_a4cf018768a067fec68b97e027ecd3819}{Generate\+Pic\+\_\+parameter\+\_\+set\+\_\+\+N\+A\+LU}} ()
+\begin{DoxyCompactList}\small\item\em N\+A\+L\+U\+\_\+t $\ast$\+Generate\+Pic\+\_\+parameter\+\_\+set\+\_\+\+N\+A\+LU ();. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parset_8c_a8c2ef325f78e6851fba3ed4032be8c50}{Fill\+Parameter\+Set\+Structures}} (seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$sps, pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$pps)
+\begin{DoxyCompactList}\small\item\em Fill\+Parameter\+Set\+Structures\+: extracts info from global variables and generates a picture and sequence parameter set structure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parset_8c_aa54abd2ecf70d3d51ef613387e5dba91}{Generate\+Seq\+\_\+parameter\+\_\+set\+\_\+rbsp}} (seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$sps, char $\ast$rbsp)
+\begin{DoxyCompactList}\small\item\em int Generate\+Seq\+\_\+parameter\+\_\+set\+\_\+rbsp (seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$sps, char $\ast$rbsp); \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parset_8c_af4306d13e672a745606a9793df4b18d5}{Generate\+Pic\+\_\+parameter\+\_\+set\+\_\+rbsp}} (pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$pps, char $\ast$rbsp)
+\begin{DoxyCompactList}\small\item\em int Generate\+Pic\+\_\+parameter\+\_\+set\+\_\+rbsp (pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$sps, char $\ast$rbsp); \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{parset_8c_a6cb19d3cc47256c79bf137a84f316255}\label{parset_8c_a6cb19d3cc47256c79bf137a84f316255}} 
+Colocated\+Params $\ast$ {\bfseries Co\+\_\+located}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Picture and Sequence Parameter set generation and handling. 
+
+\mbox{\hyperlink{parset_8c}{parset.\+c}} \begin{DoxyDate}{Date}
+25 November 2002 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parset_8c_a8c2ef325f78e6851fba3ed4032be8c50}\label{parset_8c_a8c2ef325f78e6851fba3ed4032be8c50}} 
+\index{parset.c@{parset.c}!FillParameterSetStructures@{FillParameterSetStructures}}
+\index{FillParameterSetStructures@{FillParameterSetStructures}!parset.c@{parset.c}}
+\doxysubsubsection{\texorpdfstring{FillParameterSetStructures()}{FillParameterSetStructures()}}
+{\footnotesize\ttfamily void Fill\+Parameter\+Set\+Structures (\begin{DoxyParamCaption}\item[{seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$}]{sps,  }\item[{pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$}]{pps }\end{DoxyParamCaption})}
+
+
+
+Fill\+Parameter\+Set\+Structures\+: extracts info from global variables and generates a picture and sequence parameter set structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sps} & Sequence parameter set to be filled \\
+\hline
+{\em pps} & Picture parameter set to be filled \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{}
+Function reads all kinds of values from several global variables, including input-\/$>$ and image-\/$>$ and fills in the sps and pps. Many values are current hard-\/coded to defaults, especially most of the V\+UI stuff. Currently, the sps and pps structures are fixed length with the exception of the fully flexible F\+MO map (mode 6). This mode is not supported. Hence, the function does not need to allocate memory for the F\+M\+Omap, the pointer slice\+\_\+group\+\_\+id is always N\+U\+LL. If one wants to implement F\+MO mode 6, one would need to malloc the memory for the map here, and the caller would need to free it after use.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Limitations Currently, the encoder does not support multiple parameter sets, primarily because the config file does not support it. Hence the pic\+\_\+parameter\+\_\+set\+\_\+id and the seq\+\_\+parameter\+\_\+set\+\_\+id are always zero. If one day multiple parameter sets are implemented, it would make sense to break this function into two, one for the picture and one for the sequence. Currently, F\+MO is not supported The following pps and sps elements seem not to be used in the encoder or decoder and, hence, a guessed default value is conveyed\+:
+\end{DoxyParagraph}
+pps-\/$>$num\+\_\+ref\+\_\+idx\+\_\+l0\+\_\+active\+\_\+minus1 = img-\/$>$num\+\_\+ref\+\_\+pic\+\_\+active\+\_\+fwd\+\_\+minus1; pps-\/$>$num\+\_\+ref\+\_\+idx\+\_\+l1\+\_\+active\+\_\+minus1 = img-\/$>$num\+\_\+ref\+\_\+pic\+\_\+active\+\_\+bwd\+\_\+minus1; pps-\/$>$chroma\+\_\+qp\+\_\+index\+\_\+offset = 0; sps-\/$>$required\+\_\+frame\+\_\+num\+\_\+update\+\_\+behaviour\+\_\+flag = F\+A\+L\+SE; sps-\/$>$direct\+\_\+temporal\+\_\+constrained\+\_\+flag = F\+A\+L\+SE;
+
+\begin{DoxyParagraph}{}
+Regarding the QP The previous software versions coded the absolute QP only in the slice header. This is kept, and the offset in the P\+PS is coded even if we could save bits by intelligently using this field. 
+\end{DoxyParagraph}
+P\+OC stuff\+: The following values are hard-\/coded in \mbox{\hyperlink{lencod_8c_a6190a603712b3dc9c878f54a8f7b325b}{init\+\_\+poc()}}. Apparently, the poc implementation covers only a subset of the poc functionality. Here, the same subset is implemented. Changes in the P\+OC stuff have also to be reflected here
+
+Following set the parameter for different slice group types\mbox{\Hypertarget{parset_8c_a2a31602a3ebbedf60e8963bf1bd8e1be}\label{parset_8c_a2a31602a3ebbedf60e8963bf1bd8e1be}} 
+\index{parset.c@{parset.c}!FreeParameterSets@{FreeParameterSets}}
+\index{FreeParameterSets@{FreeParameterSets}!parset.c@{parset.c}}
+\doxysubsubsection{\texorpdfstring{FreeParameterSets()}{FreeParameterSets()}}
+{\footnotesize\ttfamily void Free\+Parameter\+Sets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+frees global parameter sets active\+\_\+sps and active\+\_\+pps 
+
+\begin{DoxyReturn}{Returns}
+A N\+A\+LU containing the Sequence Parameter\+Set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{parset_8c_a4f3d2bb7e7970f24b1f5c2e86aefabcb}\label{parset_8c_a4f3d2bb7e7970f24b1f5c2e86aefabcb}} 
+\index{parset.c@{parset.c}!GenerateParameterSets@{GenerateParameterSets}}
+\index{GenerateParameterSets@{GenerateParameterSets}!parset.c@{parset.c}}
+\doxysubsubsection{\texorpdfstring{GenerateParameterSets()}{GenerateParameterSets()}}
+{\footnotesize\ttfamily void Generate\+Parameter\+Sets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+generates a sequence and picture parameter set and stores these in global active\+\_\+sps and active\+\_\+pps 
+
+\begin{DoxyReturn}{Returns}
+A N\+A\+LU containing the Sequence Parameter\+Set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{parset_8c_a4cf018768a067fec68b97e027ecd3819}\label{parset_8c_a4cf018768a067fec68b97e027ecd3819}} 
+\index{parset.c@{parset.c}!GeneratePic\_parameter\_set\_NALU@{GeneratePic\_parameter\_set\_NALU}}
+\index{GeneratePic\_parameter\_set\_NALU@{GeneratePic\_parameter\_set\_NALU}!parset.c@{parset.c}}
+\doxysubsubsection{\texorpdfstring{GeneratePic\_parameter\_set\_NALU()}{GeneratePic\_parameter\_set\_NALU()}}
+{\footnotesize\ttfamily N\+A\+L\+U\+\_\+t$\ast$ Generate\+Pic\+\_\+parameter\+\_\+set\+\_\+\+N\+A\+LU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+N\+A\+L\+U\+\_\+t $\ast$\+Generate\+Pic\+\_\+parameter\+\_\+set\+\_\+\+N\+A\+LU ();. 
+
+\begin{DoxyNote}{Note}
+Uses the global variables through \mbox{\hyperlink{parset_8c_a8c2ef325f78e6851fba3ed4032be8c50}{Fill\+Parameter\+Set\+Structures()}}
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A N\+A\+LU containing the Picture Parameter Set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{parset_8c_af4306d13e672a745606a9793df4b18d5}\label{parset_8c_af4306d13e672a745606a9793df4b18d5}} 
+\index{parset.c@{parset.c}!GeneratePic\_parameter\_set\_rbsp@{GeneratePic\_parameter\_set\_rbsp}}
+\index{GeneratePic\_parameter\_set\_rbsp@{GeneratePic\_parameter\_set\_rbsp}!parset.c@{parset.c}}
+\doxysubsubsection{\texorpdfstring{GeneratePic\_parameter\_set\_rbsp()}{GeneratePic\_parameter\_set\_rbsp()}}
+{\footnotesize\ttfamily int Generate\+Pic\+\_\+parameter\+\_\+set\+\_\+rbsp (\begin{DoxyParamCaption}\item[{pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$}]{pps,  }\item[{char $\ast$}]{rbsp }\end{DoxyParamCaption})}
+
+
+
+int Generate\+Pic\+\_\+parameter\+\_\+set\+\_\+rbsp (pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$sps, char $\ast$rbsp); 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pps} & picture parameter structure \\
+\hline
+{\em rbsp} & buffer to be filled with the rbsp, size should be at least M\+A\+X\+I\+M\+U\+M\+P\+A\+R\+S\+E\+T\+R\+B\+S\+P\+S\+I\+ZE\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size of the R\+B\+SP in bytes, negative in case of an error
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Picture Parameter V\+UI function is called, but the function implements an exit (-\/1) 
+\end{DoxyNote}
+\mbox{\Hypertarget{parset_8c_a2758c89416acfb769f1fdd74e750ee1b}\label{parset_8c_a2758c89416acfb769f1fdd74e750ee1b}} 
+\index{parset.c@{parset.c}!GenerateSeq\_parameter\_set\_NALU@{GenerateSeq\_parameter\_set\_NALU}}
+\index{GenerateSeq\_parameter\_set\_NALU@{GenerateSeq\_parameter\_set\_NALU}!parset.c@{parset.c}}
+\doxysubsubsection{\texorpdfstring{GenerateSeq\_parameter\_set\_NALU()}{GenerateSeq\_parameter\_set\_NALU()}}
+{\footnotesize\ttfamily N\+A\+L\+U\+\_\+t$\ast$ Generate\+Seq\+\_\+parameter\+\_\+set\+\_\+\+N\+A\+LU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+int Generate\+Seq\+\_\+parameter\+\_\+set\+\_\+\+N\+A\+LU (); 
+
+\begin{DoxyNote}{Note}
+Uses the global variables through \mbox{\hyperlink{parset_8c_a8c2ef325f78e6851fba3ed4032be8c50}{Fill\+Parameter\+Set\+Structures()}}
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A N\+A\+LU containing the Sequence Parameter\+Set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{parset_8c_aa54abd2ecf70d3d51ef613387e5dba91}\label{parset_8c_aa54abd2ecf70d3d51ef613387e5dba91}} 
+\index{parset.c@{parset.c}!GenerateSeq\_parameter\_set\_rbsp@{GenerateSeq\_parameter\_set\_rbsp}}
+\index{GenerateSeq\_parameter\_set\_rbsp@{GenerateSeq\_parameter\_set\_rbsp}!parset.c@{parset.c}}
+\doxysubsubsection{\texorpdfstring{GenerateSeq\_parameter\_set\_rbsp()}{GenerateSeq\_parameter\_set\_rbsp()}}
+{\footnotesize\ttfamily int Generate\+Seq\+\_\+parameter\+\_\+set\+\_\+rbsp (\begin{DoxyParamCaption}\item[{seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$}]{sps,  }\item[{char $\ast$}]{rbsp }\end{DoxyParamCaption})}
+
+
+
+int Generate\+Seq\+\_\+parameter\+\_\+set\+\_\+rbsp (seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$sps, char $\ast$rbsp); 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sps} & sequence parameter structure \\
+\hline
+{\em rbsp} & buffer to be filled with the rbsp, size should be at least M\+A\+X\+I\+M\+U\+M\+P\+A\+R\+S\+E\+T\+R\+B\+S\+P\+S\+I\+ZE\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size of the R\+B\+SP in bytes
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Sequence Parameter V\+UI function is called, but the function implements an exit (-\/1) 
+\end{DoxyNote}

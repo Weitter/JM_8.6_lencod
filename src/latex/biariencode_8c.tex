@@ -1,0 +1,117 @@
+\hypertarget{biariencode_8c}{}\doxysection{biariencode.\+c File Reference}
+\label{biariencode_8c}\index{biariencode.c@{biariencode.c}}
+
+
+Routines for binary arithmetic encoding.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}biariencode.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{biariencode_8c_ab31892cc4b4c0feb3dbf7bb757809ea7}{put\+\_\+byte}}()
+\item 
+\#define {\bfseries put\+\_\+one\+\_\+bit}(b)
+\item 
+\#define {\bfseries put\+\_\+one\+\_\+bit\+\_\+plus\+\_\+outstanding}(b)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{biariencode_8c_a24bdbabac15b7f04e8e26ee8bb80ce1b}\label{biariencode_8c_a24bdbabac15b7f04e8e26ee8bb80ce1b}} 
+Encoding\+Environment\+Ptr \mbox{\hyperlink{biariencode_8c_a24bdbabac15b7f04e8e26ee8bb80ce1b}{arienco\+\_\+create\+\_\+encoding\+\_\+environment}} ()
+\begin{DoxyCompactList}\small\item\em Allocates memory for the Encoding\+Environment struct. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biariencode_8c_a631f63b14cd2d94dc81f66c06e23f1ea}\label{biariencode_8c_a631f63b14cd2d94dc81f66c06e23f1ea}} 
+void \mbox{\hyperlink{biariencode_8c_a631f63b14cd2d94dc81f66c06e23f1ea}{arienco\+\_\+delete\+\_\+encoding\+\_\+environment}} (Encoding\+Environment\+Ptr eep)
+\begin{DoxyCompactList}\small\item\em Frees memory of the Encoding\+Environment struct. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biariencode_8c_afd40d3c34bd4c0c18376ec2b8d948cb0}\label{biariencode_8c_afd40d3c34bd4c0c18376ec2b8d948cb0}} 
+void \mbox{\hyperlink{biariencode_8c_afd40d3c34bd4c0c18376ec2b8d948cb0}{arienco\+\_\+start\+\_\+encoding}} (Encoding\+Environment\+Ptr eep, unsigned char $\ast$code\+\_\+buffer, int $\ast$code\+\_\+len, int slice\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Initializes the Encoding\+Environment for the arithmetic coder. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biariencode_8c_a7d5be712dc847996285ca926667f4fec}\label{biariencode_8c_a7d5be712dc847996285ca926667f4fec}} 
+int \mbox{\hyperlink{biariencode_8c_a7d5be712dc847996285ca926667f4fec}{arienco\+\_\+bits\+\_\+written}} (Encoding\+Environment\+Ptr eep)
+\begin{DoxyCompactList}\small\item\em Returns the number of currently written bits. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biariencode_8c_aea5cee0d8cfb88f78b3bde1d822b9218}\label{biariencode_8c_aea5cee0d8cfb88f78b3bde1d822b9218}} 
+void \mbox{\hyperlink{biariencode_8c_aea5cee0d8cfb88f78b3bde1d822b9218}{arienco\+\_\+done\+\_\+encoding}} (Encoding\+Environment\+Ptr eep)
+\begin{DoxyCompactList}\small\item\em Terminates the arithmetic codeword, writes stop bit and stuffing bytes (if any) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biariencode_8c_ad9863b317fbddf599cf1de9f45d22138}\label{biariencode_8c_ad9863b317fbddf599cf1de9f45d22138}} 
+void \mbox{\hyperlink{biariencode_8c_ad9863b317fbddf599cf1de9f45d22138}{biari\+\_\+encode\+\_\+symbol}} (Encoding\+Environment\+Ptr eep, signed short symbol, Bi\+Context\+Type\+Ptr bi\+\_\+ct)
+\begin{DoxyCompactList}\small\item\em Actually arithmetic encoding of one binary symbol by using the probability estimate of its associated context model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biariencode_8c_ac8a2736b6621daef4b03f6a87088377d}\label{biariencode_8c_ac8a2736b6621daef4b03f6a87088377d}} 
+void \mbox{\hyperlink{biariencode_8c_ac8a2736b6621daef4b03f6a87088377d}{biari\+\_\+encode\+\_\+symbol\+\_\+eq\+\_\+prob}} (Encoding\+Environment\+Ptr eep, signed short symbol)
+\begin{DoxyCompactList}\small\item\em Arithmetic encoding of one binary symbol assuming a fixed prob. distribution with p(symbol) = 0.\+5. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biariencode_8c_aa269748bf776e6f8ae44348b5a00662f}\label{biariencode_8c_aa269748bf776e6f8ae44348b5a00662f}} 
+void \mbox{\hyperlink{biariencode_8c_aa269748bf776e6f8ae44348b5a00662f}{biari\+\_\+encode\+\_\+symbol\+\_\+final}} (Encoding\+Environment\+Ptr eep, signed short symbol)
+\begin{DoxyCompactList}\small\item\em Arithmetic encoding for last symbol before termination. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biariencode_8c_a1a2e60366c377889508960eac23aed00}\label{biariencode_8c_a1a2e60366c377889508960eac23aed00}} 
+void \mbox{\hyperlink{biariencode_8c_a1a2e60366c377889508960eac23aed00}{biari\+\_\+init\+\_\+context}} (Bi\+Context\+Type\+Ptr ctx, const int $\ast$ini)
+\begin{DoxyCompactList}\small\item\em Initializes a given context with some pre-\/defined probability state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Routines for binary arithmetic encoding. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}}
+\item Gabi Blaettermann \href{mailto:blaetter@hhi.de}{\texttt{ blaetter@hhi.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{biariencode_8c_ab31892cc4b4c0feb3dbf7bb757809ea7}\label{biariencode_8c_ab31892cc4b4c0feb3dbf7bb757809ea7}} 
+\index{biariencode.c@{biariencode.c}!put\_byte@{put\_byte}}
+\index{put\_byte@{put\_byte}!biariencode.c@{biariencode.c}}
+\doxysubsubsection{\texorpdfstring{put\_byte}{put\_byte}}
+{\footnotesize\ttfamily \#define put\+\_\+byte(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{                     \{ \(\backslash\)}
+\DoxyCodeLine{                     Ecodestrm[(*Ecodestrm\_len)++] = Ebuffer; \(\backslash\)}
+\DoxyCodeLine{                     Ebits\_to\_go = 8; \(\backslash\)}
+\DoxyCodeLine{                     while (eep-\/>C > 7) \{ \(\backslash\)}
+\DoxyCodeLine{                       eep-\/>C-\/=8; \(\backslash\)}
+\DoxyCodeLine{                       eep-\/>E++; \(\backslash\)}
+\DoxyCodeLine{                     \} \(\backslash\)}
+\DoxyCodeLine{                    \}}
+
+\end{DoxyCode}
+Macro for writing bytes of code \mbox{\Hypertarget{biariencode_8c_a0a8d0fb3c5df881f72eed75213271151}\label{biariencode_8c_a0a8d0fb3c5df881f72eed75213271151}} 
+\index{biariencode.c@{biariencode.c}!put\_one\_bit@{put\_one\_bit}}
+\index{put\_one\_bit@{put\_one\_bit}!biariencode.c@{biariencode.c}}
+\doxysubsubsection{\texorpdfstring{put\_one\_bit}{put\_one\_bit}}
+{\footnotesize\ttfamily \#define put\+\_\+one\+\_\+bit(\begin{DoxyParamCaption}\item[{}]{b }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{                         \{ \(\backslash\)}
+\DoxyCodeLine{                         Ebuffer <<= 1; Ebuffer |= (b); \(\backslash\)}
+\DoxyCodeLine{                         if (-\/-\/Ebits\_to\_go == 0) \(\backslash\)}
+\DoxyCodeLine{                           put\_byte(); \(\backslash\)}
+\DoxyCodeLine{                       \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{biariencode_8c_ad060ac4f416a155f8d0a9f599cee0bfb}\label{biariencode_8c_ad060ac4f416a155f8d0a9f599cee0bfb}} 
+\index{biariencode.c@{biariencode.c}!put\_one\_bit\_plus\_outstanding@{put\_one\_bit\_plus\_outstanding}}
+\index{put\_one\_bit\_plus\_outstanding@{put\_one\_bit\_plus\_outstanding}!biariencode.c@{biariencode.c}}
+\doxysubsubsection{\texorpdfstring{put\_one\_bit\_plus\_outstanding}{put\_one\_bit\_plus\_outstanding}}
+{\footnotesize\ttfamily \#define put\+\_\+one\+\_\+bit\+\_\+plus\+\_\+outstanding(\begin{DoxyParamCaption}\item[{}]{b }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{                                          \{ \(\backslash\)}
+\DoxyCodeLine{                                          put\_one\_bit(b); \(\backslash\)}
+\DoxyCodeLine{                                          while (Ebits\_to\_follow > 0) \(\backslash\)}
+\DoxyCodeLine{                                          \{ \(\backslash\)}
+\DoxyCodeLine{                                            Ebits\_to\_follow-\/-\/; \(\backslash\)}
+\DoxyCodeLine{                                            put\_one\_bit(!(b)); \(\backslash\)}
+\DoxyCodeLine{                                          \} \(\backslash\)}
+\DoxyCodeLine{                                         \}}
+
+\end{DoxyCode}

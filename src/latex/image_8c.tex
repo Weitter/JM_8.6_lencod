@@ -1,0 +1,165 @@
+\hypertarget{image_8c}{}\doxysection{image.\+c File Reference}
+\label{image_8c}\index{image.c@{image.c}}
+
+
+Code one image/slice.  
+
+
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$sys/timeb.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}refbuf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}intrarefresh.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fmo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sei.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memalloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nalu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ratectl.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mb\+\_\+access.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{image_8c_a358ba8b4677fc366a506d61178d5aee2}\label{image_8c_a358ba8b4677fc366a506d61178d5aee2}} 
+\#define {\bfseries Clip}(min,  max,  val)~(((val)$<$(min))?(min)\+:(((val)$>$(max))?(max)\+:(val)))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{image_8c_a0ef611abcb1a76899248585921773705}{code\+\_\+a\+\_\+picture}} (Picture $\ast$pic)
+\begin{DoxyCompactList}\small\item\em Encodes a picture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{image_8c_ae4821fa518723a8dd7376eee309b37e7}\label{image_8c_ae4821fa518723a8dd7376eee309b37e7}} 
+void \mbox{\hyperlink{image_8c_ae4821fa518723a8dd7376eee309b37e7}{frame\+\_\+picture}} (Picture $\ast$frame)
+\begin{DoxyCompactList}\small\item\em Encodes a frame picture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{image_8c_ad0107376131de21b581e2cf433acde33}\label{image_8c_ad0107376131de21b581e2cf433acde33}} 
+void \mbox{\hyperlink{image_8c_ad0107376131de21b581e2cf433acde33}{field\+\_\+picture}} (Picture $\ast$top, Picture $\ast$bottom)
+\begin{DoxyCompactList}\small\item\em Encodes a field picture, consisting of top and bottom field. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{image_8c_a5c194f6926328638869ccd57f695cf99}\label{image_8c_a5c194f6926328638869ccd57f695cf99}} 
+void {\bfseries Mb\+Aff\+Post\+Proc} ()
+\item 
+int \mbox{\hyperlink{image_8c_a525e7206cdf2995568f4b7830c1e450f}{encode\+\_\+one\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Encodes one frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{image_8c_a8a35abdc83808d6d46b42db981aff390}{Unified\+One\+Forth\+Pix}} (Storable\+Picture $\ast$s)
+\begin{DoxyCompactList}\small\item\em Upsample 4 times, store them in out4x. Color is simply copied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{image_8c_ab3df2d1e2924eea70eb295c0dbb6e27d}\label{image_8c_ab3df2d1e2924eea70eb295c0dbb6e27d}} 
+Boolean \mbox{\hyperlink{image_8c_ab3df2d1e2924eea70eb295c0dbb6e27d}{dummy\+\_\+slice\+\_\+too\+\_\+big}} (int bits\+\_\+slice)
+\begin{DoxyCompactList}\small\item\em Just a placebo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{image_8c_a3a7fa07d8412928f09bf9fd71e4c1582}{copy\+\_\+rdopt\+\_\+data}} (int bot\+\_\+block)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{image_8c_a054309c3eb92d21bb75040dfea36ad9e}\label{image_8c_a054309c3eb92d21bb75040dfea36ad9e}} 
+Storable\+Picture $\ast$ {\bfseries enc\+\_\+picture}
+\item 
+\mbox{\Hypertarget{image_8c_ac53d47465c52fb55e3eabb3dc7beb66a}\label{image_8c_ac53d47465c52fb55e3eabb3dc7beb66a}} 
+Storable\+Picture $\ast$ {\bfseries enc\+\_\+frame\+\_\+picture}
+\item 
+\mbox{\Hypertarget{image_8c_ad5144bfd6e505dbeb014c58b031e25bb}\label{image_8c_ad5144bfd6e505dbeb014c58b031e25bb}} 
+Storable\+Picture $\ast$ {\bfseries enc\+\_\+top\+\_\+picture}
+\item 
+\mbox{\Hypertarget{image_8c_ac918c65454900a320ba5034d883f4a78}\label{image_8c_ac918c65454900a320ba5034d883f4a78}} 
+Storable\+Picture $\ast$ {\bfseries enc\+\_\+bottom\+\_\+picture}
+\item 
+\mbox{\Hypertarget{image_8c_a6ceeccca7e0fa98ff596701b2e536268}\label{image_8c_a6ceeccca7e0fa98ff596701b2e536268}} 
+int {\bfseries QP}
+\item 
+const int {\bfseries O\+N\+E\+\_\+\+F\+O\+U\+R\+T\+H\+\_\+\+T\+AP} \mbox{[}3\mbox{]}\mbox{[}2\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Code one image/slice. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Inge Lille-\/\+Langøy \href{mailto:inge.lille-langoy@telenor.com}{\texttt{ inge.\+lille-\/langoy@telenor.\+com}}
+\item Rickard Sjoberg \href{mailto:rickard.sjoberg@era.ericsson.se}{\texttt{ rickard.\+sjoberg@era.\+ericsson.\+se}}
+\item Jani Lainema \href{mailto:jani.lainema@nokia.com}{\texttt{ jani.\+lainema@nokia.\+com}}
+\item Sebastian Purreiter \href{mailto:sebastian.purreiter@mch.siemens.de}{\texttt{ sebastian.\+purreiter@mch.\+siemens.\+de}}
+\item Byeong-\/\+Moon Jeon \href{mailto:jeonbm@lge.com}{\texttt{ jeonbm@lge.\+com}}
+\item Yoon-\/\+Seong Soh \href{mailto:yunsung@lge.com}{\texttt{ yunsung@lge.\+com}}
+\item Thomas Stockhammer \href{mailto:stockhammer@ei.tum.de}{\texttt{ stockhammer@ei.\+tum.\+de}}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}}
+\item Guido Heising \href{mailto:heising@hhi.de}{\texttt{ heising@hhi.\+de}}
+\item Thomas Wedi \href{mailto:wedi@tnt.uni-hannover.de}{\texttt{ wedi@tnt.\+uni-\/hannover.\+de}}
+\item Ragip Kurceren \href{mailto:ragip.kurceren@nokia.com}{\texttt{ ragip.\+kurceren@nokia.\+com}}
+\item Antti Hallapuro \href{mailto:antti.hallapuro@nokia.com}{\texttt{ antti.\+hallapuro@nokia.\+com}}
+\item Alexandros Tourapis \href{mailto:alexismt@ieee.org}{\texttt{ alexismt@ieee.\+org}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{image_8c_a0ef611abcb1a76899248585921773705}\label{image_8c_a0ef611abcb1a76899248585921773705}} 
+\index{image.c@{image.c}!code\_a\_picture@{code\_a\_picture}}
+\index{code\_a\_picture@{code\_a\_picture}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{code\_a\_picture()}{code\_a\_picture()}}
+{\footnotesize\ttfamily void code\+\_\+a\+\_\+picture (\begin{DoxyParamCaption}\item[{Picture $\ast$}]{pic }\end{DoxyParamCaption})}
+
+
+
+Encodes a picture. 
+
+This is the main picture coding loop.. It is called by all this frame and field coding stuff after the img-\/$>$ elements have been set up. Not sure whether it is useful for M\+B-\/adaptive frame/field coding Allocates forced I\+N\+T\+RA M\+Bs (even for fields!)
+
+picture level initialization of F\+MO\mbox{\Hypertarget{image_8c_a3a7fa07d8412928f09bf9fd71e4c1582}\label{image_8c_a3a7fa07d8412928f09bf9fd71e4c1582}} 
+\index{image.c@{image.c}!copy\_rdopt\_data@{copy\_rdopt\_data}}
+\index{copy\_rdopt\_data@{copy\_rdopt\_data}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{copy\_rdopt\_data()}{copy\_rdopt\_data()}}
+{\footnotesize\ttfamily void copy\+\_\+rdopt\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{bot\+\_\+block }\end{DoxyParamCaption})}
+
+For MB level field/frame coding \mbox{\Hypertarget{image_8c_a525e7206cdf2995568f4b7830c1e450f}\label{image_8c_a525e7206cdf2995568f4b7830c1e450f}} 
+\index{image.c@{image.c}!encode\_one\_frame@{encode\_one\_frame}}
+\index{encode\_one\_frame@{encode\_one\_frame}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{encode\_one\_frame()}{encode\_one\_frame()}}
+{\footnotesize\ttfamily int encode\+\_\+one\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Encodes one frame. 
+
+Note\+: the distortion for a field coded picture is stored in the top field the distortion values in the bottom field are dummies\mbox{\Hypertarget{image_8c_a8a35abdc83808d6d46b42db981aff390}\label{image_8c_a8a35abdc83808d6d46b42db981aff390}} 
+\index{image.c@{image.c}!UnifiedOneForthPix@{UnifiedOneForthPix}}
+\index{UnifiedOneForthPix@{UnifiedOneForthPix}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{UnifiedOneForthPix()}{UnifiedOneForthPix()}}
+{\footnotesize\ttfamily void Unified\+One\+Forth\+Pix (\begin{DoxyParamCaption}\item[{Storable\+Picture $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Upsample 4 times, store them in out4x. Color is simply copied. 
+
+\begin{DoxyParagraph}{Input\+:}
+srcy, srcu, srcv, out4y, out4u, out4v
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Side Effects\+\_\+}
+Uses (writes) img4\+Y\+\_\+tmp. This should be moved to a static variable in this module 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{image_8c_ac299d927ae71e2eb45d27bb087d3e88f}\label{image_8c_ac299d927ae71e2eb45d27bb087d3e88f}} 
+\index{image.c@{image.c}!ONE\_FOURTH\_TAP@{ONE\_FOURTH\_TAP}}
+\index{ONE\_FOURTH\_TAP@{ONE\_FOURTH\_TAP}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{ONE\_FOURTH\_TAP}{ONE\_FOURTH\_TAP}}
+{\footnotesize\ttfamily const int O\+N\+E\+\_\+\+F\+O\+U\+R\+T\+H\+\_\+\+T\+AP\mbox{[}3\mbox{]}\mbox{[}2\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \{20,20\},}
+\DoxyCodeLine{  \{-\/5,-\/4\},}
+\DoxyCodeLine{  \{ 1, 0\},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

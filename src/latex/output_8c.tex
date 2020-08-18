@@ -1,0 +1,139 @@
+\hypertarget{output_8c}{}\doxysection{output.\+c File Reference}
+\label{output_8c}\index{output.c@{output.c}}
+
+
+Output an image and Trance support.  
+
+
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{output_8c_a9fdf0dfa523cc569013e8f1d47e3769e}{write\+\_\+picture}} (Storable\+Picture $\ast$p, F\+I\+LE $\ast$p\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Writes out a storable picture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{output_8c_af32d9f8b59d6cd4416803d5f52ebeef2}\label{output_8c_af32d9f8b59d6cd4416803d5f52ebeef2}} 
+void \mbox{\hyperlink{output_8c_af32d9f8b59d6cd4416803d5f52ebeef2}{init\+\_\+out\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Initialize output buffer for direct output. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{output_8c_af1da7d5f6234459b303f46e0d92f263f}\label{output_8c_af1da7d5f6234459b303f46e0d92f263f}} 
+void \mbox{\hyperlink{output_8c_af1da7d5f6234459b303f46e0d92f263f}{uninit\+\_\+out\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Uninitialize output buffer for direct output. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{output_8c_a8b71cec052f3313f0925b43bebba5b79}\label{output_8c_a8b71cec052f3313f0925b43bebba5b79}} 
+void \mbox{\hyperlink{output_8c_a8b71cec052f3313f0925b43bebba5b79}{clear\+\_\+picture}} (Storable\+Picture $\ast$p)
+\begin{DoxyCompactList}\small\item\em Initialize picture memory with (Y\+:0,U\+:128,V\+:128) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{output_8c_a43ec8dfdc19a22bc3513b9e8235b313b}{write\+\_\+unpaired\+\_\+field}} (Frame\+Store $\ast$fs, F\+I\+LE $\ast$p\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Write out not paired direct output fields. A second empty field is generated and combined into the frame buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{output_8c_aa4329daf7e22fe27ea69fa6233a0cec9}{flush\+\_\+direct\+\_\+output}} (F\+I\+LE $\ast$p\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Write out unpaired fields from output buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{output_8c_a3c060749eb1ba520b5f7355e98462813}{write\+\_\+stored\+\_\+frame}} (Frame\+Store $\ast$fs, F\+I\+LE $\ast$p\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Write a frame (from Frame\+Store) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{output_8c_ad1631fcb8e3484895ea841dc8fadc8b2}{direct\+\_\+output}} (Storable\+Picture $\ast$p, F\+I\+LE $\ast$p\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Directly output a picture without storing it in the D\+PB. Fields are buffered before they are written to the file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{output_8c_aed4d9de2af7b20d20c632b803c8a7c71}\label{output_8c_aed4d9de2af7b20d20c632b803c8a7c71}} 
+Frame\+Store $\ast$ {\bfseries out\+\_\+buffer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Output an image and Trance support. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Karsten Suehring \href{mailto:suehring@hhi.de}{\texttt{ suehring@hhi.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{output_8c_ad1631fcb8e3484895ea841dc8fadc8b2}\label{output_8c_ad1631fcb8e3484895ea841dc8fadc8b2}} 
+\index{output.c@{output.c}!direct\_output@{direct\_output}}
+\index{direct\_output@{direct\_output}!output.c@{output.c}}
+\doxysubsubsection{\texorpdfstring{direct\_output()}{direct\_output()}}
+{\footnotesize\ttfamily void direct\+\_\+output (\begin{DoxyParamCaption}\item[{Storable\+Picture $\ast$}]{p,  }\item[{F\+I\+LE $\ast$}]{p\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Directly output a picture without storing it in the D\+PB. Fields are buffered before they are written to the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Picture for output \\
+\hline
+{\em p\+\_\+out} & Output file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{output_8c_aa4329daf7e22fe27ea69fa6233a0cec9}\label{output_8c_aa4329daf7e22fe27ea69fa6233a0cec9}} 
+\index{output.c@{output.c}!flush\_direct\_output@{flush\_direct\_output}}
+\index{flush\_direct\_output@{flush\_direct\_output}!output.c@{output.c}}
+\doxysubsubsection{\texorpdfstring{flush\_direct\_output()}{flush\_direct\_output()}}
+{\footnotesize\ttfamily void flush\+\_\+direct\+\_\+output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{p\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Write out unpaired fields from output buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+out} & Output file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{output_8c_a9fdf0dfa523cc569013e8f1d47e3769e}\label{output_8c_a9fdf0dfa523cc569013e8f1d47e3769e}} 
+\index{output.c@{output.c}!write\_picture@{write\_picture}}
+\index{write\_picture@{write\_picture}!output.c@{output.c}}
+\doxysubsubsection{\texorpdfstring{write\_picture()}{write\_picture()}}
+{\footnotesize\ttfamily void write\+\_\+picture (\begin{DoxyParamCaption}\item[{Storable\+Picture $\ast$}]{p,  }\item[{F\+I\+LE $\ast$}]{p\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Writes out a storable picture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Picture to be written \\
+\hline
+{\em p\+\_\+out} & Output file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{output_8c_a3c060749eb1ba520b5f7355e98462813}\label{output_8c_a3c060749eb1ba520b5f7355e98462813}} 
+\index{output.c@{output.c}!write\_stored\_frame@{write\_stored\_frame}}
+\index{write\_stored\_frame@{write\_stored\_frame}!output.c@{output.c}}
+\doxysubsubsection{\texorpdfstring{write\_stored\_frame()}{write\_stored\_frame()}}
+{\footnotesize\ttfamily void write\+\_\+stored\+\_\+frame (\begin{DoxyParamCaption}\item[{Frame\+Store $\ast$}]{fs,  }\item[{F\+I\+LE $\ast$}]{p\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Write a frame (from Frame\+Store) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fs} & Frame\+Store containing the frame \\
+\hline
+{\em p\+\_\+out} & Output file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{output_8c_a43ec8dfdc19a22bc3513b9e8235b313b}\label{output_8c_a43ec8dfdc19a22bc3513b9e8235b313b}} 
+\index{output.c@{output.c}!write\_unpaired\_field@{write\_unpaired\_field}}
+\index{write\_unpaired\_field@{write\_unpaired\_field}!output.c@{output.c}}
+\doxysubsubsection{\texorpdfstring{write\_unpaired\_field()}{write\_unpaired\_field()}}
+{\footnotesize\ttfamily void write\+\_\+unpaired\+\_\+field (\begin{DoxyParamCaption}\item[{Frame\+Store $\ast$}]{fs,  }\item[{F\+I\+LE $\ast$}]{p\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Write out not paired direct output fields. A second empty field is generated and combined into the frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fs} & Frame\+Store that contains a single field \\
+\hline
+{\em p\+\_\+out} & Output file \\
+\hline
+\end{DoxyParams}

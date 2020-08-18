@@ -1,0 +1,344 @@
+\hypertarget{mbuffer_8c}{}\doxysection{mbuffer.\+c File Reference}
+\label{mbuffer_8c}\index{mbuffer.c@{mbuffer.c}}
+
+
+Frame buffer functions.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memalloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}output.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mbuffer_8c_a52a03eea6b90f6bc967ed15a7e6a36b9}\label{mbuffer_8c_a52a03eea6b90f6bc967ed15a7e6a36b9}} 
+\#define {\bfseries M\+A\+X\+\_\+\+L\+I\+S\+T\+\_\+\+S\+I\+ZE}~33
+\item 
+\mbox{\Hypertarget{mbuffer_8c_a1382f17b1b086d6bf4781c81c39a5d2e}\label{mbuffer_8c_a1382f17b1b086d6bf4781c81c39a5d2e}} 
+\#define {\bfseries R\+SD}(x)~((x\&2)?(x$\vert$1)\+:(x\&($\sim$1)))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mbuffer_8c_a30268ef8c9ffd2a0bd884e31a9ce2322}{gen\+\_\+field\+\_\+ref\+\_\+ids}} (Storable\+Picture $\ast$p)
+\item 
+\mbox{\Hypertarget{mbuffer_8c_a4c19886743e1a5f346f0786a07aba2a9}\label{mbuffer_8c_a4c19886743e1a5f346f0786a07aba2a9}} 
+void \mbox{\hyperlink{mbuffer_8c_a4c19886743e1a5f346f0786a07aba2a9}{dump\+\_\+dpb}} ()
+\begin{DoxyCompactList}\small\item\em Print out list of pictures in D\+PB. Used for debug purposes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_a71e2c56af73479555a7532ee6b6a3763}\label{mbuffer_8c_a71e2c56af73479555a7532ee6b6a3763}} 
+int \mbox{\hyperlink{mbuffer_8c_a71e2c56af73479555a7532ee6b6a3763}{get\+Dpb\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the dpb depending on level and picture size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_af6f55781dcefc5cbbffee14b6bcca5ed}\label{mbuffer_8c_af6f55781dcefc5cbbffee14b6bcca5ed}} 
+void \mbox{\hyperlink{mbuffer_8c_af6f55781dcefc5cbbffee14b6bcca5ed}{init\+\_\+dpb}} ()
+\begin{DoxyCompactList}\small\item\em Allocate memory for decoded picture buffer and initialize with sane values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_af4f1c694a8c4f1f7d8e82efea8f5fe95}\label{mbuffer_8c_af4f1c694a8c4f1f7d8e82efea8f5fe95}} 
+void \mbox{\hyperlink{mbuffer_8c_af4f1c694a8c4f1f7d8e82efea8f5fe95}{free\+\_\+dpb}} ()
+\begin{DoxyCompactList}\small\item\em Free memory for decoded picture buffer. \end{DoxyCompactList}\item 
+Frame\+Store $\ast$ \mbox{\hyperlink{mbuffer_8c_a56f04e14a4e6ffb45cfa6f4aa3f8d9a9}{alloc\+\_\+frame\+\_\+store}} ()
+\begin{DoxyCompactList}\small\item\em Allocate memory for decoded picture buffer frame stores an initialize with sane values. \end{DoxyCompactList}\item 
+Storable\+Picture $\ast$ \mbox{\hyperlink{mbuffer_8c_a548c12fb881b223ce2535bf0907af9e1}{alloc\+\_\+storable\+\_\+picture}} (Picture\+Structure structure, int size\+\_\+x, int size\+\_\+y, int size\+\_\+x\+\_\+cr, int size\+\_\+y\+\_\+cr)
+\begin{DoxyCompactList}\small\item\em Allocate memory for a stored picture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_a6715a0198eeda7f13ee7c47c8070b6a1}{free\+\_\+frame\+\_\+store}} (Frame\+Store $\ast$\mbox{\hyperlink{rtp_8c_a3efb0e1a16208deecbd84c15401f7cf8}{f}})
+\begin{DoxyCompactList}\small\item\em Free frame store memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_aa35eaa44fd3013b28c700490f5ed1ac9}{free\+\_\+storable\+\_\+picture}} (Storable\+Picture $\ast$p)
+\begin{DoxyCompactList}\small\item\em Free picture memory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_ad0c9f963da1fc73fb3dbc58405f3d4a0}\label{mbuffer_8c_ad0c9f963da1fc73fb3dbc58405f3d4a0}} 
+int \mbox{\hyperlink{mbuffer_8c_ad0c9f963da1fc73fb3dbc58405f3d4a0}{is\+\_\+short\+\_\+ref}} (Storable\+Picture $\ast$s)
+\begin{DoxyCompactList}\small\item\em returns true, if picture is short term reference picture \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_abf58af6b42a28a2196d6da5eb9ac6327}\label{mbuffer_8c_abf58af6b42a28a2196d6da5eb9ac6327}} 
+int \mbox{\hyperlink{mbuffer_8c_abf58af6b42a28a2196d6da5eb9ac6327}{is\+\_\+long\+\_\+ref}} (Storable\+Picture $\ast$s)
+\begin{DoxyCompactList}\small\item\em returns true, if picture is long term reference picture \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_a96a96f7b721d3ac5df4228496bc5a2eb}\label{mbuffer_8c_a96a96f7b721d3ac5df4228496bc5a2eb}} 
+void \mbox{\hyperlink{mbuffer_8c_a96a96f7b721d3ac5df4228496bc5a2eb}{init\+\_\+lists}} (int curr\+Slice\+Type, Picture\+Structure curr\+Pic\+Structure)
+\begin{DoxyCompactList}\small\item\em Initialize listX\mbox{[}0\mbox{]} and list 1 depending on current picture type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_a7981c343553ced616e46affdd6b2d5f4}\label{mbuffer_8c_a7981c343553ced616e46affdd6b2d5f4}} 
+void \mbox{\hyperlink{mbuffer_8c_a7981c343553ced616e46affdd6b2d5f4}{init\+\_\+mbaff\+\_\+lists}} ()
+\begin{DoxyCompactList}\small\item\em Initilaize listX\mbox{[}2..5\mbox{]} from lists 0 and 1 listX\mbox{[}2\mbox{]}\+: list0 for current\+\_\+field==top listX\mbox{[}3\mbox{]}\+: list1 for current\+\_\+field==top listX\mbox{[}4\mbox{]}\+: list0 for current\+\_\+field==bottom listX\mbox{[}5\mbox{]}\+: list1 for current\+\_\+field==bottom. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_ae5492cf4411b5edd5e61a3423dafec89}\label{mbuffer_8c_ae5492cf4411b5edd5e61a3423dafec89}} 
+void \mbox{\hyperlink{mbuffer_8c_ae5492cf4411b5edd5e61a3423dafec89}{reorder\+\_\+ref\+\_\+pic\+\_\+list}} (Storable\+Picture $\ast$$\ast$list, int $\ast$list\+\_\+size, int num\+\_\+ref\+\_\+idx\+\_\+l\+X\+\_\+active\+\_\+minus1, int $\ast$remapping\+\_\+of\+\_\+pic\+\_\+nums\+\_\+idc, int $\ast$abs\+\_\+diff\+\_\+pic\+\_\+num\+\_\+minus1, int $\ast$long\+\_\+term\+\_\+pic\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Reordering process for reference picture lists. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_a38b9e47d6060ae19fd42a77f39ad3e10}\label{mbuffer_8c_a38b9e47d6060ae19fd42a77f39ad3e10}} 
+void \mbox{\hyperlink{mbuffer_8c_a38b9e47d6060ae19fd42a77f39ad3e10}{update\+\_\+ref\+\_\+list}} ()
+\begin{DoxyCompactList}\small\item\em Update the list of frame stores that contain reference frames/fields. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_aecda06cffeb8bdcb5bb20c2739be599e}\label{mbuffer_8c_aecda06cffeb8bdcb5bb20c2739be599e}} 
+void \mbox{\hyperlink{mbuffer_8c_aecda06cffeb8bdcb5bb20c2739be599e}{update\+\_\+ltref\+\_\+list}} ()
+\begin{DoxyCompactList}\small\item\em Update the list of frame stores that contain long-\/term reference frames/fields. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_a7b653d00d192ce148975b4ee1502c9f9}\label{mbuffer_8c_a7b653d00d192ce148975b4ee1502c9f9}} 
+void \mbox{\hyperlink{mbuffer_8c_a7b653d00d192ce148975b4ee1502c9f9}{mm\+\_\+update\+\_\+max\+\_\+long\+\_\+term\+\_\+frame\+\_\+idx}} (int max\+\_\+long\+\_\+term\+\_\+frame\+\_\+idx\+\_\+plus1)
+\begin{DoxyCompactList}\small\item\em Set new max long\+\_\+term\+\_\+frame\+\_\+idx. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_a1aa9e438cb3df3236e74bd1d8ca3c98f}{store\+\_\+picture\+\_\+in\+\_\+dpb}} (Storable\+Picture $\ast$p)
+\begin{DoxyCompactList}\small\item\em Store a picture in D\+PB. This includes cheking for space in D\+PB and flushing frames. If we received a frame, we need to check for a new store, if we got a field, check if it\textquotesingle{}s the second field of an already allocated store. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_adf69a2ea97d75495124310f83b485be1}{replace\+\_\+top\+\_\+pic\+\_\+with\+\_\+frame}} (Storable\+Picture $\ast$p)
+\begin{DoxyCompactList}\small\item\em Insert the frame picture into the if the top field has already been stored for the coding decision. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_a94cfe71d18d6b010c9de3a9850dfa760}\label{mbuffer_8c_a94cfe71d18d6b010c9de3a9850dfa760}} 
+void \mbox{\hyperlink{mbuffer_8c_a94cfe71d18d6b010c9de3a9850dfa760}{flush\+\_\+dpb}} ()
+\begin{DoxyCompactList}\small\item\em All stored picture are output. Should be called to empty the buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_a2b1e4bbf49d5c3eaf338c9431a8795c8}{dpb\+\_\+split\+\_\+field}} (Frame\+Store $\ast$fs)
+\begin{DoxyCompactList}\small\item\em Extract top field from a frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_a1020d2ddbd63e87f5b9f186fb2937c04}{dpb\+\_\+combine\+\_\+field}} (Frame\+Store $\ast$fs)
+\begin{DoxyCompactList}\small\item\em Generate a frame from top and bottom fields. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_aa7a7b98374d90c896425575fafb7b2bf}\label{mbuffer_8c_aa7a7b98374d90c896425575fafb7b2bf}} 
+void \mbox{\hyperlink{mbuffer_8c_aa7a7b98374d90c896425575fafb7b2bf}{alloc\+\_\+ref\+\_\+pic\+\_\+list\+\_\+reordering\+\_\+buffer}} (Slice $\ast$curr\+Slice)
+\begin{DoxyCompactList}\small\item\em Allocate memory for buffering of reference picture reordering commands. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mbuffer_8c_a1d6adf5e29710c67961f636d947efa61}\label{mbuffer_8c_a1d6adf5e29710c67961f636d947efa61}} 
+void \mbox{\hyperlink{mbuffer_8c_a1d6adf5e29710c67961f636d947efa61}{free\+\_\+ref\+\_\+pic\+\_\+list\+\_\+reordering\+\_\+buffer}} (Slice $\ast$curr\+Slice)
+\begin{DoxyCompactList}\small\item\em Free memory for buffering of reference picture reordering commands. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_a5d12fb80e39e0072730217ee5083b51c}{fill\+\_\+frame\+\_\+num\+\_\+gap}} (Image\+Parameters $\ast$img)
+\begin{DoxyCompactList}\small\item\em Tian Dong June 13, 2002, Modifed on July 30, 2003. \end{DoxyCompactList}\item 
+Colocated\+Params $\ast$ \mbox{\hyperlink{mbuffer_8c_a2959632683c970196466f76f36361b66}{alloc\+\_\+colocated}} (int size\+\_\+x, int size\+\_\+y, int mb\+\_\+adaptive\+\_\+frame\+\_\+field\+\_\+flag)
+\begin{DoxyCompactList}\small\item\em Allocate co-\/located memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_a45d036150b93760d3439e6507b2b7f45}{free\+\_\+collocated}} (Colocated\+Params $\ast$p)
+\begin{DoxyCompactList}\small\item\em Free co-\/located memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mbuffer_8c_af05684dfb01eca59a30b057773f86113}{compute\+\_\+collocated}} (Colocated\+Params $\ast$p, Storable\+Picture $\ast$$\ast$listX\mbox{[}6\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mbuffer_8c_a444fd24a372d073b6ff73dbe6cef5583}\label{mbuffer_8c_a444fd24a372d073b6ff73dbe6cef5583}} 
+Decoded\+Picture\+Buffer {\bfseries dpb}
+\item 
+\mbox{\Hypertarget{mbuffer_8c_abd7256d85cbd4360fa33a1a6c62a5c8e}\label{mbuffer_8c_abd7256d85cbd4360fa33a1a6c62a5c8e}} 
+Storable\+Picture $\ast$$\ast$ {\bfseries listX} \mbox{[}6\mbox{]}
+\item 
+\mbox{\Hypertarget{mbuffer_8c_a6cb19d3cc47256c79bf137a84f316255}\label{mbuffer_8c_a6cb19d3cc47256c79bf137a84f316255}} 
+Colocated\+Params $\ast$ {\bfseries Co\+\_\+located} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{mbuffer_8c_ab89a6a08f04cda960ed340413805ec9c}\label{mbuffer_8c_ab89a6a08f04cda960ed340413805ec9c}} 
+int {\bfseries list\+Xsize} \mbox{[}6\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Frame buffer functions. 
+
+\mbox{\hyperlink{mbuffer_8c}{mbuffer.\+c}}
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Karsten Sühring \href{mailto:suehring@hhi.de}{\texttt{ suehring@hhi.\+de}}
+\item Alexis Tourapis \href{mailto:alexismt@ieee.org}{\texttt{ alexismt@ieee.\+org}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mbuffer_8c_a2959632683c970196466f76f36361b66}\label{mbuffer_8c_a2959632683c970196466f76f36361b66}} 
+\index{mbuffer.c@{mbuffer.c}!alloc\_colocated@{alloc\_colocated}}
+\index{alloc\_colocated@{alloc\_colocated}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{alloc\_colocated()}{alloc\_colocated()}}
+{\footnotesize\ttfamily Colocated\+Params$\ast$ alloc\+\_\+colocated (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+x,  }\item[{int}]{size\+\_\+y,  }\item[{int}]{mb\+\_\+adaptive\+\_\+frame\+\_\+field\+\_\+flag }\end{DoxyParamCaption})}
+
+
+
+Allocate co-\/located memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em structure} & picture structure \\
+\hline
+{\em size\+\_\+x} & horizontal luma size \\
+\hline
+{\em size\+\_\+y} & vertical luma size \\
+\hline
+{\em size\+\_\+x\+\_\+cr} & horizontal chroma size \\
+\hline
+{\em size\+\_\+y\+\_\+cr} & vertical chroma size\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the allocated Storable\+Picture structure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mbuffer_8c_a56f04e14a4e6ffb45cfa6f4aa3f8d9a9}\label{mbuffer_8c_a56f04e14a4e6ffb45cfa6f4aa3f8d9a9}} 
+\index{mbuffer.c@{mbuffer.c}!alloc\_frame\_store@{alloc\_frame\_store}}
+\index{alloc\_frame\_store@{alloc\_frame\_store}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{alloc\_frame\_store()}{alloc\_frame\_store()}}
+{\footnotesize\ttfamily Frame\+Store$\ast$ alloc\+\_\+frame\+\_\+store (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Allocate memory for decoded picture buffer frame stores an initialize with sane values. 
+
+\begin{DoxyReturn}{Returns}
+the allocated Frame\+Store structure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mbuffer_8c_a548c12fb881b223ce2535bf0907af9e1}\label{mbuffer_8c_a548c12fb881b223ce2535bf0907af9e1}} 
+\index{mbuffer.c@{mbuffer.c}!alloc\_storable\_picture@{alloc\_storable\_picture}}
+\index{alloc\_storable\_picture@{alloc\_storable\_picture}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{alloc\_storable\_picture()}{alloc\_storable\_picture()}}
+{\footnotesize\ttfamily Storable\+Picture$\ast$ alloc\+\_\+storable\+\_\+picture (\begin{DoxyParamCaption}\item[{Picture\+Structure}]{structure,  }\item[{int}]{size\+\_\+x,  }\item[{int}]{size\+\_\+y,  }\item[{int}]{size\+\_\+x\+\_\+cr,  }\item[{int}]{size\+\_\+y\+\_\+cr }\end{DoxyParamCaption})}
+
+
+
+Allocate memory for a stored picture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em structure} & picture structure \\
+\hline
+{\em size\+\_\+x} & horizontal luma size \\
+\hline
+{\em size\+\_\+y} & vertical luma size \\
+\hline
+{\em size\+\_\+x\+\_\+cr} & horizontal chroma size \\
+\hline
+{\em size\+\_\+y\+\_\+cr} & vertical chroma size\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the allocated Storable\+Picture structure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mbuffer_8c_af05684dfb01eca59a30b057773f86113}\label{mbuffer_8c_af05684dfb01eca59a30b057773f86113}} 
+\index{mbuffer.c@{mbuffer.c}!compute\_collocated@{compute\_collocated}}
+\index{compute\_collocated@{compute\_collocated}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{compute\_collocated()}{compute\_collocated()}}
+{\footnotesize\ttfamily void compute\+\_\+collocated (\begin{DoxyParamCaption}\item[{Colocated\+Params $\ast$}]{p,  }\item[{Storable\+Picture $\ast$$\ast$}]{listX\mbox{[}6\mbox{]} }\end{DoxyParamCaption})}
+
+Assign frame buffers for field M\+Bs ~\newline
+ Check whether we should use top or bottom field mvs. Depending on the assigned poc values.
+
+Generate field M\+Vs from Frame M\+Vs
+
+Do nothing if macroblock as field coded in M\+B-\/\+A\+FF ~\newline
+
+
+Need to consider interlace structure here
+
+Use inference flag to remap mvs/references Frame with field co-\/located
+
+Use inference flag to remap mvs/references\mbox{\Hypertarget{mbuffer_8c_a1020d2ddbd63e87f5b9f186fb2937c04}\label{mbuffer_8c_a1020d2ddbd63e87f5b9f186fb2937c04}} 
+\index{mbuffer.c@{mbuffer.c}!dpb\_combine\_field@{dpb\_combine\_field}}
+\index{dpb\_combine\_field@{dpb\_combine\_field}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{dpb\_combine\_field()}{dpb\_combine\_field()}}
+{\footnotesize\ttfamily void dpb\+\_\+combine\+\_\+field (\begin{DoxyParamCaption}\item[{Frame\+Store $\ast$}]{fs }\end{DoxyParamCaption})}
+
+
+
+Generate a frame from top and bottom fields. 
+
+Use inference flag to remap mvs/references
+
+Generate Frame parameters from field information.
+
+association with id already known for fields.
+
+need to make association with frames
+
+need to make association with frames\mbox{\Hypertarget{mbuffer_8c_a2b1e4bbf49d5c3eaf338c9431a8795c8}\label{mbuffer_8c_a2b1e4bbf49d5c3eaf338c9431a8795c8}} 
+\index{mbuffer.c@{mbuffer.c}!dpb\_split\_field@{dpb\_split\_field}}
+\index{dpb\_split\_field@{dpb\_split\_field}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{dpb\_split\_field()}{dpb\_split\_field()}}
+{\footnotesize\ttfamily void dpb\+\_\+split\+\_\+field (\begin{DoxyParamCaption}\item[{Frame\+Store $\ast$}]{fs }\end{DoxyParamCaption})}
+
+
+
+Extract top field from a frame. 
+
+association with id already known for fields.
+
+need to make association with frames
+
+Generate field M\+Vs from Frame M\+Vs\mbox{\Hypertarget{mbuffer_8c_a5d12fb80e39e0072730217ee5083b51c}\label{mbuffer_8c_a5d12fb80e39e0072730217ee5083b51c}} 
+\index{mbuffer.c@{mbuffer.c}!fill\_frame\_num\_gap@{fill\_frame\_num\_gap}}
+\index{fill\_frame\_num\_gap@{fill\_frame\_num\_gap}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{fill\_frame\_num\_gap()}{fill\_frame\_num\_gap()}}
+{\footnotesize\ttfamily void fill\+\_\+frame\+\_\+num\+\_\+gap (\begin{DoxyParamCaption}\item[{Image\+Parameters $\ast$}]{img }\end{DoxyParamCaption})}
+
+
+
+Tian Dong June 13, 2002, Modifed on July 30, 2003. 
+
+If a gap in frame\+\_\+num is found, try to fill the gap 
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mbuffer_8c_a45d036150b93760d3439e6507b2b7f45}\label{mbuffer_8c_a45d036150b93760d3439e6507b2b7f45}} 
+\index{mbuffer.c@{mbuffer.c}!free\_collocated@{free\_collocated}}
+\index{free\_collocated@{free\_collocated}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{free\_collocated()}{free\_collocated()}}
+{\footnotesize\ttfamily void free\+\_\+collocated (\begin{DoxyParamCaption}\item[{Colocated\+Params $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Free co-\/located memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Picture to be freed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mbuffer_8c_a6715a0198eeda7f13ee7c47c8070b6a1}\label{mbuffer_8c_a6715a0198eeda7f13ee7c47c8070b6a1}} 
+\index{mbuffer.c@{mbuffer.c}!free\_frame\_store@{free\_frame\_store}}
+\index{free\_frame\_store@{free\_frame\_store}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{free\_frame\_store()}{free\_frame\_store()}}
+{\footnotesize\ttfamily void free\+\_\+frame\+\_\+store (\begin{DoxyParamCaption}\item[{Frame\+Store $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Free frame store memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Frame\+Store to be freed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mbuffer_8c_aa35eaa44fd3013b28c700490f5ed1ac9}\label{mbuffer_8c_aa35eaa44fd3013b28c700490f5ed1ac9}} 
+\index{mbuffer.c@{mbuffer.c}!free\_storable\_picture@{free\_storable\_picture}}
+\index{free\_storable\_picture@{free\_storable\_picture}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{free\_storable\_picture()}{free\_storable\_picture()}}
+{\footnotesize\ttfamily void free\+\_\+storable\+\_\+picture (\begin{DoxyParamCaption}\item[{Storable\+Picture $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Free picture memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Picture to be freed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mbuffer_8c_a30268ef8c9ffd2a0bd884e31a9ce2322}\label{mbuffer_8c_a30268ef8c9ffd2a0bd884e31a9ce2322}} 
+\index{mbuffer.c@{mbuffer.c}!gen\_field\_ref\_ids@{gen\_field\_ref\_ids}}
+\index{gen\_field\_ref\_ids@{gen\_field\_ref\_ids}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{gen\_field\_ref\_ids()}{gen\_field\_ref\_ids()}}
+{\footnotesize\ttfamily void gen\+\_\+field\+\_\+ref\+\_\+ids (\begin{DoxyParamCaption}\item[{Storable\+Picture $\ast$}]{p }\end{DoxyParamCaption})}
+
+Generate Frame parameters from field information.
+
+association with id already known for fields.\mbox{\Hypertarget{mbuffer_8c_adf69a2ea97d75495124310f83b485be1}\label{mbuffer_8c_adf69a2ea97d75495124310f83b485be1}} 
+\index{mbuffer.c@{mbuffer.c}!replace\_top\_pic\_with\_frame@{replace\_top\_pic\_with\_frame}}
+\index{replace\_top\_pic\_with\_frame@{replace\_top\_pic\_with\_frame}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{replace\_top\_pic\_with\_frame()}{replace\_top\_pic\_with\_frame()}}
+{\footnotesize\ttfamily void replace\+\_\+top\+\_\+pic\+\_\+with\+\_\+frame (\begin{DoxyParamCaption}\item[{Storable\+Picture $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Insert the frame picture into the if the top field has already been stored for the coding decision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Storable\+Picture to be inserted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mbuffer_8c_a1aa9e438cb3df3236e74bd1d8ca3c98f}\label{mbuffer_8c_a1aa9e438cb3df3236e74bd1d8ca3c98f}} 
+\index{mbuffer.c@{mbuffer.c}!store\_picture\_in\_dpb@{store\_picture\_in\_dpb}}
+\index{store\_picture\_in\_dpb@{store\_picture\_in\_dpb}!mbuffer.c@{mbuffer.c}}
+\doxysubsubsection{\texorpdfstring{store\_picture\_in\_dpb()}{store\_picture\_in\_dpb()}}
+{\footnotesize\ttfamily void store\+\_\+picture\+\_\+in\+\_\+dpb (\begin{DoxyParamCaption}\item[{Storable\+Picture $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Store a picture in D\+PB. This includes cheking for space in D\+PB and flushing frames. If we received a frame, we need to check for a new store, if we got a field, check if it\textquotesingle{}s the second field of an already allocated store. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Picture to be stored \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,123 @@
+\hypertarget{header_8c}{}\doxysection{header.\+c File Reference}
+\label{header_8c}\index{header.c@{header.c}}
+
+
+H.\+264 Slice and Sequence headers.  
+
+
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}elements.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rtp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vlc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parset.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{header_8c_a012f05fda1b13afb5282bbf941feac40}\label{header_8c_a012f05fda1b13afb5282bbf941feac40}} 
+\#define {\bfseries S\+Y\+M\+T\+R\+A\+C\+E\+S\+T\+R\+I\+NG}(s)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{header_8c_a90b335325283dd75da7ab9ca3dcc2bed}{Slice\+Header}} ()
+\begin{DoxyCompactList}\small\item\em Write a slice header. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{header_8c_ac9712d18ab3b22af72130c72239afdc3}\label{header_8c_ac9712d18ab3b22af72130c72239afdc3}} 
+int \mbox{\hyperlink{header_8c_ac9712d18ab3b22af72130c72239afdc3}{get\+\_\+picture\+\_\+type}} ()
+\begin{DoxyCompactList}\small\item\em Selects picture type and codes it to symbol. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{header_8c_ada6ad6d5c1f405e9268ef84aae2d320b}{Partition\+\_\+\+B\+C\+\_\+\+Header}} (int Part\+No)
+\begin{DoxyCompactList}\small\item\em int Partition\+\_\+\+B\+C\+\_\+\+Header () write the Partition type B, C header \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{header_8c_a6fab0f93ffbea3460f6e6f6601d7ad4d}\label{header_8c_a6fab0f93ffbea3460f6e6f6601d7ad4d}} 
+int $\ast$ {\bfseries assign\+S\+E2partition} \mbox{[}2\mbox{]}
+\item 
+int {\bfseries assign\+S\+E2partition\+\_\+\+No\+DP} \mbox{[}S\+E\+\_\+\+M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+TS\mbox{]}
+\item 
+int {\bfseries assign\+S\+E2partition\+\_\+\+DP} \mbox{[}S\+E\+\_\+\+M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+TS\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+H.\+264 Slice and Sequence headers. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{header_8c_ada6ad6d5c1f405e9268ef84aae2d320b}\label{header_8c_ada6ad6d5c1f405e9268ef84aae2d320b}} 
+\index{header.c@{header.c}!Partition\_BC\_Header@{Partition\_BC\_Header}}
+\index{Partition\_BC\_Header@{Partition\_BC\_Header}!header.c@{header.c}}
+\doxysubsubsection{\texorpdfstring{Partition\_BC\_Header()}{Partition\_BC\_Header()}}
+{\footnotesize\ttfamily int Partition\+\_\+\+B\+C\+\_\+\+Header (\begin{DoxyParamCaption}\item[{int}]{Part\+No }\end{DoxyParamCaption})}
+
+
+
+int Partition\+\_\+\+B\+C\+\_\+\+Header () write the Partition type B, C header 
+
+\begin{DoxyReturn}{Returns}
+Number of bits used by the partition header
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Parameters}
+Part\+No\+: Partition Number to which the header should be written
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Side effects}
+Partition header as per V\+C\+E\+G-\/\+N72r2 is written into the appropriate partition bit buffer
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Limitations/\+Shortcomings/\+Tweaks}
+The current code does not support the change of picture parameters within one coded sequence, hence there is only one parameter set necessary. This is hard coded to zero.
+\end{DoxyParagraph}
+\begin{DoxyDate}{Date}
+October 24, 2001
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{header_8c_a90b335325283dd75da7ab9ca3dcc2bed}\label{header_8c_a90b335325283dd75da7ab9ca3dcc2bed}} 
+\index{header.c@{header.c}!SliceHeader@{SliceHeader}}
+\index{SliceHeader@{SliceHeader}!header.c@{header.c}}
+\doxysubsubsection{\texorpdfstring{SliceHeader()}{SliceHeader()}}
+{\footnotesize\ttfamily int Slice\+Header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Write a slice header. 
+
+img-\/$>$slice\+\_\+group\+\_\+change\+\_\+cycle can be changed before calling \mbox{\hyperlink{fmo_8c_a4e4bede2670e4dd3ce96c77b9f8d0413}{Fmo\+Init()}}
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{header_8c_ad22fbd9568a0dd17470092801672ff21}\label{header_8c_ad22fbd9568a0dd17470092801672ff21}} 
+\index{header.c@{header.c}!assignSE2partition\_DP@{assignSE2partition\_DP}}
+\index{assignSE2partition\_DP@{assignSE2partition\_DP}!header.c@{header.c}}
+\doxysubsubsection{\texorpdfstring{assignSE2partition\_DP}{assignSE2partition\_DP}}
+{\footnotesize\ttfamily int assign\+S\+E2partition\+\_\+\+DP\mbox{[}S\+E\+\_\+\+M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+TS\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{  \{  0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 2, 2, 2, 2, 0, 0, 0, 0 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{header_8c_abe00a9a3a6c885ac410b7d9925c367b3}\label{header_8c_abe00a9a3a6c885ac410b7d9925c367b3}} 
+\index{header.c@{header.c}!assignSE2partition\_NoDP@{assignSE2partition\_NoDP}}
+\index{assignSE2partition\_NoDP@{assignSE2partition\_NoDP}!header.c@{header.c}}
+\doxysubsubsection{\texorpdfstring{assignSE2partition\_NoDP}{assignSE2partition\_NoDP}}
+{\footnotesize\ttfamily int assign\+S\+E2partition\+\_\+\+No\+DP\mbox{[}S\+E\+\_\+\+M\+A\+X\+\_\+\+E\+L\+E\+M\+E\+N\+TS\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{  \{  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 \}}
+
+\end{DoxyCode}

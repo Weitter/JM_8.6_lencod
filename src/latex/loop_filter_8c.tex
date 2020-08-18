@@ -1,0 +1,106 @@
+\hypertarget{loop_filter_8c}{}\doxysection{loop\+Filter.\+c File Reference}
+\label{loop_filter_8c}\index{loopFilter.c@{loopFilter.c}}
+
+
+Filter to reduce blocking artifacts(手工制品) on a macroblock level. The filter strengh is QP dependent.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mb\+\_\+access.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_a2c8541b5a9c622224647006c02e81af4}\label{loop_filter_8c_a2c8541b5a9c622224647006c02e81af4}} 
+\#define {\bfseries I\+Clip}(Min,  Max,  Val)~(((Val)$<$(Min))? (Min)\+:(((Val)$>$(Max))? (Max)\+:(Val)))
+\item 
+\mbox{\Hypertarget{loop_filter_8c_ac172884bdb17284affe92aaf9af7efdc}\label{loop_filter_8c_ac172884bdb17284affe92aaf9af7efdc}} 
+\#define {\bfseries A\+N\+Y\+\_\+\+I\+N\+T\+RA}~(MbP-\/$>$mb\+\_\+type==I4\+MB$\vert$$\vert$MbP-\/$>$mb\+\_\+type==I16\+MB$\vert$$\vert$MbP-\/$>$mb\+\_\+type==I\+P\+CM$\vert$$\vert$MbQ-\/$>$mb\+\_\+type==I4\+MB$\vert$$\vert$MbQ-\/$>$mb\+\_\+type==I16\+MB$\vert$$\vert$MbQ-\/$>$mb\+\_\+type==I\+P\+CM)
+\item 
+\mbox{\Hypertarget{loop_filter_8c_aa9d02ab622206187c7631aeeb90ca1ee}\label{loop_filter_8c_aa9d02ab622206187c7631aeeb90ca1ee}} 
+\#define {\bfseries C\+Q\+P\+OF}(qp)~(Clip3(0, 51, qp + active\+\_\+pps-\/$>$chroma\+\_\+qp\+\_\+index\+\_\+offset))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_abbe03a4f6b4bb8f92201fb694dfa6ecd}\label{loop_filter_8c_abbe03a4f6b4bb8f92201fb694dfa6ecd}} 
+void {\bfseries Get\+Strength} (byte Strength\mbox{[}16\mbox{]}, Image\+Parameters $\ast$img, int Mb\+Q\+Addr, int dir, int edge, int mvlimit)
+\item 
+\mbox{\Hypertarget{loop_filter_8c_a7bc601a2ca430e8e6985a526e57f958f}\label{loop_filter_8c_a7bc601a2ca430e8e6985a526e57f958f}} 
+void \mbox{\hyperlink{loop_filter_8c_a7bc601a2ca430e8e6985a526e57f958f}{Edge\+Loop}} (byte $\ast$$\ast$Img, byte Strength\mbox{[}16\mbox{]}, Image\+Parameters $\ast$img, int Mb\+Q\+Addr, int Alpha\+C0\+Offset, int Beta\+Offset, int dir, int edge, int width, int yuv)
+\begin{DoxyCompactList}\small\item\em Filters one edge of 16 (luma) or 8 (chroma) pel. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{loop_filter_8c_a073d340867fd160d7516f35aa329445a}\label{loop_filter_8c_a073d340867fd160d7516f35aa329445a}} 
+void \mbox{\hyperlink{loop_filter_8c_a073d340867fd160d7516f35aa329445a}{Deblock\+Mb}} (Image\+Parameters $\ast$img, byte $\ast$$\ast$imgY, byte $\ast$$\ast$$\ast$img\+UV, int Mb\+Q\+Addr)
+\begin{DoxyCompactList}\small\item\em Deblocking filter for one macroblock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{loop_filter_8c_a4253d928a25a16f6068018da7746994f}\label{loop_filter_8c_a4253d928a25a16f6068018da7746994f}} 
+void \mbox{\hyperlink{loop_filter_8c_a4253d928a25a16f6068018da7746994f}{Deblock\+Frame}} (Image\+Parameters $\ast$img, byte $\ast$$\ast$imgY, byte $\ast$$\ast$$\ast$img\+UV)
+\begin{DoxyCompactList}\small\item\em Filter all macroblocks in order of increasing macroblock address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_ab59829bbad322f427b5ec772b31ce5db}\label{loop_filter_8c_ab59829bbad322f427b5ec772b31ce5db}} 
+const byte {\bfseries Q\+P\+\_\+\+S\+C\+A\+L\+E\+\_\+\+CR} \mbox{[}52\mbox{]}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_ab2d6ff2248aa6cac1a64eaf88a51156a}\label{loop_filter_8c_ab2d6ff2248aa6cac1a64eaf88a51156a}} 
+byte {\bfseries mixed\+Mode\+Edge\+Flag}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_ad00d07295bf07be9e7d0a37b3eb177c6}\label{loop_filter_8c_ad00d07295bf07be9e7d0a37b3eb177c6}} 
+byte {\bfseries field\+Mode\+Filtering\+Flag}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_ad3a034f022883c8770aee4bb21fa7920}\label{loop_filter_8c_ad3a034f022883c8770aee4bb21fa7920}} 
+byte {\bfseries A\+L\+P\+H\+A\+\_\+\+T\+A\+B\+LE} \mbox{[}52\mbox{]} = \{0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,4,4,5,6, 7,8,9,10,12,13,15,17, 20,22,25,28,32,36,40,45, 50,56,63,71,80,90,101,113, 127,144,162,182,203,226,255,255\}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_a8dfa8bff1feec9474c5ef3fe02c0ddbc}\label{loop_filter_8c_a8dfa8bff1feec9474c5ef3fe02c0ddbc}} 
+byte {\bfseries B\+E\+T\+A\+\_\+\+T\+A\+B\+LE} \mbox{[}52\mbox{]} = \{0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,2,2,2,3, 3,3,3, 4, 4, 4, 6, 6, 7, 7, 8, 8, 9, 9,10,10, 11,11,12,12,13,13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18\}
+\item 
+byte {\bfseries C\+L\+I\+P\+\_\+\+T\+AB} \mbox{[}52\mbox{]}\mbox{[}5\mbox{]}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_aeb725c6f9ec9314872d915cfc6b2914b}\label{loop_filter_8c_aeb725c6f9ec9314872d915cfc6b2914b}} 
+int \mbox{\hyperlink{loop_filter_8c_aeb725c6f9ec9314872d915cfc6b2914b}{I\+N\+I\+N\+T\+\_\+\+S\+T\+R\+E\+N\+G\+TH}} \mbox{[}4\mbox{]} = \{0x04040404, 0x03030303, 0x03030303, 0x03030303\}
+\begin{DoxyCompactList}\small\item\em returns a buffer of 16 Strength values for one stripe in a mb (for different Frame types) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{loop_filter_8c_a45a75cdb2ffee16e25b16c22a7f7eeb6}\label{loop_filter_8c_a45a75cdb2ffee16e25b16c22a7f7eeb6}} 
+byte {\bfseries B\+L\+K\+\_\+\+N\+UM} \mbox{[}2\mbox{]}\mbox{[}4\mbox{]}\mbox{[}4\mbox{]} = \{\{\{0,4,8,12\},\{1,5,9,13\},\{2,6,10,14\},\{3,7,11,15\}\},\{\{0,1,2,3\},\{4,5,6,7\},\{8,9,10,11\},\{12,13,14,15\}\}\}
+\item 
+\mbox{\Hypertarget{loop_filter_8c_ac542113b447a48cbde6850587a7013b1}\label{loop_filter_8c_ac542113b447a48cbde6850587a7013b1}} 
+byte {\bfseries B\+L\+K\+\_\+4\+\_\+\+T\+O\+\_\+8} \mbox{[}16\mbox{]} = \{0,0,1,1,0,0,1,1,2,2,3,3,2,2,3,3\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Filter to reduce blocking artifacts(手工制品) on a macroblock level. The filter strengh is QP dependent. 
+
+\begin{DoxyAuthor}{Author}
+Contributors\+:
+\begin{DoxyItemize}
+\item Peter List \href{mailto:Peter.List@t-systems.de}{\texttt{ Peter.\+List@t-\/systems.\+de}}\+: Original code (13-\/Aug-\/2001)
+\item Jani Lainema \href{mailto:Jani.Lainema@nokia.com}{\texttt{ Jani.\+Lainema@nokia.\+com}}\+: Some bug fixing, removal of recusiveness (16-\/Aug-\/2001)
+\item Peter List \href{mailto:Peter.List@t-systems.de}{\texttt{ Peter.\+List@t-\/systems.\+de}}\+: inplace filtering and various simplifications (10-\/Jan-\/2002)
+\item Anthony Joch \href{mailto:anthony@ubvideo.com}{\texttt{ anthony@ubvideo.\+com}}\+: Simplified switching between filters and non-\/recursive default filter. (08-\/Jul-\/2002)
+\item Cristina Gomila \href{mailto:cristina.gomila@thomson.net}{\texttt{ cristina.\+gomila@thomson.\+net}}\+: Simplification of the chroma deblocking from J\+V\+T-\/\+E089 (21-\/Nov-\/2002) 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{loop_filter_8c_adbe91dacff3568d65259b763c90a6fe8}\label{loop_filter_8c_adbe91dacff3568d65259b763c90a6fe8}} 
+\index{loopFilter.c@{loopFilter.c}!CLIP\_TAB@{CLIP\_TAB}}
+\index{CLIP\_TAB@{CLIP\_TAB}!loopFilter.c@{loopFilter.c}}
+\doxysubsubsection{\texorpdfstring{CLIP\_TAB}{CLIP\_TAB}}
+{\footnotesize\ttfamily byte C\+L\+I\+P\+\_\+\+T\+AB\mbox{[}52\mbox{]}\mbox{[}5\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{  \{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{  \{ 0, 0, 0, 0, 0\},\{ 0, 0, 0, 1, 1\},\{ 0, 0, 0, 1, 1\},\{ 0, 0, 0, 1, 1\},\{ 0, 0, 0, 1, 1\},\{ 0, 0, 1, 1, 1\},\{ 0, 0, 1, 1, 1\},\{ 0, 1, 1, 1, 1\},}
+\DoxyCodeLine{  \{ 0, 1, 1, 1, 1\},\{ 0, 1, 1, 1, 1\},\{ 0, 1, 1, 1, 1\},\{ 0, 1, 1, 2, 2\},\{ 0, 1, 1, 2, 2\},\{ 0, 1, 1, 2, 2\},\{ 0, 1, 1, 2, 2\},\{ 0, 1, 2, 3, 3\},}
+\DoxyCodeLine{  \{ 0, 1, 2, 3, 3\},\{ 0, 2, 2, 3, 3\},\{ 0, 2, 2, 4, 4\},\{ 0, 2, 3, 4, 4\},\{ 0, 2, 3, 4, 4\},\{ 0, 3, 3, 5, 5\},\{ 0, 3, 4, 6, 6\},\{ 0, 3, 4, 6, 6\},}
+\DoxyCodeLine{  \{ 0, 4, 5, 7, 7\},\{ 0, 4, 5, 8, 8\},\{ 0, 4, 6, 9, 9\},\{ 0, 5, 7,10,10\},\{ 0, 6, 8,11,11\},\{ 0, 6, 8,13,13\},\{ 0, 7,10,14,14\},\{ 0, 8,11,16,16\},}
+\DoxyCodeLine{  \{ 0, 9,12,18,18\},\{ 0,10,13,20,20\},\{ 0,11,15,23,23\},\{ 0,13,17,25,25\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

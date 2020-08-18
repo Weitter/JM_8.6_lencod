@@ -1,0 +1,291 @@
+\hypertarget{rdopt_8c}{}\doxysection{rdopt.\+c File Reference}
+\label{rdopt_8c}\index{rdopt.c@{rdopt.c}}
+
+
+Rate-\/\+Distortion optimized mode decision.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}rdopt\+\_\+coding\+\_\+state.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}elements.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}refbuf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}intrarefresh.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vlc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mb\+\_\+access.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fast\+\_\+me.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ratectl.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cabac.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a279130917f0495ea4983615e8461091f}\label{rdopt_8c_a279130917f0495ea4983615e8461091f}} 
+\#define {\bfseries I\+S\+\_\+\+FW}~((best8x8pdir\mbox{[}mode\mbox{]}\mbox{[}k\mbox{]}==0 $\vert$$\vert$ best8x8pdir\mbox{[}mode\mbox{]}\mbox{[}k\mbox{]}==2) \&\& (mode!=P8x8 $\vert$$\vert$ best8x8mode\mbox{[}k\mbox{]}!=0 $\vert$$\vert$ !bframe))
+\item 
+\mbox{\Hypertarget{rdopt_8c_ab3c253d04b4cee8a6b5f2b1c691aad8a}\label{rdopt_8c_ab3c253d04b4cee8a6b5f2b1c691aad8a}} 
+\#define {\bfseries I\+S\+\_\+\+BW}~((best8x8pdir\mbox{[}mode\mbox{]}\mbox{[}k\mbox{]}==1 $\vert$$\vert$ best8x8pdir\mbox{[}mode\mbox{]}\mbox{[}k\mbox{]}==2) \&\& (mode!=P8x8 $\vert$$\vert$ best8x8mode\mbox{[}k\mbox{]}!=0))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{rdopt_8c_aa12a12c1863a89d61ce2e33765ecff34}\label{rdopt_8c_aa12a12c1863a89d61ce2e33765ecff34}} 
+void \mbox{\hyperlink{rdopt_8c_aa12a12c1863a89d61ce2e33765ecff34}{clear\+\_\+rdopt}} ()
+\begin{DoxyCompactList}\small\item\em delete structure for R\+D-\/optimized mode decision \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_abdf37fcf158177164c64643ef11a1277}\label{rdopt_8c_abdf37fcf158177164c64643ef11a1277}} 
+void \mbox{\hyperlink{rdopt_8c_abdf37fcf158177164c64643ef11a1277}{init\+\_\+rdopt}} ()
+\begin{DoxyCompactList}\small\item\em create structure for R\+D-\/optimized mode decision \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rdopt_8c_a5183e10e4366b2a27ce5a8c4d53e34bc}{Update\+Pixel\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Updates the pixel map that shows, which reference frames are reliable for each M\+B-\/area of the picture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rdopt_8c_a3dbf6aea5962a6419e6e51d5ab826c48}{Check\+Reliability\+Of\+Ref}} (int block, int list\+\_\+idx, int ref, int mode)
+\begin{DoxyCompactList}\small\item\em Checks if a given reference frame is reliable for the current macroblock, given the motion vectors that the motion search has returned. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a536d4579b8f3d874d1fddd7e1b3e4002}\label{rdopt_8c_a536d4579b8f3d874d1fddd7e1b3e4002}} 
+double \mbox{\hyperlink{rdopt_8c_a536d4579b8f3d874d1fddd7e1b3e4002}{R\+D\+Cost\+\_\+for\+\_\+4x4\+Intra\+Blocks}} (int $\ast$nonzero, int b8, int b4, int ipmode, double lambda, double min\+\_\+rdcost, int most\+Probable\+Mode)
+\begin{DoxyCompactList}\small\item\em R-\/D Cost for an 4x4 Intra block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_acde656f13837575d3249bee21338be26}\label{rdopt_8c_acde656f13837575d3249bee21338be26}} 
+int \mbox{\hyperlink{rdopt_8c_acde656f13837575d3249bee21338be26}{Mode\+\_\+\+Decision\+\_\+for\+\_\+4x4\+Intra\+Blocks}} (int b8, int b4, double lambda, int $\ast$min\+\_\+cost)
+\begin{DoxyCompactList}\small\item\em Mode Decision for an 4x4 Intra block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a56139e51c3d5da7020919b0e7bb9ae81}\label{rdopt_8c_a56139e51c3d5da7020919b0e7bb9ae81}} 
+int \mbox{\hyperlink{rdopt_8c_a56139e51c3d5da7020919b0e7bb9ae81}{Mode\+\_\+\+Decision\+\_\+for\+\_\+8x8\+Intra\+Blocks}} (int b8, double lambda, int $\ast$cost)
+\begin{DoxyCompactList}\small\item\em Mode Decision for an 8x8 Intra block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a26e982c1ce570917adc4b094bda0d3a7}\label{rdopt_8c_a26e982c1ce570917adc4b094bda0d3a7}} 
+int \mbox{\hyperlink{rdopt_8c_a26e982c1ce570917adc4b094bda0d3a7}{Mode\+\_\+\+Decision\+\_\+for\+\_\+\+Intra4x4\+Macroblock}} (double lambda, int $\ast$cost)
+\begin{DoxyCompactList}\small\item\em 4x4 Intra mode decision for an macroblock \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a10da7bc1c09ab7c074daccba488e2420}\label{rdopt_8c_a10da7bc1c09ab7c074daccba488e2420}} 
+double \mbox{\hyperlink{rdopt_8c_a10da7bc1c09ab7c074daccba488e2420}{R\+D\+Cost\+\_\+for\+\_\+8x8blocks}} (int $\ast$cnt\+\_\+nonz, int $\ast$cbp\+\_\+blk, double lambda, int block, int mode, int pdir, int ref, int bwd\+\_\+ref)
+\begin{DoxyCompactList}\small\item\em R-\/D Cost for an 8x8 Partition. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a4d1ffde4d4fe84f217a61889cd3d4dac}\label{rdopt_8c_a4d1ffde4d4fe84f217a61889cd3d4dac}} 
+int \mbox{\hyperlink{rdopt_8c_a4d1ffde4d4fe84f217a61889cd3d4dac}{I16\+Offset}} (int cbp, int i16mode)
+\begin{DoxyCompactList}\small\item\em Gets mode offset for intra16x16 mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_afaa329d26b97397fd1a58a032cfb731f}\label{rdopt_8c_afaa329d26b97397fd1a58a032cfb731f}} 
+void \mbox{\hyperlink{rdopt_8c_afaa329d26b97397fd1a58a032cfb731f}{Set\+Modes\+And\+Refframe\+For\+Blocks}} (int mode)
+\begin{DoxyCompactList}\small\item\em Sets modes and reference frames for an macroblock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a3d579f9335f9d783980318b78a4be102}\label{rdopt_8c_a3d579f9335f9d783980318b78a4be102}} 
+void \mbox{\hyperlink{rdopt_8c_a3d579f9335f9d783980318b78a4be102}{Intra16x16\+\_\+\+Mode\+\_\+\+Decision}} (Macroblock $\ast$curr\+MB, int $\ast$i16mode)
+\begin{DoxyCompactList}\small\item\em Intra 16x16 mode decision. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a97eaefe34ca300d25c9a380a05cdc087}\label{rdopt_8c_a97eaefe34ca300d25c9a380a05cdc087}} 
+void \mbox{\hyperlink{rdopt_8c_a97eaefe34ca300d25c9a380a05cdc087}{Set\+Coeff\+And\+Reconstruction8x8}} (Macroblock $\ast$curr\+MB)
+\begin{DoxyCompactList}\small\item\em Sets Coefficients and reconstruction for an 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a2cdf3e28ee9080bfcc8d677686d9416c}\label{rdopt_8c_a2cdf3e28ee9080bfcc8d677686d9416c}} 
+void \mbox{\hyperlink{rdopt_8c_a2cdf3e28ee9080bfcc8d677686d9416c}{Set\+Motion\+Vectors\+MB}} (Macroblock $\ast$curr\+MB, int bframe)
+\begin{DoxyCompactList}\small\item\em Sets motion vectors for an macroblock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_afbec9042e28f2308ae0c717974cbada7}\label{rdopt_8c_afbec9042e28f2308ae0c717974cbada7}} 
+int \mbox{\hyperlink{rdopt_8c_afbec9042e28f2308ae0c717974cbada7}{R\+D\+Cost\+\_\+for\+\_\+macroblocks}} (double lambda, int mode, double $\ast$min\+\_\+rdcost)
+\begin{DoxyCompactList}\small\item\em R-\/D Cost for a macroblock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_ad5c3de597c66f9faf453efedf1dcee4f}\label{rdopt_8c_ad5c3de597c66f9faf453efedf1dcee4f}} 
+void \mbox{\hyperlink{rdopt_8c_ad5c3de597c66f9faf453efedf1dcee4f}{store\+\_\+macroblock\+\_\+parameters}} (int mode)
+\begin{DoxyCompactList}\small\item\em Store macroblock parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rdopt_8c_a51d14d20b88ed7a3ecfb6c2920902dde}{set\+\_\+stored\+\_\+macroblock\+\_\+parameters}} ()
+\begin{DoxyCompactList}\small\item\em Set stored macroblock parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a81e57a90512c93fe6367997e0f92ab2c}\label{rdopt_8c_a81e57a90512c93fe6367997e0f92ab2c}} 
+void \mbox{\hyperlink{rdopt_8c_a81e57a90512c93fe6367997e0f92ab2c}{Set\+Ref\+And\+Motion\+Vectors}} (int block, int mode, int pdir, int fwref, int bwref)
+\begin{DoxyCompactList}\small\item\em Set reference frames and motion vectors. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rdopt_8c_a917c0468b5819f343d4a7fde5e8f4c21}{field\+\_\+flag\+\_\+inference}} ()
+\begin{DoxyCompactList}\small\item\em skip macroblock field inference \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a0c15a986b192f49d6cea3889e56a0233}\label{rdopt_8c_a0c15a986b192f49d6cea3889e56a0233}} 
+void \mbox{\hyperlink{rdopt_8c_a0c15a986b192f49d6cea3889e56a0233}{encode\+\_\+one\+\_\+macroblock}} ()
+\begin{DoxyCompactList}\small\item\em Mode Decision for a macroblock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{rdopt_8c_a5603b71604acb1b3cbf8a5f1c5712d7c}\label{rdopt_8c_a5603b71604acb1b3cbf8a5f1c5712d7c}} 
+void {\bfseries set\+\_\+mbaff\+\_\+parameters} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a6ceeccca7e0fa98ff596701b2e536268}\label{rdopt_8c_a6ceeccca7e0fa98ff596701b2e536268}} 
+int {\bfseries QP}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a98076bc16266b8d42c1fbc1351529fa5}\label{rdopt_8c_a98076bc16266b8d42c1fbc1351529fa5}} 
+int {\bfseries Q\+P2}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a03e4a4b5910491668eea93398441bd57}\label{rdopt_8c_a03e4a4b5910491668eea93398441bd57}} 
+int {\bfseries D\+E\+L\+T\+A\+\_\+\+QP}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a287839edddf91e8322d8720d914e8328}\label{rdopt_8c_a287839edddf91e8322d8720d914e8328}} 
+int {\bfseries D\+E\+L\+T\+A\+\_\+\+Q\+P2}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a0a4e9ff5c1c9f92b04d7dc31decfb1b1}\label{rdopt_8c_a0a4e9ff5c1c9f92b04d7dc31decfb1b1}} 
+int {\bfseries diffy} \mbox{[}16\mbox{]}\mbox{[}16\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_af5c98a192fa606bd306d61247e209951}\label{rdopt_8c_af5c98a192fa606bd306d61247e209951}} 
+int {\bfseries Q\+P2\+Q\+U\+A\+NT} \mbox{[}40\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_af35089029d63dc3c8e734ade763face5}\label{rdopt_8c_af35089029d63dc3c8e734ade763face5}} 
+int {\bfseries best\+\_\+mode}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a88d395c71c576e00daca1493c3013398}\label{rdopt_8c_a88d395c71c576e00daca1493c3013398}} 
+int {\bfseries rec\+\_\+mbY} \mbox{[}16\mbox{]}\mbox{[}16\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a6a9c6bfac8819dee35045ecbb90322cb}\label{rdopt_8c_a6a9c6bfac8819dee35045ecbb90322cb}} 
+int {\bfseries rec\+\_\+mbU} \mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_acc9d0054394423a1c50563a82a18ae3e}\label{rdopt_8c_acc9d0054394423a1c50563a82a18ae3e}} 
+int {\bfseries rec\+\_\+mbV} \mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a0a0e8b5a2a4dac7678ce2254573d7725}\label{rdopt_8c_a0a0e8b5a2a4dac7678ce2254573d7725}} 
+int {\bfseries rec\+\_\+mb\+Y8x8} \mbox{[}16\mbox{]}\mbox{[}16\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a0988420a1c0153b4d101d17ef79b496f}\label{rdopt_8c_a0988420a1c0153b4d101d17ef79b496f}} 
+int {\bfseries mpr8x8} \mbox{[}16\mbox{]}\mbox{[}16\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a4c0e6a114bcf6eb52387db2e5d5e23b4}\label{rdopt_8c_a4c0e6a114bcf6eb52387db2e5d5e23b4}} 
+int $\ast$$\ast$$\ast$$\ast$ {\bfseries cof\+AC} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a81f9a6180be066ec9b49547d44839529}\label{rdopt_8c_a81f9a6180be066ec9b49547d44839529}} 
+int $\ast$$\ast$$\ast$$\ast$ {\bfseries cof\+A\+C8x8} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_aa7ac4a3a3bf018dca3a930b120f8b4cf}\label{rdopt_8c_aa7ac4a3a3bf018dca3a930b120f8b4cf}} 
+int $\ast$$\ast$$\ast$ {\bfseries cof\+DC} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a59cb23ef07e49321489284532661b9e8}\label{rdopt_8c_a59cb23ef07e49321489284532661b9e8}} 
+int $\ast$$\ast$ {\bfseries cof\+A\+C4x4} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_aa2325424afcc07b5306917b8a44fbad4}\label{rdopt_8c_aa2325424afcc07b5306917b8a44fbad4}} 
+int $\ast$$\ast$$\ast$$\ast$ {\bfseries cof\+A\+C4x4intern} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a54a0b990ee5b2311ee8e021723c2c026}\label{rdopt_8c_a54a0b990ee5b2311ee8e021723c2c026}} 
+int {\bfseries cbp}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a1a8be254ebfc5449749db20c2d2ffef0}\label{rdopt_8c_a1a8be254ebfc5449749db20c2d2ffef0}} 
+int {\bfseries cbp8x8}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a05da20065e0d8ca3cbc5226815c021f3}\label{rdopt_8c_a05da20065e0d8ca3cbc5226815c021f3}} 
+int {\bfseries cnt\+\_\+nonz\+\_\+8x8}
+\item 
+\mbox{\Hypertarget{rdopt_8c_ab7cfb89f5d093c0ca1498815445f70c1}\label{rdopt_8c_ab7cfb89f5d093c0ca1498815445f70c1}} 
+int {\bfseries cbp\+\_\+blk}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a396e2bb798584724e5e9cc4d68689def}\label{rdopt_8c_a396e2bb798584724e5e9cc4d68689def}} 
+int {\bfseries cbp\+\_\+blk8x8}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a86a847c504a10eaca7b07bfab21cdb04}\label{rdopt_8c_a86a847c504a10eaca7b07bfab21cdb04}} 
+int {\bfseries frefframe} \mbox{[}4\mbox{]}\mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a12f3f45472278cd0e8bf26f37369a0d1}\label{rdopt_8c_a12f3f45472278cd0e8bf26f37369a0d1}} 
+int {\bfseries brefframe} \mbox{[}4\mbox{]}\mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_ad8e4c3630be3604f6c7a41c1dc460b16}\label{rdopt_8c_ad8e4c3630be3604f6c7a41c1dc460b16}} 
+int {\bfseries b8mode} \mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a82c491b643da47b54af8ab71faddc9ff}\label{rdopt_8c_a82c491b643da47b54af8ab71faddc9ff}} 
+int {\bfseries b8pdir} \mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a32237bbd76e9ea9c190a0ef76566b078}\label{rdopt_8c_a32237bbd76e9ea9c190a0ef76566b078}} 
+int {\bfseries best8x8mode} \mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_ac6e14717a858ead71fad2c2a4ac5028d}\label{rdopt_8c_ac6e14717a858ead71fad2c2a4ac5028d}} 
+int {\bfseries best8x8pdir} \mbox{[}M\+A\+X\+M\+O\+DE\mbox{]}\mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_af7f0edd125fa51f21f8f3dd9ad00f3f4}\label{rdopt_8c_af7f0edd125fa51f21f8f3dd9ad00f3f4}} 
+int {\bfseries best8x8fwref} \mbox{[}M\+A\+X\+M\+O\+DE\mbox{]}\mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_af22e4f6b54d538d326b8687d7e036176}\label{rdopt_8c_af22e4f6b54d538d326b8687d7e036176}} 
+int {\bfseries b8\+\_\+ipredmode} \mbox{[}16\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_abbe0b9855775d15b2545bdcf15e3b50e}\label{rdopt_8c_abbe0b9855775d15b2545bdcf15e3b50e}} 
+int {\bfseries b8\+\_\+intra\+\_\+pred\+\_\+modes} \mbox{[}16\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a89828be114f343c649581e79006d66d3}\label{rdopt_8c_a89828be114f343c649581e79006d66d3}} 
+C\+Sptr {\bfseries cs\+\_\+mb} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a0bbdd58f2f75148d9f3c21bb8936d50c}\label{rdopt_8c_a0bbdd58f2f75148d9f3c21bb8936d50c}} 
+C\+Sptr {\bfseries cs\+\_\+b8} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a4efc726fc84777d84ec1a3614b9fef5d}\label{rdopt_8c_a4efc726fc84777d84ec1a3614b9fef5d}} 
+C\+Sptr {\bfseries cs\+\_\+cm} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a62c97210e1ae3ec8f027b68ce9bfe74c}\label{rdopt_8c_a62c97210e1ae3ec8f027b68ce9bfe74c}} 
+C\+Sptr {\bfseries cs\+\_\+imb} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a6fc82aba93c517e201e67172d142ca9c}\label{rdopt_8c_a6fc82aba93c517e201e67172d142ca9c}} 
+C\+Sptr {\bfseries cs\+\_\+ib8} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a853a4af31526d68387cfc469868f013e}\label{rdopt_8c_a853a4af31526d68387cfc469868f013e}} 
+C\+Sptr {\bfseries cs\+\_\+ib4} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_a3eff0e2fb0c1ce86c9ea58db9bdde032}\label{rdopt_8c_a3eff0e2fb0c1ce86c9ea58db9bdde032}} 
+C\+Sptr {\bfseries cs\+\_\+pc} =N\+U\+LL
+\item 
+\mbox{\Hypertarget{rdopt_8c_aef92d7b53c2bdd263773178231d6c6df}\label{rdopt_8c_aef92d7b53c2bdd263773178231d6c6df}} 
+int {\bfseries best\+\_\+c\+\_\+imode}
+\item 
+\mbox{\Hypertarget{rdopt_8c_ab7648ef752e826e6732237ce8e07c031}\label{rdopt_8c_ab7648ef752e826e6732237ce8e07c031}} 
+int {\bfseries best\+\_\+i16offset}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a0e0a3334403f4767142da9b5743a46ea}\label{rdopt_8c_a0e0a3334403f4767142da9b5743a46ea}} 
+int {\bfseries best8x8bwref} \mbox{[}M\+A\+X\+M\+O\+DE\mbox{]}\mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{rdopt_8c_a59ceb3094a97245fb8127259874ddd16}\label{rdopt_8c_a59ceb3094a97245fb8127259874ddd16}} 
+int {\bfseries abp\+\_\+typeframe} \mbox{[}4\mbox{]}\mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rate-\/\+Distortion optimized mode decision. 
+
+\begin{DoxyAuthor}{Author}
+Heiko Schwarz \href{mailto:hschwarz@hhi.de}{\texttt{ hschwarz@hhi.\+de}}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+
+\begin{DoxyEnumerate}
+\item April 2001 
+\end{DoxyEnumerate}
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rdopt_8c_a3dbf6aea5962a6419e6e51d5ab826c48}\label{rdopt_8c_a3dbf6aea5962a6419e6e51d5ab826c48}} 
+\index{rdopt.c@{rdopt.c}!CheckReliabilityOfRef@{CheckReliabilityOfRef}}
+\index{CheckReliabilityOfRef@{CheckReliabilityOfRef}!rdopt.c@{rdopt.c}}
+\doxysubsubsection{\texorpdfstring{CheckReliabilityOfRef()}{CheckReliabilityOfRef()}}
+{\footnotesize\ttfamily int Check\+Reliability\+Of\+Ref (\begin{DoxyParamCaption}\item[{int}]{block,  }\item[{int}]{list\+\_\+idx,  }\item[{int}]{ref,  }\item[{int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Checks if a given reference frame is reliable for the current macroblock, given the motion vectors that the motion search has returned. 
+
+\begin{DoxyReturn}{Returns}
+If the return value is 1, the reference frame is reliable. If it is 0, then it is not reliable.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A specific area in each reference frame is assumed to be unreliable if the same area has been intra-\/refreshed in a subsequent frame. The information about intra-\/refreshed areas is kept in the pixel\+\_\+map. 
+\end{DoxyNote}
+\mbox{\Hypertarget{rdopt_8c_a917c0468b5819f343d4a7fde5e8f4c21}\label{rdopt_8c_a917c0468b5819f343d4a7fde5e8f4c21}} 
+\index{rdopt.c@{rdopt.c}!field\_flag\_inference@{field\_flag\_inference}}
+\index{field\_flag\_inference@{field\_flag\_inference}!rdopt.c@{rdopt.c}}
+\doxysubsubsection{\texorpdfstring{field\_flag\_inference()}{field\_flag\_inference()}}
+{\footnotesize\ttfamily int field\+\_\+flag\+\_\+inference (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+skip macroblock field inference 
+
+\begin{DoxyReturn}{Returns}
+inferred field flag 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rdopt_8c_a51d14d20b88ed7a3ecfb6c2920902dde}\label{rdopt_8c_a51d14d20b88ed7a3ecfb6c2920902dde}} 
+\index{rdopt.c@{rdopt.c}!set\_stored\_macroblock\_parameters@{set\_stored\_macroblock\_parameters}}
+\index{set\_stored\_macroblock\_parameters@{set\_stored\_macroblock\_parameters}!rdopt.c@{rdopt.c}}
+\doxysubsubsection{\texorpdfstring{set\_stored\_macroblock\_parameters()}{set\_stored\_macroblock\_parameters()}}
+{\footnotesize\ttfamily void set\+\_\+stored\+\_\+macroblock\+\_\+parameters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set stored macroblock parameters. 
+
+save the MB Mode of every macroblock\mbox{\Hypertarget{rdopt_8c_a5183e10e4366b2a27ce5a8c4d53e34bc}\label{rdopt_8c_a5183e10e4366b2a27ce5a8c4d53e34bc}} 
+\index{rdopt.c@{rdopt.c}!UpdatePixelMap@{UpdatePixelMap}}
+\index{UpdatePixelMap@{UpdatePixelMap}!rdopt.c@{rdopt.c}}
+\doxysubsubsection{\texorpdfstring{UpdatePixelMap()}{UpdatePixelMap()}}
+{\footnotesize\ttfamily void Update\+Pixel\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the pixel map that shows, which reference frames are reliable for each M\+B-\/area of the picture. 
+
+\begin{DoxyNote}{Note}
+The new values of the pixel\+\_\+map are taken from the temporary buffer refresh\+\_\+map 
+\end{DoxyNote}

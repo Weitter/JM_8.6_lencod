@@ -1,0 +1,166 @@
+\hypertarget{mb__access_8c}{}\doxysection{mb\+\_\+access.\+c File Reference}
+\label{mb__access_8c}\index{mb\_access.c@{mb\_access.c}}
+
+
+Functions for macroblock neighborhoods.  
+
+
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mb__access_8c_a306b26bb5722e027cf93426ae1c92b4b}\label{mb__access_8c_a306b26bb5722e027cf93426ae1c92b4b}} 
+int \mbox{\hyperlink{mb__access_8c_a306b26bb5722e027cf93426ae1c92b4b}{mb\+\_\+is\+\_\+available}} (int mb\+Addr, int curr\+Mb\+Addr)
+\begin{DoxyCompactList}\small\item\em returns 1 if the macroblock at the given address is available \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mb__access_8c_a144a13391a28ed28f70414c5e08786b9}\label{mb__access_8c_a144a13391a28ed28f70414c5e08786b9}} 
+void \mbox{\hyperlink{mb__access_8c_a144a13391a28ed28f70414c5e08786b9}{Check\+Availability\+Of\+Neighbors}} ()
+\begin{DoxyCompactList}\small\item\em Checks the availability of neighboring macroblocks of the current macroblock for prediction and context determination;. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mb__access_8c_ab777a807b91c4b61e9d37441cbe74ed0}\label{mb__access_8c_ab777a807b91c4b61e9d37441cbe74ed0}} 
+void \mbox{\hyperlink{mb__access_8c_ab777a807b91c4b61e9d37441cbe74ed0}{get\+\_\+mb\+\_\+block\+\_\+pos}} (int mb\+\_\+addr, int $\ast$x, int $\ast$y)
+\begin{DoxyCompactList}\small\item\em returns the x and y macroblock coordinates for a given Mb\+Address \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mb__access_8c_a78026a82a9a1fd41a043bea2b2551e5b}\label{mb__access_8c_a78026a82a9a1fd41a043bea2b2551e5b}} 
+void \mbox{\hyperlink{mb__access_8c_a78026a82a9a1fd41a043bea2b2551e5b}{get\+\_\+mb\+\_\+pos}} (int mb\+\_\+addr, int $\ast$x, int $\ast$y)
+\begin{DoxyCompactList}\small\item\em returns the x and y sample coordinates for a given Mb\+Address \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mb__access_8c_af268950bd6d647ab77e73477e670341f}{get\+Non\+Aff\+Neighbour}} (unsigned int curr\+\_\+mb\+\_\+nr, int xN, int yN, int luma, Pixel\+Pos $\ast$pix)
+\begin{DoxyCompactList}\small\item\em get neighbouring positions for non-\/aff coding \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mb__access_8c_a5b746ec9d9118aaa52de2b6be681d2f0}{get\+Aff\+Neighbour}} (unsigned int curr\+\_\+mb\+\_\+nr, int xN, int yN, int luma, Pixel\+Pos $\ast$pix)
+\begin{DoxyCompactList}\small\item\em get neighbouring positions for aff coding \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mb__access_8c_a81018b963bf386a0a3321bbd75508b6b}{get\+Neighbour}} (int curr\+\_\+mb\+\_\+nr, int xN, int yN, int luma, Pixel\+Pos $\ast$pix)
+\begin{DoxyCompactList}\small\item\em get neighbouring positions. MB A\+FF is automatically used from img structure \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mb__access_8c_acd439c050f8ee194fb7b5a618b040981}{get\+Luma4x4\+Neighbour}} (int curr\+\_\+mb\+\_\+nr, int block\+\_\+x, int block\+\_\+y, int rel\+\_\+x, int rel\+\_\+y, Pixel\+Pos $\ast$pix)
+\begin{DoxyCompactList}\small\item\em get neighbouring get neighbouring 4x4 luma block \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mb__access_8c_abea850c51442381789256dc084642814}{get\+Chroma4x4\+Neighbour}} (int curr\+\_\+mb\+\_\+nr, int block\+\_\+x, int block\+\_\+y, int rel\+\_\+x, int rel\+\_\+y, Pixel\+Pos $\ast$pix)
+\begin{DoxyCompactList}\small\item\em get neighbouring 4x4 chroma block \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for macroblock neighborhoods. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Karsten Sühring \href{mailto:suehring@hhi.de}{\texttt{ suehring@hhi.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mb__access_8c_a5b746ec9d9118aaa52de2b6be681d2f0}\label{mb__access_8c_a5b746ec9d9118aaa52de2b6be681d2f0}} 
+\index{mb\_access.c@{mb\_access.c}!getAffNeighbour@{getAffNeighbour}}
+\index{getAffNeighbour@{getAffNeighbour}!mb\_access.c@{mb\_access.c}}
+\doxysubsubsection{\texorpdfstring{getAffNeighbour()}{getAffNeighbour()}}
+{\footnotesize\ttfamily void get\+Aff\+Neighbour (\begin{DoxyParamCaption}\item[{unsigned int}]{curr\+\_\+mb\+\_\+nr,  }\item[{int}]{xN,  }\item[{int}]{yN,  }\item[{int}]{luma,  }\item[{Pixel\+Pos $\ast$}]{pix }\end{DoxyParamCaption})}
+
+
+
+get neighbouring positions for aff coding 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+mb\+\_\+nr} & current macroblock number (decoding order) \\
+\hline
+{\em xN} & input x position \\
+\hline
+{\em yN} & input y position \\
+\hline
+{\em luma} & 1 if luma coding, 0 for chroma \\
+\hline
+{\em pix} & returns position informations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mb__access_8c_abea850c51442381789256dc084642814}\label{mb__access_8c_abea850c51442381789256dc084642814}} 
+\index{mb\_access.c@{mb\_access.c}!getChroma4x4Neighbour@{getChroma4x4Neighbour}}
+\index{getChroma4x4Neighbour@{getChroma4x4Neighbour}!mb\_access.c@{mb\_access.c}}
+\doxysubsubsection{\texorpdfstring{getChroma4x4Neighbour()}{getChroma4x4Neighbour()}}
+{\footnotesize\ttfamily void get\+Chroma4x4\+Neighbour (\begin{DoxyParamCaption}\item[{int}]{curr\+\_\+mb\+\_\+nr,  }\item[{int}]{block\+\_\+x,  }\item[{int}]{block\+\_\+y,  }\item[{int}]{rel\+\_\+x,  }\item[{int}]{rel\+\_\+y,  }\item[{Pixel\+Pos $\ast$}]{pix }\end{DoxyParamCaption})}
+
+
+
+get neighbouring 4x4 chroma block 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+mb\+\_\+nr} & current macroblock number (decoding order) \\
+\hline
+{\em block\+\_\+x} & input x block position \\
+\hline
+{\em block\+\_\+y} & input y block position \\
+\hline
+{\em rel\+\_\+x} & relative x position of neighbor \\
+\hline
+{\em rel\+\_\+y} & relative y position of neighbor \\
+\hline
+{\em pix} & returns position informations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mb__access_8c_acd439c050f8ee194fb7b5a618b040981}\label{mb__access_8c_acd439c050f8ee194fb7b5a618b040981}} 
+\index{mb\_access.c@{mb\_access.c}!getLuma4x4Neighbour@{getLuma4x4Neighbour}}
+\index{getLuma4x4Neighbour@{getLuma4x4Neighbour}!mb\_access.c@{mb\_access.c}}
+\doxysubsubsection{\texorpdfstring{getLuma4x4Neighbour()}{getLuma4x4Neighbour()}}
+{\footnotesize\ttfamily void get\+Luma4x4\+Neighbour (\begin{DoxyParamCaption}\item[{int}]{curr\+\_\+mb\+\_\+nr,  }\item[{int}]{block\+\_\+x,  }\item[{int}]{block\+\_\+y,  }\item[{int}]{rel\+\_\+x,  }\item[{int}]{rel\+\_\+y,  }\item[{Pixel\+Pos $\ast$}]{pix }\end{DoxyParamCaption})}
+
+
+
+get neighbouring get neighbouring 4x4 luma block 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+mb\+\_\+nr} & current macroblock number (decoding order) \\
+\hline
+{\em block\+\_\+x} & input x block position \\
+\hline
+{\em block\+\_\+y} & input y block position \\
+\hline
+{\em rel\+\_\+x} & relative x position of neighbor \\
+\hline
+{\em rel\+\_\+y} & relative y position of neighbor \\
+\hline
+{\em pix} & returns position informations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mb__access_8c_a81018b963bf386a0a3321bbd75508b6b}\label{mb__access_8c_a81018b963bf386a0a3321bbd75508b6b}} 
+\index{mb\_access.c@{mb\_access.c}!getNeighbour@{getNeighbour}}
+\index{getNeighbour@{getNeighbour}!mb\_access.c@{mb\_access.c}}
+\doxysubsubsection{\texorpdfstring{getNeighbour()}{getNeighbour()}}
+{\footnotesize\ttfamily void get\+Neighbour (\begin{DoxyParamCaption}\item[{int}]{curr\+\_\+mb\+\_\+nr,  }\item[{int}]{xN,  }\item[{int}]{yN,  }\item[{int}]{luma,  }\item[{Pixel\+Pos $\ast$}]{pix }\end{DoxyParamCaption})}
+
+
+
+get neighbouring positions. MB A\+FF is automatically used from img structure 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+mb\+\_\+nr} & current macroblock number (decoding order) \\
+\hline
+{\em xN} & input x position \\
+\hline
+{\em yN} & input y position \\
+\hline
+{\em luma} & 1 if luma coding, 0 for chroma \\
+\hline
+{\em pix} & returns position informations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mb__access_8c_af268950bd6d647ab77e73477e670341f}\label{mb__access_8c_af268950bd6d647ab77e73477e670341f}} 
+\index{mb\_access.c@{mb\_access.c}!getNonAffNeighbour@{getNonAffNeighbour}}
+\index{getNonAffNeighbour@{getNonAffNeighbour}!mb\_access.c@{mb\_access.c}}
+\doxysubsubsection{\texorpdfstring{getNonAffNeighbour()}{getNonAffNeighbour()}}
+{\footnotesize\ttfamily void get\+Non\+Aff\+Neighbour (\begin{DoxyParamCaption}\item[{unsigned int}]{curr\+\_\+mb\+\_\+nr,  }\item[{int}]{xN,  }\item[{int}]{yN,  }\item[{int}]{luma,  }\item[{Pixel\+Pos $\ast$}]{pix }\end{DoxyParamCaption})}
+
+
+
+get neighbouring positions for non-\/aff coding 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+mb\+\_\+nr} & current macroblock number (decoding order) \\
+\hline
+{\em xN} & input x position \\
+\hline
+{\em yN} & input y position \\
+\hline
+{\em luma} & 1 if luma coding, 0 for chroma \\
+\hline
+{\em pix} & returns position informations \\
+\hline
+\end{DoxyParams}

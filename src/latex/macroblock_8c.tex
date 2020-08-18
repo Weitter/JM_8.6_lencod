@@ -1,0 +1,330 @@
+\hypertarget{macroblock_8c}{}\doxysection{macroblock.\+c File Reference}
+\label{macroblock_8c}\index{macroblock.c@{macroblock.c}}
+
+
+Process one macroblock.  
+
+
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}elements.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}macroblock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}refbuf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fmo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vlc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mb\+\_\+access.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ratectl.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cabac.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{macroblock_8c_a40ad1f9df9e0a11d65d90024ea5582b1}{set\+\_\+\+M\+B\+\_\+parameters}} (int mb\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em updates the coordinates for the next macroblock to be processed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a22ad40a193713ff92a0b7a790ed455c8}\label{macroblock_8c_a22ad40a193713ff92a0b7a790ed455c8}} 
+int {\bfseries clip1a} (int a)
+\item 
+\mbox{\Hypertarget{macroblock_8c_a28e2c8d5a2b6080a15fe90bbc988f507}\label{macroblock_8c_a28e2c8d5a2b6080a15fe90bbc988f507}} 
+void \mbox{\hyperlink{macroblock_8c_a28e2c8d5a2b6080a15fe90bbc988f507}{proceed2next\+Macroblock}} ()
+\begin{DoxyCompactList}\small\item\em updates the coordinates and statistics parameter for the next macroblock \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_af2da5d686cbd9b13377be3a2cc5700d0}\label{macroblock_8c_af2da5d686cbd9b13377be3a2cc5700d0}} 
+void \mbox{\hyperlink{macroblock_8c_af2da5d686cbd9b13377be3a2cc5700d0}{start\+\_\+macroblock}} (int mb\+\_\+addr, int mb\+\_\+field)
+\begin{DoxyCompactList}\small\item\em initializes the current macroblock \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{macroblock_8c_a8d0ad53b9e4d4e96db01e2aec561902f}{terminate\+\_\+macroblock}} (Boolean $\ast$end\+\_\+of\+\_\+slice, Boolean $\ast$recode\+\_\+macroblock)
+\begin{DoxyCompactList}\small\item\em terminates processing of the current macroblock depending on the chosen slice mode \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{macroblock_8c_a65682cbd6e9f38e4d830a00e1289679c}{slice\+\_\+too\+\_\+big}} (int rlc\+\_\+bits)
+\begin{DoxyCompactList}\small\item\em For Slice Mode 2\+: Checks if one partition of one slice exceeds the allowed size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a3da46770166e83a5372758e2d85190ec}\label{macroblock_8c_a3da46770166e83a5372758e2d85190ec}} 
+void \mbox{\hyperlink{macroblock_8c_a3da46770166e83a5372758e2d85190ec}{One\+Component\+Luma\+Prediction4x4}} (int $\ast$mpred, int pic\+\_\+pix\+\_\+x, int pic\+\_\+pix\+\_\+y, int $\ast$mv, int ref, Storable\+Picture $\ast$$\ast$list)
+\begin{DoxyCompactList}\small\item\em Predict one component of a 4x4 Luma block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_abe844436034feb8d91e7e7ebb6f64d0b}\label{macroblock_8c_abe844436034feb8d91e7e7ebb6f64d0b}} 
+void \mbox{\hyperlink{macroblock_8c_abe844436034feb8d91e7e7ebb6f64d0b}{copyblock4x4}} (int $\ast$mpred, int block\mbox{[}B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE\mbox{]}\mbox{[}B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE\mbox{]})
+\begin{DoxyCompactList}\small\item\em copy foward/backward prediction values of one component of a 4x4 Luma block \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a9fd7c2ac9a2a73d4004b01f078696f61}\label{macroblock_8c_a9fd7c2ac9a2a73d4004b01f078696f61}} 
+void \mbox{\hyperlink{macroblock_8c_a9fd7c2ac9a2a73d4004b01f078696f61}{Luma\+Prediction4x4}} (int block\+\_\+x, int block\+\_\+y, int p\+\_\+dir, int fw\+\_\+mode, int bw\+\_\+mode, int fw\+\_\+ref\+\_\+idx, int bw\+\_\+ref\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Predict one 4x4 Luma block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_acc32838f765388dcf551c6fd828cfaa0}\label{macroblock_8c_acc32838f765388dcf551c6fd828cfaa0}} 
+int \mbox{\hyperlink{macroblock_8c_acc32838f765388dcf551c6fd828cfaa0}{Luma\+Residual\+Coding8x8}} (int $\ast$cbp, int $\ast$cbp\+\_\+blk, int block8x8, int p\+\_\+dir, int fw\+\_\+mode, int bw\+\_\+mode, int fw\+\_\+refframe, int bw\+\_\+refframe)
+\begin{DoxyCompactList}\small\item\em Residual Coding of an 8x8 Luma block (not for intra) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a87dfa45c1fab6b93e5a68c728cbeecd1}\label{macroblock_8c_a87dfa45c1fab6b93e5a68c728cbeecd1}} 
+void \mbox{\hyperlink{macroblock_8c_a87dfa45c1fab6b93e5a68c728cbeecd1}{Set\+Modes\+And\+Refframe}} (int b8, int $\ast$p\+\_\+dir, int $\ast$fw\+\_\+mode, int $\ast$bw\+\_\+mode, int $\ast$fw\+\_\+ref, int $\ast$bw\+\_\+ref)
+\begin{DoxyCompactList}\small\item\em Set mode parameters and reference frames for an 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_acdc3b26c4b52da8db5885aead0f0a6d7}\label{macroblock_8c_acdc3b26c4b52da8db5885aead0f0a6d7}} 
+void \mbox{\hyperlink{macroblock_8c_acdc3b26c4b52da8db5885aead0f0a6d7}{Luma\+Residual\+Coding}} ()
+\begin{DoxyCompactList}\small\item\em Residual Coding of a Luma macroblock (not for intra) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{macroblock_8c_a1eda8862315a769ff2a4d39498d1b9de}{One\+Component\+Chroma\+Prediction4x4}} (int $\ast$mpred, int block\+\_\+c\+\_\+x, int block\+\_\+c\+\_\+y, int $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$mv, int list\+\_\+idx, int ref, int blocktype, int uv)
+\begin{DoxyCompactList}\small\item\em Predict one component of a chroma 4x4 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_ad4583b05710ffc7c6faaf7a0b7be0de7}\label{macroblock_8c_ad4583b05710ffc7c6faaf7a0b7be0de7}} 
+void \mbox{\hyperlink{macroblock_8c_ad4583b05710ffc7c6faaf7a0b7be0de7}{Intra\+Chroma\+Prediction4x4}} (int uv, int block\+\_\+x, int block\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Predict an intra chroma 4x4 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a456e9931e5b158a491d9c2fc7ad0d440}\label{macroblock_8c_a456e9931e5b158a491d9c2fc7ad0d440}} 
+void \mbox{\hyperlink{macroblock_8c_a456e9931e5b158a491d9c2fc7ad0d440}{Chroma\+Prediction4x4}} (int uv, int block\+\_\+x, int block\+\_\+y, int p\+\_\+dir, int fw\+\_\+mode, int bw\+\_\+mode, int fw\+\_\+ref\+\_\+idx, int bw\+\_\+ref\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Predict one chroma 4x4 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a4556d5fe29b8ca5068364f8d73ef3876}\label{macroblock_8c_a4556d5fe29b8ca5068364f8d73ef3876}} 
+void \mbox{\hyperlink{macroblock_8c_a4556d5fe29b8ca5068364f8d73ef3876}{Chroma\+Residual\+Coding}} (int $\ast$cr\+\_\+cbp)
+\begin{DoxyCompactList}\small\item\em Chroma residual coding for an macroblock. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{macroblock_8c_a7b159825494f1a704c147637872b9e31}{Intra\+Chroma\+Prediction8x8}} (int $\ast$mb\+\_\+up, int $\ast$mb\+\_\+left, int $\ast$mb\+\_\+up\+\_\+left)
+\begin{DoxyCompactList}\small\item\em Predict an intra chroma 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a6ea86136d2921f49310fb41a45f86307}\label{macroblock_8c_a6ea86136d2921f49310fb41a45f86307}} 
+int \mbox{\hyperlink{macroblock_8c_a6ea86136d2921f49310fb41a45f86307}{Zero\+Ref}} (Macroblock $\ast$curr\+MB)
+\begin{DoxyCompactList}\small\item\em Check if all reference frames for a macroblock are zero. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_aa076d9a7e40e6b99dc979c0d9d0c7b9f}\label{macroblock_8c_aa076d9a7e40e6b99dc979c0d9d0c7b9f}} 
+int \mbox{\hyperlink{macroblock_8c_aa076d9a7e40e6b99dc979c0d9d0c7b9f}{M\+B\+Type2\+Value}} (Macroblock $\ast$curr\+MB)
+\begin{DoxyCompactList}\small\item\em Converts macroblock type to coding value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a9ae5a17093e6df9c6014ffddec731810}\label{macroblock_8c_a9ae5a17093e6df9c6014ffddec731810}} 
+int \mbox{\hyperlink{macroblock_8c_a9ae5a17093e6df9c6014ffddec731810}{write\+Intra4x4\+Modes}} (int only\+\_\+this\+\_\+block)
+\begin{DoxyCompactList}\small\item\em Writes intra prediction modes for an 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a5677e901f4a9ffde44e6faaa76deca86}\label{macroblock_8c_a5677e901f4a9ffde44e6faaa76deca86}} 
+int \mbox{\hyperlink{macroblock_8c_a5677e901f4a9ffde44e6faaa76deca86}{B8\+Mode2\+Value}} (int b8mode, int b8pdir)
+\begin{DoxyCompactList}\small\item\em Converts 8x8 block tyoe to coding value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a22f61b905bbbe545c695e6af60b32748}\label{macroblock_8c_a22f61b905bbbe545c695e6af60b32748}} 
+int \mbox{\hyperlink{macroblock_8c_a22f61b905bbbe545c695e6af60b32748}{write\+M\+B\+Header}} (int rdopt)
+\begin{DoxyCompactList}\small\item\em Codes macroblock header. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a5dd0b66a4868906d01650cd00e04b106}\label{macroblock_8c_a5dd0b66a4868906d01650cd00e04b106}} 
+void {\bfseries write\+\_\+terminating\+\_\+bit} (short bit)
+\item 
+\mbox{\Hypertarget{macroblock_8c_a33560aef9dc89a7d2860ce731b4b0474}\label{macroblock_8c_a33560aef9dc89a7d2860ce731b4b0474}} 
+int \mbox{\hyperlink{macroblock_8c_a33560aef9dc89a7d2860ce731b4b0474}{write\+Chroma\+Intra\+Pred\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Write chroma intra prediction mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a95afe91622a3a5af8d95784f61a45928}\label{macroblock_8c_a95afe91622a3a5af8d95784f61a45928}} 
+void {\bfseries set\+\_\+last\+\_\+dquant} ()
+\item 
+\mbox{\Hypertarget{macroblock_8c_a8201f36bf4eea27fdb9204c4ccee8bd9}\label{macroblock_8c_a8201f36bf4eea27fdb9204c4ccee8bd9}} 
+void \mbox{\hyperlink{macroblock_8c_a8201f36bf4eea27fdb9204c4ccee8bd9}{write\+\_\+one\+\_\+macroblock}} (int eos\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em Passes the chosen syntax elements to the N\+AL. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a2b3e4be3e7f30c4dd9c5cf12df81a69c}\label{macroblock_8c_a2b3e4be3e7f30c4dd9c5cf12df81a69c}} 
+int \mbox{\hyperlink{macroblock_8c_a2b3e4be3e7f30c4dd9c5cf12df81a69c}{B\+Type2\+Ctx\+Ref}} (int btype)
+\begin{DoxyCompactList}\small\item\em Sets context for reference frame parameter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a68047a9154522f8945eab6b613f624ba}\label{macroblock_8c_a68047a9154522f8945eab6b613f624ba}} 
+int \mbox{\hyperlink{macroblock_8c_a68047a9154522f8945eab6b613f624ba}{write\+Reference\+Frame}} (int mode, int i, int j, int fwd\+\_\+flag, int ref)
+\begin{DoxyCompactList}\small\item\em Codes the reference frame. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a4828a672968328a47f04b31fe9c5a70f}\label{macroblock_8c_a4828a672968328a47f04b31fe9c5a70f}} 
+int \mbox{\hyperlink{macroblock_8c_a4828a672968328a47f04b31fe9c5a70f}{write\+Motion\+Vector8x8}} (int i0, int j0, int i1, int j1, int refframe, int list\+\_\+idx, int mv\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em Writes motion vectors of an 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_aba59899f3c5ffa8475623127cb6f4c31}\label{macroblock_8c_aba59899f3c5ffa8475623127cb6f4c31}} 
+int \mbox{\hyperlink{macroblock_8c_aba59899f3c5ffa8475623127cb6f4c31}{write\+Motion\+Info2\+N\+AL}} ()
+\begin{DoxyCompactList}\small\item\em Writes motion info. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_ab0ddfed123ba89cb659f91dad01ed837}\label{macroblock_8c_ab0ddfed123ba89cb659f91dad01ed837}} 
+int \mbox{\hyperlink{macroblock_8c_ab0ddfed123ba89cb659f91dad01ed837}{write\+Chroma\+Coeff}} ()
+\begin{DoxyCompactList}\small\item\em Writes chrominance coefficients. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_ac289fc42489c2f579a993551e3e1890e}\label{macroblock_8c_ac289fc42489c2f579a993551e3e1890e}} 
+int \mbox{\hyperlink{macroblock_8c_ac289fc42489c2f579a993551e3e1890e}{write\+Luma\+Coeff4x4\+\_\+\+C\+A\+B\+AC}} (int b8, int b4, int intra4x4mode)
+\begin{DoxyCompactList}\small\item\em Writes Luma coeff of an 4x4 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a26370441a3913e78a27554e0ab726ea5}\label{macroblock_8c_a26370441a3913e78a27554e0ab726ea5}} 
+int \mbox{\hyperlink{macroblock_8c_a26370441a3913e78a27554e0ab726ea5}{write\+Luma\+Coeff8x8}} (int block8x8, int intra4x4mode)
+\begin{DoxyCompactList}\small\item\em Writes Luma Coeff of an 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{macroblock_8c_a17a57dcad3cb88e38df637f9dfec86e4}\label{macroblock_8c_a17a57dcad3cb88e38df637f9dfec86e4}} 
+int \mbox{\hyperlink{macroblock_8c_a17a57dcad3cb88e38df637f9dfec86e4}{write\+C\+B\+Pand\+Luma\+Coeff}} ()
+\begin{DoxyCompactList}\small\item\em Writes C\+BP, D\+Q\+U\+A\+NT, and Luma Coefficients of an macroblock. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{macroblock_8c_a6dbdaf6e66bcad9c64d6188df58198d9}{predict\+\_\+nnz}} (int i, int j)
+\begin{DoxyCompactList}\small\item\em Get the Prediction from the Neighboring Blocks for Number of Nonzero Coefficients. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{macroblock_8c_a6706422cff78d878f16e941f25319e51}{predict\+\_\+nnz\+\_\+chroma}} (int i, int j)
+\begin{DoxyCompactList}\small\item\em Get the Prediction from the Neighboring Blocks for Number of Nonzero Coefficients. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{macroblock_8c_a04e29fe7d535aeafb67f2f8c5ccb636b}{write\+Coeff4x4\+\_\+\+C\+A\+V\+LC}} (int block\+\_\+type, int b8, int b4, int param)
+\begin{DoxyCompactList}\small\item\em Writes coeff of an 4x4 block (C\+A\+V\+LC) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{macroblock_8c_ad0001953aeb8bb1f12c190656f4b3aab}{find\+\_\+sad\+\_\+16x16}} (int $\ast$intra\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em Find best 16x16 based intra mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{macroblock_8c_a3a2b6484fce21a34540e0c122c6a8064}\label{macroblock_8c_a3a2b6484fce21a34540e0c122c6a8064}} 
+int {\bfseries predict\+\_\+error}
+\item 
+\mbox{\Hypertarget{macroblock_8c_a8557cde7a2c93257c5a7e1a55f7175d4}\label{macroblock_8c_a8557cde7a2c93257c5a7e1a55f7175d4}} 
+int {\bfseries dq}
+\item 
+\mbox{\Hypertarget{macroblock_8c_a03e4a4b5910491668eea93398441bd57}\label{macroblock_8c_a03e4a4b5910491668eea93398441bd57}} 
+int {\bfseries D\+E\+L\+T\+A\+\_\+\+QP}
+\item 
+\mbox{\Hypertarget{macroblock_8c_a287839edddf91e8322d8720d914e8328}\label{macroblock_8c_a287839edddf91e8322d8720d914e8328}} 
+int {\bfseries D\+E\+L\+T\+A\+\_\+\+Q\+P2}
+\item 
+\mbox{\Hypertarget{macroblock_8c_a6ceeccca7e0fa98ff596701b2e536268}\label{macroblock_8c_a6ceeccca7e0fa98ff596701b2e536268}} 
+int {\bfseries QP}
+\item 
+\mbox{\Hypertarget{macroblock_8c_a98076bc16266b8d42c1fbc1351529fa5}\label{macroblock_8c_a98076bc16266b8d42c1fbc1351529fa5}} 
+int {\bfseries Q\+P2}
+\item 
+\mbox{\Hypertarget{macroblock_8c_a3bbca6a43e84262187c7af1ca85e1fbf}\label{macroblock_8c_a3bbca6a43e84262187c7af1ca85e1fbf}} 
+int \mbox{\hyperlink{macroblock_8c_a3bbca6a43e84262187c7af1ca85e1fbf}{last\+\_\+dquant}}
+\begin{DoxyCompactList}\small\item\em Set global last\+\_\+dquant according to macroblock delta qp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Process one macroblock. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Inge Lille-\/\+Langøy \href{mailto:inge.lille-langoy@telenor.com}{\texttt{ inge.\+lille-\/langoy@telenor.\+com}}
+\item Rickard Sjoberg \href{mailto:rickard.sjoberg@era.ericsson.se}{\texttt{ rickard.\+sjoberg@era.\+ericsson.\+se}}
+\item Jani Lainema \href{mailto:jani.lainema@nokia.com}{\texttt{ jani.\+lainema@nokia.\+com}}
+\item Sebastian Purreiter \href{mailto:sebastian.purreiter@mch.siemens.de}{\texttt{ sebastian.\+purreiter@mch.\+siemens.\+de}}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}}
+\item Thomas Wedi \href{mailto:wedi@tnt.uni-hannover.de}{\texttt{ wedi@tnt.\+uni-\/hannover.\+de}}
+\item Ragip Kurceren \href{mailto:ragip.kurceren@nokia.com}{\texttt{ ragip.\+kurceren@nokia.\+com}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{macroblock_8c_ad0001953aeb8bb1f12c190656f4b3aab}\label{macroblock_8c_ad0001953aeb8bb1f12c190656f4b3aab}} 
+\index{macroblock.c@{macroblock.c}!find\_sad\_16x16@{find\_sad\_16x16}}
+\index{find\_sad\_16x16@{find\_sad\_16x16}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{find\_sad\_16x16()}{find\_sad\_16x16()}}
+{\footnotesize\ttfamily int find\+\_\+sad\+\_\+16x16 (\begin{DoxyParamCaption}\item[{int $\ast$}]{intra\+\_\+mode }\end{DoxyParamCaption})}
+
+
+
+Find best 16x16 based intra mode. 
+
+\begin{DoxyParagraph}{Input\+:}
+Image parameters, pointer to best 16x16 intra mode
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Output\+:}
+best 16x16 based S\+AD 
+\end{DoxyParagraph}
+$<$ pixel position p(0,-\/1)
+
+$<$ pixel positions p(-\/1, -\/1..15)\mbox{\Hypertarget{macroblock_8c_a7b159825494f1a704c147637872b9e31}\label{macroblock_8c_a7b159825494f1a704c147637872b9e31}} 
+\index{macroblock.c@{macroblock.c}!IntraChromaPrediction8x8@{IntraChromaPrediction8x8}}
+\index{IntraChromaPrediction8x8@{IntraChromaPrediction8x8}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{IntraChromaPrediction8x8()}{IntraChromaPrediction8x8()}}
+{\footnotesize\ttfamily void Intra\+Chroma\+Prediction8x8 (\begin{DoxyParamCaption}\item[{int $\ast$}]{mb\+\_\+up,  }\item[{int $\ast$}]{mb\+\_\+left,  }\item[{int $\ast$}]{mb\+\_\+up\+\_\+left }\end{DoxyParamCaption})}
+
+
+
+Predict an intra chroma 8x8 block. 
+
+$<$ pixel position p(0,-\/1)
+
+$<$ pixel positions p(-\/1, -\/1..8)\mbox{\Hypertarget{macroblock_8c_a1eda8862315a769ff2a4d39498d1b9de}\label{macroblock_8c_a1eda8862315a769ff2a4d39498d1b9de}} 
+\index{macroblock.c@{macroblock.c}!OneComponentChromaPrediction4x4@{OneComponentChromaPrediction4x4}}
+\index{OneComponentChromaPrediction4x4@{OneComponentChromaPrediction4x4}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{OneComponentChromaPrediction4x4()}{OneComponentChromaPrediction4x4()}}
+{\footnotesize\ttfamily void One\+Component\+Chroma\+Prediction4x4 (\begin{DoxyParamCaption}\item[{int $\ast$}]{mpred,  }\item[{int}]{block\+\_\+c\+\_\+x,  }\item[{int}]{block\+\_\+c\+\_\+y,  }\item[{int $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$}]{mv,  }\item[{int}]{list\+\_\+idx,  }\item[{int}]{ref,  }\item[{int}]{blocktype,  }\item[{int}]{uv }\end{DoxyParamCaption})}
+
+
+
+Predict one component of a chroma 4x4 block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mpred} & array to store prediction values \\
+\hline
+{\em block\+\_\+c\+\_\+x} & horizontal pixel coordinate of 4x4 block \\
+\hline
+{\em block\+\_\+c\+\_\+y} & vertical pixel coordinate of 4x4 block \\
+\hline
+{\em mv} & motion vector array \\
+\hline
+{\em list\+\_\+idx} & reference picture list \\
+\hline
+{\em ref} & reference index \\
+\hline
+{\em blocktype} & block type \\
+\hline
+{\em uv} & chroma component \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{macroblock_8c_a6dbdaf6e66bcad9c64d6188df58198d9}\label{macroblock_8c_a6dbdaf6e66bcad9c64d6188df58198d9}} 
+\index{macroblock.c@{macroblock.c}!predict\_nnz@{predict\_nnz}}
+\index{predict\_nnz@{predict\_nnz}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{predict\_nnz()}{predict\_nnz()}}
+{\footnotesize\ttfamily int predict\+\_\+nnz (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+Get the Prediction from the Neighboring Blocks for Number of Nonzero Coefficients. 
+
+Luma Blocks \mbox{\Hypertarget{macroblock_8c_a6706422cff78d878f16e941f25319e51}\label{macroblock_8c_a6706422cff78d878f16e941f25319e51}} 
+\index{macroblock.c@{macroblock.c}!predict\_nnz\_chroma@{predict\_nnz\_chroma}}
+\index{predict\_nnz\_chroma@{predict\_nnz\_chroma}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{predict\_nnz\_chroma()}{predict\_nnz\_chroma()}}
+{\footnotesize\ttfamily int predict\+\_\+nnz\+\_\+chroma (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+Get the Prediction from the Neighboring Blocks for Number of Nonzero Coefficients. 
+
+Chroma Blocks ~\newline
+ \mbox{\Hypertarget{macroblock_8c_a40ad1f9df9e0a11d65d90024ea5582b1}\label{macroblock_8c_a40ad1f9df9e0a11d65d90024ea5582b1}} 
+\index{macroblock.c@{macroblock.c}!set\_MB\_parameters@{set\_MB\_parameters}}
+\index{set\_MB\_parameters@{set\_MB\_parameters}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{set\_MB\_parameters()}{set\_MB\_parameters()}}
+{\footnotesize\ttfamily void set\+\_\+\+M\+B\+\_\+parameters (\begin{DoxyParamCaption}\item[{int}]{mb\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+updates the coordinates for the next macroblock to be processed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mb\+\_\+addr} & MB address in scan order \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{macroblock_8c_a65682cbd6e9f38e4d830a00e1289679c}\label{macroblock_8c_a65682cbd6e9f38e4d830a00e1289679c}} 
+\index{macroblock.c@{macroblock.c}!slice\_too\_big@{slice\_too\_big}}
+\index{slice\_too\_big@{slice\_too\_big}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{slice\_too\_big()}{slice\_too\_big()}}
+{\footnotesize\ttfamily int slice\+\_\+too\+\_\+big (\begin{DoxyParamCaption}\item[{int}]{rlc\+\_\+bits }\end{DoxyParamCaption})}
+
+
+
+For Slice Mode 2\+: Checks if one partition of one slice exceeds the allowed size. 
+
+\begin{DoxyReturn}{Returns}
+F\+A\+L\+SE if all Partitions of this slice are smaller than the allowed size T\+R\+UE is at least one Partition exceeds the limit
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Side effects}
+none
+\end{DoxyParagraph}
+\begin{DoxyDate}{Date}
+4 November 2001
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Tobias Oelbaum \href{mailto:drehvial@gmx.net}{\texttt{ drehvial@gmx.\+net}} 
+\end{DoxyAuthor}
+U\+V\+LC
+
+C\+A\+B\+AC\mbox{\Hypertarget{macroblock_8c_a8d0ad53b9e4d4e96db01e2aec561902f}\label{macroblock_8c_a8d0ad53b9e4d4e96db01e2aec561902f}} 
+\index{macroblock.c@{macroblock.c}!terminate\_macroblock@{terminate\_macroblock}}
+\index{terminate\_macroblock@{terminate\_macroblock}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{terminate\_macroblock()}{terminate\_macroblock()}}
+{\footnotesize\ttfamily void terminate\+\_\+macroblock (\begin{DoxyParamCaption}\item[{Boolean $\ast$}]{end\+\_\+of\+\_\+slice,  }\item[{Boolean $\ast$}]{recode\+\_\+macroblock }\end{DoxyParamCaption})}
+
+
+
+terminates processing of the current macroblock depending on the chosen slice mode 
+
+Check end-\/of-\/slice group condition first
+
+Now check maximum \# of M\+Bs in slice
+
+Check if the last coded macroblock fits into the size of the slice But only if this is not the first macroblock of this slice
+
+(first MB OR first MB in a slice) A\+ND bigger that maximum size of slice
+
+TO 4.\+11.\+2001 Skip M\+Bs at the end of this slice
+
+only for Slice Mode 2 or 3
+
+MB that did not fit in this slice
+
+MB that did not fit in this slice anymore is not a Skip MB
+
+TO 4.\+11.\+2001 Skip M\+Bs at the end of this slice for Slice Mode 0 or 1\mbox{\Hypertarget{macroblock_8c_a04e29fe7d535aeafb67f2f8c5ccb636b}\label{macroblock_8c_a04e29fe7d535aeafb67f2f8c5ccb636b}} 
+\index{macroblock.c@{macroblock.c}!writeCoeff4x4\_CAVLC@{writeCoeff4x4\_CAVLC}}
+\index{writeCoeff4x4\_CAVLC@{writeCoeff4x4\_CAVLC}!macroblock.c@{macroblock.c}}
+\doxysubsubsection{\texorpdfstring{writeCoeff4x4\_CAVLC()}{writeCoeff4x4\_CAVLC()}}
+{\footnotesize\ttfamily int write\+Coeff4x4\+\_\+\+C\+A\+V\+LC (\begin{DoxyParamCaption}\item[{int}]{block\+\_\+type,  }\item[{int}]{b8,  }\item[{int}]{b4,  }\item[{int}]{param }\end{DoxyParamCaption})}
+
+
+
+Writes coeff of an 4x4 block (C\+A\+V\+LC) 
+
+\begin{DoxyAuthor}{Author}
+Karl Lillevold \href{mailto:karll@real.com}{\texttt{ karll@real.\+com}} contributions by James Au \href{mailto:james@ubvideo.com}{\texttt{ james@ubvideo.\+com}} 
+\end{DoxyAuthor}

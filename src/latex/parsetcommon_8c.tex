@@ -1,0 +1,103 @@
+\hypertarget{parsetcommon_8c}{}\doxysection{parsetcommon.\+c File Reference}
+\label{parsetcommon_8c}\index{parsetcommon.c@{parsetcommon.c}}
+
+
+Picture and Sequence Parameter set generation and handling.  
+
+
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}parsetcommon.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memalloc.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$ \mbox{\hyperlink{parsetcommon_8c_a036f83bd5e8367b55980bfa2fa7dc5bc}{Alloc\+P\+PS}} ()
+\begin{DoxyCompactList}\small\item\em Allocates memory for a pps. \end{DoxyCompactList}\item 
+seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$ \mbox{\hyperlink{parsetcommon_8c_a7dee8f59725c1aa389115d364acddc6e}{Alloc\+S\+PS}} ()
+\begin{DoxyCompactList}\small\item\em Allocates memory for am sps. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parsetcommon_8c_aabde756b030239d1f7a1ec56ca128e10}{Free\+P\+PS}} (pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$pps)
+\begin{DoxyCompactList}\small\item\em Frees a pps. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parsetcommon_8c_accd8cd1caef2a76161baa525e2a339d6}{Free\+S\+PS}} (seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$sps)
+\begin{DoxyCompactList}\small\item\em Frees a sps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Picture and Sequence Parameter set generation and handling. 
+
+\mbox{\hyperlink{parset_8c}{parset.\+c}} \begin{DoxyDate}{Date}
+25 November 2002 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parsetcommon_8c_a036f83bd5e8367b55980bfa2fa7dc5bc}\label{parsetcommon_8c_a036f83bd5e8367b55980bfa2fa7dc5bc}} 
+\index{parsetcommon.c@{parsetcommon.c}!AllocPPS@{AllocPPS}}
+\index{AllocPPS@{AllocPPS}!parsetcommon.c@{parsetcommon.c}}
+\doxysubsubsection{\texorpdfstring{AllocPPS()}{AllocPPS()}}
+{\footnotesize\ttfamily pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t$\ast$ Alloc\+P\+PS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Allocates memory for a pps. 
+
+\begin{DoxyReturn}{Returns}
+pointer to a pps 
+\end{DoxyReturn}
+\mbox{\Hypertarget{parsetcommon_8c_a7dee8f59725c1aa389115d364acddc6e}\label{parsetcommon_8c_a7dee8f59725c1aa389115d364acddc6e}} 
+\index{parsetcommon.c@{parsetcommon.c}!AllocSPS@{AllocSPS}}
+\index{AllocSPS@{AllocSPS}!parsetcommon.c@{parsetcommon.c}}
+\doxysubsubsection{\texorpdfstring{AllocSPS()}{AllocSPS()}}
+{\footnotesize\ttfamily seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t$\ast$ Alloc\+S\+PS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Allocates memory for am sps. 
+
+\begin{DoxyReturn}{Returns}
+pointer to a sps 
+\end{DoxyReturn}
+\mbox{\Hypertarget{parsetcommon_8c_aabde756b030239d1f7a1ec56ca128e10}\label{parsetcommon_8c_aabde756b030239d1f7a1ec56ca128e10}} 
+\index{parsetcommon.c@{parsetcommon.c}!FreePPS@{FreePPS}}
+\index{FreePPS@{FreePPS}!parsetcommon.c@{parsetcommon.c}}
+\doxysubsubsection{\texorpdfstring{FreePPS()}{FreePPS()}}
+{\footnotesize\ttfamily void Free\+P\+PS (\begin{DoxyParamCaption}\item[{pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$}]{pps }\end{DoxyParamCaption})}
+
+
+
+Frees a pps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pps} & pps to be freed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{parsetcommon_8c_accd8cd1caef2a76161baa525e2a339d6}\label{parsetcommon_8c_accd8cd1caef2a76161baa525e2a339d6}} 
+\index{parsetcommon.c@{parsetcommon.c}!FreeSPS@{FreeSPS}}
+\index{FreeSPS@{FreeSPS}!parsetcommon.c@{parsetcommon.c}}
+\doxysubsubsection{\texorpdfstring{FreeSPS()}{FreeSPS()}}
+{\footnotesize\ttfamily void Free\+S\+PS (\begin{DoxyParamCaption}\item[{seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$}]{sps }\end{DoxyParamCaption})}
+
+
+
+Frees a sps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sps} & sps to be freed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}

@@ -1,0 +1,188 @@
+\hypertarget{fmo_8c}{}\doxysection{fmo.\+c File Reference}
+\label{fmo_8c}\index{fmo.c@{fmo.c}}
+
+
+Support for Flexible Macroblock Ordering for different Slice Group Modes\+: M\+B\+Amap handling.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$malloc.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fmo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{fmo_8c_a4e4bede2670e4dd3ce96c77b9f8d0413}{Fmo\+Init}} (Image\+Parameters $\ast$img, pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$pps, seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$sps)
+\begin{DoxyCompactList}\small\item\em F\+MO initialization\+: Generates Map\+Unit\+To\+Slice\+Group\+Map and M\+B\+Amap. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fmo_8c_ac9508ef7af8369b2163147dff40633b9}\label{fmo_8c_ac9508ef7af8369b2163147dff40633b9}} 
+void \mbox{\hyperlink{fmo_8c_ac9508ef7af8369b2163147dff40633b9}{Fmo\+Uninit}} ()
+\begin{DoxyCompactList}\small\item\em Free memory if allocated by F\+MO functions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fmo_8c_ad1ec4d424cfecf2792e2f6f6a0589aa2}{Fmo\+Start\+Picture}} ()
+\begin{DoxyCompactList}\small\item\em Fmo\+Start\+Picture\+: initializes F\+MO at the begin of each new picture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fmo_8c_a4fedd234b6ba4ea100ad5167664542e2}{Fmo\+End\+Picture}} ()
+\begin{DoxyCompactList}\small\item\em Fmo\+End\+Picture\+: Ends the Scattered Slices Module (called once per picture). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fmo_8c_a5027dceee1bda33f7307a44b94becf86}{Fmo\+M\+B2\+Slice\+Group}} (int mb)
+\begin{DoxyCompactList}\small\item\em Fmo\+M\+B2\+Slice\+: Returns Slice\+ID for a given MB. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fmo_8c_abeec170b5cd34c07d5a9e66eb483045f}{Fmo\+Get\+Next\+M\+B\+Nr}} (int Current\+Mb\+Nr)
+\begin{DoxyCompactList}\small\item\em Fmo\+Get\+Next\+M\+B\+Br\+: Returns the M\+B-\/\+Nr (in scan order) of the next MB in the (F\+MO) Slice, -\/1 if the Slice\+Group is finished. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fmo_8c_af466c06810db992eb2991e17ec839ea1}{Fmo\+Get\+Previous\+M\+B\+Nr}} (int Current\+Mb\+Nr)
+\begin{DoxyCompactList}\small\item\em Fmo\+Get\+Next\+M\+B\+Br\+: Returns the M\+B-\/\+Nr (in scan order) of the next MB in the (F\+MO) Slice, -\/1 if the Slice\+Group is finished. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fmo_8c_ac2c146cdf5ea7a5c0fcf27a7c0ea3591}{Fmo\+Get\+First\+M\+B\+Of\+Slice\+Group}} (int Slice\+Group\+ID)
+\begin{DoxyCompactList}\small\item\em Fmo\+Get\+First\+M\+B\+Of\+Slice\+Group\+: Returns the M\+B-\/\+Nr (in scan order) of the next first MB of the Slice group, -\/1 if no such MB exists. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fmo_8c_a615297d049204e0d759921cfc1007aa7}{Fmo\+Get\+Last\+Coded\+M\+B\+Of\+Slice\+Group}} (int Slice\+Group\+ID)
+\begin{DoxyCompactList}\small\item\em Fmo\+Get\+Last\+Coded\+M\+B\+Of\+Slice\+: Returns the M\+B-\/\+Nr (in scan order) of the last MB of the slice group. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fmo_8c_a4dec82cf59be45e956b193f3a6562758}\label{fmo_8c_a4dec82cf59be45e956b193f3a6562758}} 
+void {\bfseries Fmo\+Set\+Last\+Macroblock\+In\+Slice} (int mb)
+\item 
+\mbox{\Hypertarget{fmo_8c_a8cfd400a4b674ecd7451d5c7d85bf4d7}\label{fmo_8c_a8cfd400a4b674ecd7451d5c7d85bf4d7}} 
+int {\bfseries Fmo\+Get\+First\+Macroblock\+In\+Slice} (int Slice\+Group)
+\item 
+\mbox{\Hypertarget{fmo_8c_a06ef7c956c04442706e365caa488ba79}\label{fmo_8c_a06ef7c956c04442706e365caa488ba79}} 
+int {\bfseries Fmo\+Slice\+Group\+Completely\+Coded} (int Slice\+Group\+ID)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fmo_8c_a402602a33b76ea352dd14c92c10c8dc2}\label{fmo_8c_a402602a33b76ea352dd14c92c10c8dc2}} 
+int $\ast$ {\bfseries M\+B\+Amap} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{fmo_8c_a420ca5ba29f82f805ba18db8f5622dc7}\label{fmo_8c_a420ca5ba29f82f805ba18db8f5622dc7}} 
+int $\ast$ {\bfseries Map\+Unit\+To\+Slice\+Group\+Map} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{fmo_8c_aa97cbcb3fa522d9b276a5c1977d6dcc5}\label{fmo_8c_aa97cbcb3fa522d9b276a5c1977d6dcc5}} 
+unsigned {\bfseries Pic\+Size\+In\+Map\+Units}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Support for Flexible Macroblock Ordering for different Slice Group Modes\+: M\+B\+Amap handling. 
+
+\begin{DoxyDate}{Date}
+16 June, 2002 Modified April 25, 2004
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} Dong Wang (modify) \href{mailto:Dong.Wang@bristol.ac.uk}{\texttt{ Dong.\+Wang@bristol.\+ac.\+uk}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fmo_8c_a4fedd234b6ba4ea100ad5167664542e2}\label{fmo_8c_a4fedd234b6ba4ea100ad5167664542e2}} 
+\index{fmo.c@{fmo.c}!FmoEndPicture@{FmoEndPicture}}
+\index{FmoEndPicture@{FmoEndPicture}!fmo.c@{fmo.c}}
+\doxysubsubsection{\texorpdfstring{FmoEndPicture()}{FmoEndPicture()}}
+{\footnotesize\ttfamily int Fmo\+End\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fmo\+End\+Picture\+: Ends the Scattered Slices Module (called once per picture). 
+
+\begin{DoxyParagraph}{Input\+:}
+None 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{fmo_8c_ac2c146cdf5ea7a5c0fcf27a7c0ea3591}\label{fmo_8c_ac2c146cdf5ea7a5c0fcf27a7c0ea3591}} 
+\index{fmo.c@{fmo.c}!FmoGetFirstMBOfSliceGroup@{FmoGetFirstMBOfSliceGroup}}
+\index{FmoGetFirstMBOfSliceGroup@{FmoGetFirstMBOfSliceGroup}!fmo.c@{fmo.c}}
+\doxysubsubsection{\texorpdfstring{FmoGetFirstMBOfSliceGroup()}{FmoGetFirstMBOfSliceGroup()}}
+{\footnotesize\ttfamily int Fmo\+Get\+First\+M\+B\+Of\+Slice\+Group (\begin{DoxyParamCaption}\item[{int}]{Slice\+Group\+ID }\end{DoxyParamCaption})}
+
+
+
+Fmo\+Get\+First\+M\+B\+Of\+Slice\+Group\+: Returns the M\+B-\/\+Nr (in scan order) of the next first MB of the Slice group, -\/1 if no such MB exists. 
+
+\begin{DoxyParagraph}{Input\+:}
+Slice\+Group\+ID\+: Id of Slice\+Group 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{fmo_8c_a615297d049204e0d759921cfc1007aa7}\label{fmo_8c_a615297d049204e0d759921cfc1007aa7}} 
+\index{fmo.c@{fmo.c}!FmoGetLastCodedMBOfSliceGroup@{FmoGetLastCodedMBOfSliceGroup}}
+\index{FmoGetLastCodedMBOfSliceGroup@{FmoGetLastCodedMBOfSliceGroup}!fmo.c@{fmo.c}}
+\doxysubsubsection{\texorpdfstring{FmoGetLastCodedMBOfSliceGroup()}{FmoGetLastCodedMBOfSliceGroup()}}
+{\footnotesize\ttfamily int Fmo\+Get\+Last\+Coded\+M\+B\+Of\+Slice\+Group (\begin{DoxyParamCaption}\item[{int}]{Slice\+Group\+ID }\end{DoxyParamCaption})}
+
+
+
+Fmo\+Get\+Last\+Coded\+M\+B\+Of\+Slice\+: Returns the M\+B-\/\+Nr (in scan order) of the last MB of the slice group. 
+
+\begin{DoxyParagraph}{Input\+:}
+Slice\+Group\+ID 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Return}
+MB Nr in case of success (is always $>$= 0) -\/1 if the Slice\+Group doesn\textquotesingle{}t exist 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{fmo_8c_abeec170b5cd34c07d5a9e66eb483045f}\label{fmo_8c_abeec170b5cd34c07d5a9e66eb483045f}} 
+\index{fmo.c@{fmo.c}!FmoGetNextMBNr@{FmoGetNextMBNr}}
+\index{FmoGetNextMBNr@{FmoGetNextMBNr}!fmo.c@{fmo.c}}
+\doxysubsubsection{\texorpdfstring{FmoGetNextMBNr()}{FmoGetNextMBNr()}}
+{\footnotesize\ttfamily int Fmo\+Get\+Next\+M\+B\+Nr (\begin{DoxyParamCaption}\item[{int}]{Current\+Mb\+Nr }\end{DoxyParamCaption})}
+
+
+
+Fmo\+Get\+Next\+M\+B\+Br\+: Returns the M\+B-\/\+Nr (in scan order) of the next MB in the (F\+MO) Slice, -\/1 if the Slice\+Group is finished. 
+
+\begin{DoxyParagraph}{Input\+:}
+Current\+Mb\+Nr 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{fmo_8c_af466c06810db992eb2991e17ec839ea1}\label{fmo_8c_af466c06810db992eb2991e17ec839ea1}} 
+\index{fmo.c@{fmo.c}!FmoGetPreviousMBNr@{FmoGetPreviousMBNr}}
+\index{FmoGetPreviousMBNr@{FmoGetPreviousMBNr}!fmo.c@{fmo.c}}
+\doxysubsubsection{\texorpdfstring{FmoGetPreviousMBNr()}{FmoGetPreviousMBNr()}}
+{\footnotesize\ttfamily int Fmo\+Get\+Previous\+M\+B\+Nr (\begin{DoxyParamCaption}\item[{int}]{Current\+Mb\+Nr }\end{DoxyParamCaption})}
+
+
+
+Fmo\+Get\+Next\+M\+B\+Br\+: Returns the M\+B-\/\+Nr (in scan order) of the next MB in the (F\+MO) Slice, -\/1 if the Slice\+Group is finished. 
+
+\begin{DoxyParagraph}{Input\+:}
+Current\+Mb\+Nr 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{fmo_8c_a4e4bede2670e4dd3ce96c77b9f8d0413}\label{fmo_8c_a4e4bede2670e4dd3ce96c77b9f8d0413}} 
+\index{fmo.c@{fmo.c}!FmoInit@{FmoInit}}
+\index{FmoInit@{FmoInit}!fmo.c@{fmo.c}}
+\doxysubsubsection{\texorpdfstring{FmoInit()}{FmoInit()}}
+{\footnotesize\ttfamily int Fmo\+Init (\begin{DoxyParamCaption}\item[{Image\+Parameters $\ast$}]{img,  }\item[{pic\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$}]{pps,  }\item[{seq\+\_\+parameter\+\_\+set\+\_\+rbsp\+\_\+t $\ast$}]{sps }\end{DoxyParamCaption})}
+
+
+
+F\+MO initialization\+: Generates Map\+Unit\+To\+Slice\+Group\+Map and M\+B\+Amap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & Image Parameter to be used for map generation \\
+\hline
+{\em pps} & Picture Parameter set to be used for map generation \\
+\hline
+{\em sps} & Sequence Parameter set to be used for map generation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fmo_8c_a5027dceee1bda33f7307a44b94becf86}\label{fmo_8c_a5027dceee1bda33f7307a44b94becf86}} 
+\index{fmo.c@{fmo.c}!FmoMB2SliceGroup@{FmoMB2SliceGroup}}
+\index{FmoMB2SliceGroup@{FmoMB2SliceGroup}!fmo.c@{fmo.c}}
+\doxysubsubsection{\texorpdfstring{FmoMB2SliceGroup()}{FmoMB2SliceGroup()}}
+{\footnotesize\ttfamily int Fmo\+M\+B2\+Slice\+Group (\begin{DoxyParamCaption}\item[{int}]{mb }\end{DoxyParamCaption})}
+
+
+
+Fmo\+M\+B2\+Slice\+: Returns Slice\+ID for a given MB. 
+
+\begin{DoxyParagraph}{Input\+:}
+Macroblock Nr (in scan order) 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{fmo_8c_ad1ec4d424cfecf2792e2f6f6a0589aa2}\label{fmo_8c_ad1ec4d424cfecf2792e2f6f6a0589aa2}} 
+\index{fmo.c@{fmo.c}!FmoStartPicture@{FmoStartPicture}}
+\index{FmoStartPicture@{FmoStartPicture}!fmo.c@{fmo.c}}
+\doxysubsubsection{\texorpdfstring{FmoStartPicture()}{FmoStartPicture()}}
+{\footnotesize\ttfamily int Fmo\+Start\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fmo\+Start\+Picture\+: initializes F\+MO at the begin of each new picture. 
+
+\begin{DoxyParagraph}{Input\+:}
+None 
+\end{DoxyParagraph}

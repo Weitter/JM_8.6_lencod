@@ -1,0 +1,74 @@
+\hypertarget{filehandle_8c}{}\doxysection{filehandle.\+c File Reference}
+\label{filehandle_8c}\index{filehandle.c@{filehandle.c}}
+
+
+Start and terminate sequences.  
+
+
+{\ttfamily \#include \char`\"{}contributors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$sys/timeb.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rtp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nalu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}annexb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parset.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mbuffer.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{filehandle_8c_a371ec50bd815b00c7670ccebaaa91d0c}{error}} (char $\ast$text, int code)
+\begin{DoxyCompactList}\small\item\em Error handling procedure. Print error message to stderr and exit with supplied code. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{filehandle_8c_ab35654e9570def55439521bb57b53ab9}{start\+\_\+sequence}} ()
+\begin{DoxyCompactList}\small\item\em This function opens the output files and generates the appropriate sequence header. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{filehandle_8c_a01b497080e0f024e8c5bf6d4fcf43d23}\label{filehandle_8c_a01b497080e0f024e8c5bf6d4fcf43d23}} 
+int \mbox{\hyperlink{filehandle_8c_a01b497080e0f024e8c5bf6d4fcf43d23}{terminate\+\_\+sequence}} ()
+\begin{DoxyCompactList}\small\item\em This function terminates the sequence and closes the output files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Start and terminate sequences. 
+
+\mbox{\hyperlink{filehandle_8c}{filehandle.\+c}} \begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Thomas Stockhammer \href{mailto:stockhammer@ei.tum.de}{\texttt{ stockhammer@ei.\+tum.\+de}}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{filehandle_8c_a371ec50bd815b00c7670ccebaaa91d0c}\label{filehandle_8c_a371ec50bd815b00c7670ccebaaa91d0c}} 
+\index{filehandle.c@{filehandle.c}!error@{error}}
+\index{error@{error}!filehandle.c@{filehandle.c}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily void error (\begin{DoxyParamCaption}\item[{char $\ast$}]{text,  }\item[{int}]{code }\end{DoxyParamCaption})}
+
+
+
+Error handling procedure. Print error message to stderr and exit with supplied code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Error message \\
+\hline
+{\em code} & Exit code \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filehandle_8c_ab35654e9570def55439521bb57b53ab9}\label{filehandle_8c_ab35654e9570def55439521bb57b53ab9}} 
+\index{filehandle.c@{filehandle.c}!start\_sequence@{start\_sequence}}
+\index{start\_sequence@{start\_sequence}!filehandle.c@{filehandle.c}}
+\doxysubsubsection{\texorpdfstring{start\_sequence()}{start\_sequence()}}
+{\footnotesize\ttfamily int start\+\_\+sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function opens the output files and generates the appropriate sequence header. 
+
+As a sequence header, here we write the both sequence and picture parameter sets. As soon as I\+DR is implemented, this should go to the I\+DR part, as both parsets have to be transmitted as part of an I\+DR. An alterbative may be to consider this function the I\+DR start function.

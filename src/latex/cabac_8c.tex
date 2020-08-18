@@ -1,0 +1,121 @@
+\hypertarget{cabac_8c}{}\doxysection{cabac.\+c File Reference}
+\label{cabac_8c}\index{cabac.c@{cabac.c}}
+
+
+C\+A\+B\+AC entropy coding routines.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}cabac.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mb\+\_\+access.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cabac_8c_ad858f7c97446fb3f7a0caef0baca2afd}\label{cabac_8c_ad858f7c97446fb3f7a0caef0baca2afd}} 
+\#define {\bfseries B\+I\+T\+\_\+\+S\+ET}(x,  n)~((int)(((x)\&(1$<$$<$(n)))$>$$>$(n)))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cabac_8c_a7137344256bbc44f485d230a22571811}\label{cabac_8c_a7137344256bbc44f485d230a22571811}} 
+void \mbox{\hyperlink{cabac_8c_a7137344256bbc44f485d230a22571811}{unary\+\_\+bin\+\_\+encode}} (Encoding\+Environment\+Ptr eep\+\_\+dp, unsigned int symbol, Bi\+Context\+Type\+Ptr ctx, int ctx\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Unary binarization and encoding of a symbol by using one or two distinct models for the first two and all remaining bins. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a8ab90b1d38387cd186c9b596a1b96bef}\label{cabac_8c_a8ab90b1d38387cd186c9b596a1b96bef}} 
+void \mbox{\hyperlink{cabac_8c_a8ab90b1d38387cd186c9b596a1b96bef}{unary\+\_\+bin\+\_\+max\+\_\+encode}} (Encoding\+Environment\+Ptr eep\+\_\+dp, unsigned int symbol, Bi\+Context\+Type\+Ptr ctx, int ctx\+\_\+offset, unsigned int max\+\_\+symbol)
+\begin{DoxyCompactList}\small\item\em Unary binarization and encoding of a symbol by using one or two distinct models for the first two and all remaining bins; no terminating \char`\"{}0\char`\"{} for max\+\_\+symbol (finite symbol alphabet) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a5150e47985dd2200bbaf393532ac0a34}\label{cabac_8c_a5150e47985dd2200bbaf393532ac0a34}} 
+void \mbox{\hyperlink{cabac_8c_a5150e47985dd2200bbaf393532ac0a34}{unary\+\_\+exp\+\_\+golomb\+\_\+level\+\_\+encode}} (Encoding\+Environment\+Ptr eep\+\_\+dp, unsigned int symbol, Bi\+Context\+Type\+Ptr ctx)
+\begin{DoxyCompactList}\small\item\em Exp-\/\+Golomb for Level Encoding. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_ad4ee578b59290472f0c50f56aef05c66}\label{cabac_8c_ad4ee578b59290472f0c50f56aef05c66}} 
+void \mbox{\hyperlink{cabac_8c_ad4ee578b59290472f0c50f56aef05c66}{unary\+\_\+exp\+\_\+golomb\+\_\+mv\+\_\+encode}} (Encoding\+Environment\+Ptr eep\+\_\+dp, unsigned int symbol, Bi\+Context\+Type\+Ptr ctx, unsigned int max\+\_\+bin)
+\begin{DoxyCompactList}\small\item\em Exp-\/\+Golomb for MV Encoding. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a5caad62c25737f5bfc2a8155f59cc8c8}\label{cabac_8c_a5caad62c25737f5bfc2a8155f59cc8c8}} 
+void {\bfseries cabac\+\_\+new\+\_\+slice} ()
+\item 
+\mbox{\Hypertarget{cabac_8c_aefe914a47c0fe90e52979dd136200c05}\label{cabac_8c_aefe914a47c0fe90e52979dd136200c05}} 
+void \mbox{\hyperlink{cabac_8c_aefe914a47c0fe90e52979dd136200c05}{Check\+Availability\+Of\+Neighbors\+C\+A\+B\+AC}} ()
+\begin{DoxyCompactList}\small\item\em Check for available neighbouring blocks and set pointers in current macroblock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a449b2725fd718dc6f2a822d6598131a9}\label{cabac_8c_a449b2725fd718dc6f2a822d6598131a9}} 
+Motion\+Info\+Contexts $\ast$ \mbox{\hyperlink{cabac_8c_a449b2725fd718dc6f2a822d6598131a9}{create\+\_\+contexts\+\_\+\+Motion\+Info}} (void)
+\begin{DoxyCompactList}\small\item\em Allocation of contexts models for the motion info used for arithmetic encoding. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_afbc8afc2a1ae487fc18fb996f661fb49}\label{cabac_8c_afbc8afc2a1ae487fc18fb996f661fb49}} 
+Texture\+Info\+Contexts $\ast$ \mbox{\hyperlink{cabac_8c_afbc8afc2a1ae487fc18fb996f661fb49}{create\+\_\+contexts\+\_\+\+Texture\+Info}} (void)
+\begin{DoxyCompactList}\small\item\em Allocates of contexts models for the texture info used for arithmetic encoding. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a6820e8013dd45038a6de6757ca085a55}\label{cabac_8c_a6820e8013dd45038a6de6757ca085a55}} 
+void \mbox{\hyperlink{cabac_8c_a6820e8013dd45038a6de6757ca085a55}{delete\+\_\+contexts\+\_\+\+Motion\+Info}} (Motion\+Info\+Contexts $\ast$enco\+\_\+ctx)
+\begin{DoxyCompactList}\small\item\em Frees the memory of the contexts models used for arithmetic encoding of the motion info. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a6f13c88d71b4c4aa6d9c5d584275c703}\label{cabac_8c_a6f13c88d71b4c4aa6d9c5d584275c703}} 
+void \mbox{\hyperlink{cabac_8c_a6f13c88d71b4c4aa6d9c5d584275c703}{delete\+\_\+contexts\+\_\+\+Texture\+Info}} (Texture\+Info\+Contexts $\ast$enco\+\_\+ctx)
+\begin{DoxyCompactList}\small\item\em Frees the memory of the contexts models used for arithmetic encoding of the texture info. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a28ba27b7389d26d0e6a3372eb4a41f20}\label{cabac_8c_a28ba27b7389d26d0e6a3372eb4a41f20}} 
+int \mbox{\hyperlink{cabac_8c_a28ba27b7389d26d0e6a3372eb4a41f20}{write\+Syntax\+Element\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Data\+Partition $\ast$this\+\_\+data\+Part)
+\begin{DoxyCompactList}\small\item\em generates arithmetic code and passes the code to the buffer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_adf832cf3bbd6ec1344d1f0956c5b7169}\label{cabac_8c_adf832cf3bbd6ec1344d1f0956c5b7169}} 
+void \mbox{\hyperlink{cabac_8c_adf832cf3bbd6ec1344d1f0956c5b7169}{write\+Field\+Mode\+Info\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the field mode info of a given MB in the case of mb-\/based frame/field decision. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_aac95373652767a0f916e426138118b24}\label{cabac_8c_aac95373652767a0f916e426138118b24}} 
+void \mbox{\hyperlink{cabac_8c_aac95373652767a0f916e426138118b24}{write\+M\+B\+\_\+skip\+\_\+flag\+Info\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the mb\+\_\+skip\+\_\+flag. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a9d94054ef26ca444267298b949c9756e}\label{cabac_8c_a9d94054ef26ca444267298b949c9756e}} 
+void \mbox{\hyperlink{cabac_8c_a9d94054ef26ca444267298b949c9756e}{write\+M\+B\+\_\+type\+Info\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the macroblock type info of a given MB. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_ade5bd983b113ae31bb33a356c1bb5b4c}\label{cabac_8c_ade5bd983b113ae31bb33a356c1bb5b4c}} 
+void \mbox{\hyperlink{cabac_8c_ade5bd983b113ae31bb33a356c1bb5b4c}{write\+B8\+\_\+type\+Info\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the 8x8 block type info. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a17ef52c630b684badf3ac70c0b404a20}\label{cabac_8c_a17ef52c630b684badf3ac70c0b404a20}} 
+void \mbox{\hyperlink{cabac_8c_a17ef52c630b684badf3ac70c0b404a20}{write\+Intra\+Pred\+Mode\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode a pair of intra prediction modes of a given MB. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a575ea1251ec2ada25273d3b630da5bff}\label{cabac_8c_a575ea1251ec2ada25273d3b630da5bff}} 
+void \mbox{\hyperlink{cabac_8c_a575ea1251ec2ada25273d3b630da5bff}{write\+Ref\+Frame\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the reference parameter of a given MB. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a23eff5121d0ebf4229b46a08a17a8a7a}\label{cabac_8c_a23eff5121d0ebf4229b46a08a17a8a7a}} 
+void \mbox{\hyperlink{cabac_8c_a23eff5121d0ebf4229b46a08a17a8a7a}{write\+Dquant\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the coded block pattern of a given delta quant. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_aa99df92d91dbc2b4b87846bd2796d805}\label{cabac_8c_aa99df92d91dbc2b4b87846bd2796d805}} 
+void \mbox{\hyperlink{cabac_8c_aa99df92d91dbc2b4b87846bd2796d805}{write\+M\+V\+D\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the motion vector data of a B-\/frame MB. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a99a0ea8f845586093cc8751e4895bae6}\label{cabac_8c_a99a0ea8f845586093cc8751e4895bae6}} 
+void \mbox{\hyperlink{cabac_8c_a99a0ea8f845586093cc8751e4895bae6}{write\+C\+I\+Pred\+Mode\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the chroma intra prediction mode of an 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_af1c3bce3cdf11dbb113f41cb2c7c5b7b}\label{cabac_8c_af1c3bce3cdf11dbb113f41cb2c7c5b7b}} 
+void \mbox{\hyperlink{cabac_8c_af1c3bce3cdf11dbb113f41cb2c7c5b7b}{write\+C\+B\+P\+\_\+\+B\+I\+T\+\_\+\+C\+A\+B\+AC}} (int b8, int bit, int cbp, Macroblock $\ast$curr\+MB, int inter, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the coded block pattern of an 8x8 block. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a65e45f83b2c7535919995902c69042b5}\label{cabac_8c_a65e45f83b2c7535919995902c69042b5}} 
+void \mbox{\hyperlink{cabac_8c_a65e45f83b2c7535919995902c69042b5}{write\+C\+B\+P\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em This function is used to arithmetically encode the coded block pattern of a macroblock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a1c7b72703a3631cc1860df53786b749c}\label{cabac_8c_a1c7b72703a3631cc1860df53786b749c}} 
+void \mbox{\hyperlink{cabac_8c_a1c7b72703a3631cc1860df53786b749c}{write\+\_\+and\+\_\+store\+\_\+\+C\+B\+P\+\_\+block\+\_\+bit}} (Macroblock $\ast$curr\+MB, Encoding\+Environment\+Ptr eep\+\_\+dp, int type, int cbp\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em Write C\+B\+P4-\/\+B\+IT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_ae00c888bb891bad10c48a6e82c10a9f3}\label{cabac_8c_ae00c888bb891bad10c48a6e82c10a9f3}} 
+void \mbox{\hyperlink{cabac_8c_ae00c888bb891bad10c48a6e82c10a9f3}{write\+\_\+significance\+\_\+map}} (Macroblock $\ast$curr\+MB, Encoding\+Environment\+Ptr eep\+\_\+dp, int type, int coeff\mbox{[}$\,$\mbox{]}, int coeff\+\_\+ctr)
+\begin{DoxyCompactList}\small\item\em Write Significance M\+AP. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a5735f471a165bb906d8acd05bb0b3b93}\label{cabac_8c_a5735f471a165bb906d8acd05bb0b3b93}} 
+void \mbox{\hyperlink{cabac_8c_a5735f471a165bb906d8acd05bb0b3b93}{write\+\_\+significant\+\_\+coefficients}} (Macroblock $\ast$curr\+MB, Encoding\+Environment\+Ptr eep\+\_\+dp, int type, int coeff\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Write Levels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_a96e3f13864bb6e9d268792d6f64f78ab}\label{cabac_8c_a96e3f13864bb6e9d268792d6f64f78ab}} 
+void \mbox{\hyperlink{cabac_8c_a96e3f13864bb6e9d268792d6f64f78ab}{write\+Run\+Level\+\_\+\+C\+A\+B\+AC}} (Syntax\+Element $\ast$se, Encoding\+Environment\+Ptr eep\+\_\+dp)
+\begin{DoxyCompactList}\small\item\em Write Block-\/\+Transform Coefficients. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cabac_8c_aa856d237e1acccca007d664d2a7e23bc}\label{cabac_8c_aa856d237e1acccca007d664d2a7e23bc}} 
+void \mbox{\hyperlink{cabac_8c_aa856d237e1acccca007d664d2a7e23bc}{exp\+\_\+golomb\+\_\+encode\+\_\+eq\+\_\+prob}} (Encoding\+Environment\+Ptr eep\+\_\+dp, unsigned int symbol, int k)
+\begin{DoxyCompactList}\small\item\em Exp Golomb binarization and encoding. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cabac_8c_a3bbca6a43e84262187c7af1ca85e1fbf}\label{cabac_8c_a3bbca6a43e84262187c7af1ca85e1fbf}} 
+int \mbox{\hyperlink{cabac_8c_a3bbca6a43e84262187c7af1ca85e1fbf}{last\+\_\+dquant}} = 0
+\begin{DoxyCompactList}\small\item\em Set global last\+\_\+dquant according to macroblock delta qp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+C\+A\+B\+AC entropy coding routines. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}

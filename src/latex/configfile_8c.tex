@@ -1,0 +1,97 @@
+\hypertarget{configfile_8c}{}\doxysection{configfile.\+c File Reference}
+\label{configfile_8c}\index{configfile.c@{configfile.c}}
+
+
+Configuration handling.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}configfile.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fast\+\_\+me.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fmo.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{configfile_8c_a97be391fa1d39dab210a884a5c040f6a}\label{configfile_8c_a97be391fa1d39dab210a884a5c040f6a}} 
+\#define {\bfseries I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+B\+Y\+\_\+\+C\+O\+N\+F\+I\+G\+F\+I\+L\+E\+\_\+C}
+\item 
+\mbox{\Hypertarget{configfile_8c_a93b07f66b4ad143316cf029bc7a79830}\label{configfile_8c_a93b07f66b4ad143316cf029bc7a79830}} 
+\#define {\bfseries M\+A\+X\+\_\+\+I\+T\+E\+M\+S\+\_\+\+T\+O\+\_\+\+P\+A\+R\+SE}~10000
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{configfile_8c_aa07625790c93d22816e5835e7dfb65ba}\label{configfile_8c_aa07625790c93d22816e5835e7dfb65ba}} 
+void \mbox{\hyperlink{configfile_8c_aa07625790c93d22816e5835e7dfb65ba}{J\+M\+Help\+Exit}} ()
+\begin{DoxyCompactList}\small\item\em print help message and exit \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{configfile_8c_aec9e391cce24e66610cfccdcfbdc5de4}{Configure}} (int ac, char $\ast$av\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Parse the command line parameters and read the config files. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{configfile_8c_a2df89704900820708b7e0fa5bd7b47a8}\label{configfile_8c_a2df89704900820708b7e0fa5bd7b47a8}} 
+unsigned \mbox{\hyperlink{configfile_8c_a2df89704900820708b7e0fa5bd7b47a8}{Ceil\+Log2}} (unsigned ui\+Val)
+\begin{DoxyCompactList}\small\item\em calculate Ceil(\+Log2(ui\+Val)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{configfile_8c_aaa97896d3febcd9c059b783f5a6e1efd}\label{configfile_8c_aaa97896d3febcd9c059b783f5a6e1efd}} 
+void {\bfseries Patch\+Input\+No\+Frames} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configuration handling. 
+
+\mbox{\hyperlink{configfile_8c}{configfile.\+c}} \begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Stephan Wenger \href{mailto:stewe@cs.tu-berlin.de}{\texttt{ stewe@cs.\+tu-\/berlin.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+In the future this module should hide the Parameters and offer only Functions for their access. Modules which make frequent use of some parameters (e.\+g. picture size in macroblocks) are free to buffer them on local variables. This will not only avoid global variable and make the code more readable, but also speed it up. It will also greatly facilitate future enhancements such as the handling of different picture sizes in the same sequence. ~\newline
+ ~\newline
+ For now, everything is just copied to the inp\+\_\+par structure (gulp)
+\end{DoxyNote}
+\begin{DoxyParagraph}{Configuration File Format}
+
+\end{DoxyParagraph}
+Format is line oriented, maximum of one parameter per line ~\newline
+ ~\newline
+Lines have the following format\+: ~\newline
+$<$Parameter\+Name$>$ = $<$Parameter\+Value$>$ \# Comments \textbackslash{}n ~\newline
+Whitespace is space and \textbackslash{}t \begin{DoxyParagraph}{}
+$<$Parameter\+Name$>$ are the predefined names for Parameters and are case sensitive. See configfile.\+h for the definition of those names and their mapping to configinput-\/$>$values. 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+$<$Parameter\+Value$>$ are either integers \mbox{[}0..9\mbox{]}$\ast$ or strings. Integers must fit into the wordlengths, signed values are generally assumed. Strings containing no whitespace characters can be used directly. Strings containing whitespace characters are to be inclosed in double quotes (\char`\"{}string with whitespace\char`\"{}) The double quote character is forbidden (may want to implement something smarter here). 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Any Parameters whose Parameter\+Name is undefined lead to the termination of the program with an error message.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Known bug/\+Shortcoming\+:}
+zero-\/length strings (i.\+e. to signal an non-\/existing file have to be coded as \char`\"{}\char`\"{}.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Rules for using command files}
+~\newline
+All Parameters are initially taken from D\+E\+F\+A\+U\+L\+T\+C\+O\+N\+F\+I\+G\+F\+I\+L\+E\+N\+A\+ME, defined in configfile.\+h. If an -\/f $<$config$>$ parameter is present in the command line then this file is used to update the defaults of D\+E\+F\+A\+U\+L\+T\+C\+O\+N\+F\+I\+G\+F\+I\+L\+E\+N\+A\+ME. There can be more than one -\/f parameters present. If -\/p $<$Parameter\+Name = Parameter\+Value$>$ parameters are present then these overide the default and the additional config file\textquotesingle{}s settings, and are themselfes overridden by future -\/p parameters. There must be whitespace between -\/f and -\/p commands and their respecitive parameters 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{configfile_8c_aec9e391cce24e66610cfccdcfbdc5de4}\label{configfile_8c_aec9e391cce24e66610cfccdcfbdc5de4}} 
+\index{configfile.c@{configfile.c}!Configure@{Configure}}
+\index{Configure@{Configure}!configfile.c@{configfile.c}}
+\doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
+{\footnotesize\ttfamily void Configure (\begin{DoxyParamCaption}\item[{int}]{ac,  }\item[{char $\ast$}]{av\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Parse the command line parameters and read the config files. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ac} & number of command line parameters \\
+\hline
+{\em av} & command line parameters \\
+\hline
+\end{DoxyParams}

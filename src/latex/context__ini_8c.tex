@@ -1,0 +1,206 @@
+\hypertarget{context__ini_8c}{}\doxysection{context\+\_\+ini.\+c File Reference}
+\label{context__ini_8c}\index{context\_ini.c@{context\_ini.c}}
+
+
+C\+A\+B\+AC context initializations.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ctx\+\_\+tables.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cabac.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{context__ini_8c_af548cdeac7b1728fb62ac576d655b540}\label{context__ini_8c_af548cdeac7b1728fb62ac576d655b540}} 
+\#define {\bfseries C\+O\+N\+T\+E\+X\+T\+\_\+\+I\+N\+I\+\_\+C}
+\item 
+\mbox{\Hypertarget{context__ini_8c_abef7f4626a810b45f9021d513bb10dd3}\label{context__ini_8c_abef7f4626a810b45f9021d513bb10dd3}} 
+\#define {\bfseries D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+T\+X\+\_\+\+M\+O\+D\+EL}~0
+\item 
+\mbox{\Hypertarget{context__ini_8c_adb391b15b4499811c9a0c26dd76f4a23}\label{context__ini_8c_adb391b15b4499811c9a0c26dd76f4a23}} 
+\#define {\bfseries R\+E\+L\+I\+A\+B\+L\+E\+\_\+\+C\+O\+U\+NT}~32.\+0
+\item 
+\mbox{\Hypertarget{context__ini_8c_ab4157aeb29efc061b71d1cb2d09d6ba1}\label{context__ini_8c_ab4157aeb29efc061b71d1cb2d09d6ba1}} 
+\#define {\bfseries F\+R\+A\+M\+E\+\_\+\+T\+Y\+P\+ES}~4
+\item 
+\mbox{\Hypertarget{context__ini_8c_a20207ffc8e6f0bdcefb5c42a5b5c3fb8}\label{context__ini_8c_a20207ffc8e6f0bdcefb5c42a5b5c3fb8}} 
+\#define {\bfseries F\+I\+X\+ED}~0
+\item 
+\#define {\bfseries B\+I\+A\+R\+I\+\_\+\+C\+T\+X\+\_\+\+I\+N\+I\+T2}(ii,  jj,  ctx,  tab,  num)
+\item 
+\#define {\bfseries B\+I\+A\+R\+I\+\_\+\+C\+T\+X\+\_\+\+I\+N\+I\+T1}(jj,  ctx,  tab,  num)
+\item 
+\#define {\bfseries A\+D\+D\+\_\+\+X\+R\+A\+T\+E2}(ii,  jj,  ctx,  tab,  num)
+\item 
+\#define {\bfseries A\+D\+D\+\_\+\+X\+R\+A\+T\+E1}(jj,  ctx,  tab,  num)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{context__ini_8c_ad518dcd88186b1f6cd73587e44f50fce}\label{context__ini_8c_ad518dcd88186b1f6cd73587e44f50fce}} 
+void {\bfseries create\+\_\+context\+\_\+memory} ()
+\item 
+\mbox{\Hypertarget{context__ini_8c_a90d5ef0cf3837e4e78aa5576e6091f24}\label{context__ini_8c_a90d5ef0cf3837e4e78aa5576e6091f24}} 
+void {\bfseries free\+\_\+context\+\_\+memory} ()
+\item 
+\mbox{\Hypertarget{context__ini_8c_ac1a5f7769b27e1c59ca1e3755e1b9218}\label{context__ini_8c_ac1a5f7769b27e1c59ca1e3755e1b9218}} 
+void {\bfseries Set\+Ctx\+Model\+Number} ()
+\item 
+\mbox{\Hypertarget{context__ini_8c_a6bf734fa4124cf7f1199a5ada1af01b7}\label{context__ini_8c_a6bf734fa4124cf7f1199a5ada1af01b7}} 
+void {\bfseries init\+\_\+contexts} ()
+\item 
+\mbox{\Hypertarget{context__ini_8c_a37f5e0b742ddcc7e207cc91efe220ba3}\label{context__ini_8c_a37f5e0b742ddcc7e207cc91efe220ba3}} 
+double {\bfseries X\+Rate} (Bi\+Context\+Type\+Ptr ctx, const int $\ast$model)
+\item 
+\mbox{\Hypertarget{context__ini_8c_a6e99ae2cf5481916122c44c4d558ab06}\label{context__ini_8c_a6e99ae2cf5481916122c44c4d558ab06}} 
+void {\bfseries Get\+Ctx\+Model\+Number} (int $\ast$mnumber, Motion\+Info\+Contexts $\ast$mc, Texture\+Info\+Contexts $\ast$tc)
+\item 
+\mbox{\Hypertarget{context__ini_8c_ac729244195930be674bd19d114f56271}\label{context__ini_8c_ac729244195930be674bd19d114f56271}} 
+void {\bfseries store\+\_\+contexts} ()
+\item 
+\mbox{\Hypertarget{context__ini_8c_a9ff03be5f8cf9b4662ffd697d5953c04}\label{context__ini_8c_a9ff03be5f8cf9b4662ffd697d5953c04}} 
+void {\bfseries update\+\_\+field\+\_\+frame\+\_\+contexts} (int field)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{context__ini_8c_aa5af93f36074e2dfc27d86c33d88f84d}\label{context__ini_8c_aa5af93f36074e2dfc27d86c33d88f84d}} 
+int {\bfseries num\+\_\+mb\+\_\+per\+\_\+slice}
+\item 
+\mbox{\Hypertarget{context__ini_8c_aa0117ba84b2ae51956035fb11d38807d}\label{context__ini_8c_aa0117ba84b2ae51956035fb11d38807d}} 
+int {\bfseries number\+\_\+of\+\_\+slices}
+\item 
+\mbox{\Hypertarget{context__ini_8c_a1a7cbcf474c030c24c6d637220359e4b}\label{context__ini_8c_a1a7cbcf474c030c24c6d637220359e4b}} 
+int $\ast$$\ast$$\ast$ {\bfseries initialized}
+\item 
+\mbox{\Hypertarget{context__ini_8c_a1a3442b699c6fc2356baed63e2ddc205}\label{context__ini_8c_a1a3442b699c6fc2356baed63e2ddc205}} 
+int $\ast$$\ast$$\ast$ {\bfseries model\+\_\+number}
+\item 
+\mbox{\Hypertarget{context__ini_8c_ace2ff6fcab7e66aadfd6cde60d804d0e}\label{context__ini_8c_ace2ff6fcab7e66aadfd6cde60d804d0e}} 
+double {\bfseries entropy} \mbox{[}128\mbox{]}
+\item 
+double {\bfseries probability} \mbox{[}128\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+C\+A\+B\+AC context initializations. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details)
+\begin{DoxyItemize}
+\item Detlev Marpe \href{mailto:marpe@hhi.de}{\texttt{ marpe@hhi.\+de}}
+\item Heiko Schwarz \href{mailto:hschwarz@hhi.de}{\texttt{ hschwarz@hhi.\+de}} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{context__ini_8c_a60c297304527579b50c510698496a162}\label{context__ini_8c_a60c297304527579b50c510698496a162}} 
+\index{context\_ini.c@{context\_ini.c}!ADD\_XRATE1@{ADD\_XRATE1}}
+\index{ADD\_XRATE1@{ADD\_XRATE1}!context\_ini.c@{context\_ini.c}}
+\doxysubsubsection{\texorpdfstring{ADD\_XRATE1}{ADD\_XRATE1}}
+{\footnotesize\ttfamily \#define A\+D\+D\+\_\+\+X\+R\+A\+T\+E1(\begin{DoxyParamCaption}\item[{}]{jj,  }\item[{}]{ctx,  }\item[{}]{tab,  }\item[{}]{num }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{ \(\backslash\)}
+\DoxyCodeLine{  for (j=0; j<jj; j++) \(\backslash\)}
+\DoxyCodeLine{  \{ \(\backslash\)}
+\DoxyCodeLine{    if      (img-\/>type==I\_SLICE)  xr += XRate (\&(ctx[j]), \&(tab \#\# \_I[num][0][j][0])); \(\backslash\)}
+\DoxyCodeLine{    else                            xr += XRate (\&(ctx[j]), \&(tab \#\# \_P[num][0][j][0])); \(\backslash\)}
+\DoxyCodeLine{  \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{context__ini_8c_abb6b3b53d3869604624b4bb239fc3f59}\label{context__ini_8c_abb6b3b53d3869604624b4bb239fc3f59}} 
+\index{context\_ini.c@{context\_ini.c}!ADD\_XRATE2@{ADD\_XRATE2}}
+\index{ADD\_XRATE2@{ADD\_XRATE2}!context\_ini.c@{context\_ini.c}}
+\doxysubsubsection{\texorpdfstring{ADD\_XRATE2}{ADD\_XRATE2}}
+{\footnotesize\ttfamily \#define A\+D\+D\+\_\+\+X\+R\+A\+T\+E2(\begin{DoxyParamCaption}\item[{}]{ii,  }\item[{}]{jj,  }\item[{}]{ctx,  }\item[{}]{tab,  }\item[{}]{num }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{ \(\backslash\)}
+\DoxyCodeLine{  for (i=0; i<ii; i++) \(\backslash\)}
+\DoxyCodeLine{  \textcolor{keywordflow}{for} (j=0; j<jj; j++) \(\backslash\)}
+\DoxyCodeLine{  \{ \(\backslash\)}
+\DoxyCodeLine{    if      (img-\/>type==I\_SLICE)  xr += XRate (\&(ctx[i][j]), \&(tab \#\# \_I[num][i][j][0])); \(\backslash\)}
+\DoxyCodeLine{    else                            xr += XRate (\&(ctx[i][j]), \&(tab \#\# \_P[num][i][j][0])); \(\backslash\)}
+\DoxyCodeLine{  \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{context__ini_8c_a8d46638047401adb301c820e7019708e}\label{context__ini_8c_a8d46638047401adb301c820e7019708e}} 
+\index{context\_ini.c@{context\_ini.c}!BIARI\_CTX\_INIT1@{BIARI\_CTX\_INIT1}}
+\index{BIARI\_CTX\_INIT1@{BIARI\_CTX\_INIT1}!context\_ini.c@{context\_ini.c}}
+\doxysubsubsection{\texorpdfstring{BIARI\_CTX\_INIT1}{BIARI\_CTX\_INIT1}}
+{\footnotesize\ttfamily \#define B\+I\+A\+R\+I\+\_\+\+C\+T\+X\+\_\+\+I\+N\+I\+T1(\begin{DoxyParamCaption}\item[{}]{jj,  }\item[{}]{ctx,  }\item[{}]{tab,  }\item[{}]{num }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{ \(\backslash\)}
+\DoxyCodeLine{  for (j=0; j<jj; j++) \(\backslash\)}
+\DoxyCodeLine{  \{ \(\backslash\)}
+\DoxyCodeLine{    if      (img-\/>type==I\_SLICE)  \mbox{\hyperlink{biariencode_8c_a1a2e60366c377889508960eac23aed00}{biari\_init\_context}} (\&(ctx[j]), \&(tab \#\# \_I[num][0][j][0])); \(\backslash\)}
+\DoxyCodeLine{    else                            \mbox{\hyperlink{biariencode_8c_a1a2e60366c377889508960eac23aed00}{biari\_init\_context}} (\&(ctx[j]), \&(tab \#\# \_P[num][0][j][0])); \(\backslash\)}
+\DoxyCodeLine{  \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{context__ini_8c_a59ebce9227e290a4e8dced7a9c60d8bc}\label{context__ini_8c_a59ebce9227e290a4e8dced7a9c60d8bc}} 
+\index{context\_ini.c@{context\_ini.c}!BIARI\_CTX\_INIT2@{BIARI\_CTX\_INIT2}}
+\index{BIARI\_CTX\_INIT2@{BIARI\_CTX\_INIT2}!context\_ini.c@{context\_ini.c}}
+\doxysubsubsection{\texorpdfstring{BIARI\_CTX\_INIT2}{BIARI\_CTX\_INIT2}}
+{\footnotesize\ttfamily \#define B\+I\+A\+R\+I\+\_\+\+C\+T\+X\+\_\+\+I\+N\+I\+T2(\begin{DoxyParamCaption}\item[{}]{ii,  }\item[{}]{jj,  }\item[{}]{ctx,  }\item[{}]{tab,  }\item[{}]{num }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{ \(\backslash\)}
+\DoxyCodeLine{  for (i=0; i<ii; i++) \(\backslash\)}
+\DoxyCodeLine{  \textcolor{keywordflow}{for} (j=0; j<jj; j++) \(\backslash\)}
+\DoxyCodeLine{  \{ \(\backslash\)}
+\DoxyCodeLine{    if      (img-\/>type==I\_SLICE)  \mbox{\hyperlink{biariencode_8c_a1a2e60366c377889508960eac23aed00}{biari\_init\_context}} (\&(ctx[i][j]), \&(tab \#\# \_I[num][i][j][0])); \(\backslash\)}
+\DoxyCodeLine{    else                            \mbox{\hyperlink{biariencode_8c_a1a2e60366c377889508960eac23aed00}{biari\_init\_context}} (\&(ctx[i][j]), \&(tab \#\# \_P[num][i][j][0])); \(\backslash\)}
+\DoxyCodeLine{  \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{context__ini_8c_ade25a2907189822742d4e79be3d2f31a}\label{context__ini_8c_ade25a2907189822742d4e79be3d2f31a}} 
+\index{context\_ini.c@{context\_ini.c}!probability@{probability}}
+\index{probability@{probability}!context\_ini.c@{context\_ini.c}}
+\doxysubsubsection{\texorpdfstring{probability}{probability}}
+{\footnotesize\ttfamily double probability\mbox{[}128\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  0.000000, 0.000000, 0.000000, 0.000000,    0.000000, 0.000000, 0.000000, 0.000000,}
+\DoxyCodeLine{  0.000000, 0.000000, 0.000000, 0.000000,    0.000000, 0.000000, 0.000000, 0.000000,}
+\DoxyCodeLine{  0.000000, 0.000000, 0.000000, 0.000000,    0.000000, 0.000000, 0.000000, 0.000000,}
+\DoxyCodeLine{  0.000000, 0.000000, 0.000000, 0.000000,    0.000000, 0.000000, 0.000000, 0.000000,}
+\DoxyCodeLine{  0.000000, 0.000000, 0.000000, 0.000000,    0.000000, 0.000000, 0.000000, 0.000000,}
+\DoxyCodeLine{  0.000000, 0.000000, 0.000000, 0.000000,    0.000000, 0.000000, 0.000000, 0.000000,}
+\DoxyCodeLine{  0.000000, 0.000000, 0.000000, 0.000000,    0.000000, 0.000000, 0.000000, 0.000000,}
+\DoxyCodeLine{  0.000000, 0.000000, 0.000000, 0.000000,    0.000000, 0.000000, 0.000000, 0.000000,}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  0.500000, 0.474609, 0.450507, 0.427629,    0.405912, 0.385299, 0.365732, 0.347159,}
+\DoxyCodeLine{  0.329530, 0.312795, 0.296911, 0.281833,    0.267520, 0.253935, 0.241039, 0.228799,}
+\DoxyCodeLine{  0.217180, 0.206151, 0.195682, 0.185744,    0.176312, 0.167358, 0.158859, 0.150792,}
+\DoxyCodeLine{  0.143134, 0.135866, 0.128966, 0.122417,    0.116200, 0.110299, 0.104698, 0.099381,}
+\DoxyCodeLine{  0.094334, 0.089543, 0.084996, 0.080680,    0.076583, 0.072694, 0.069002, 0.065498,}
+\DoxyCodeLine{  0.062172, 0.059014, 0.056018, 0.053173,    0.050473, 0.047909, 0.045476, 0.043167,}
+\DoxyCodeLine{  0.040975, 0.038894, 0.036919, 0.035044,    0.033264, 0.031575, 0.029972, 0.028450,}
+\DoxyCodeLine{  0.027005, 0.025633, 0.024332, 0.023096,    0.021923, 0.020810, 0.019753, 0.018750}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

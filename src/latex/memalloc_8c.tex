@@ -1,0 +1,166 @@
+\hypertarget{memalloc_8c}{}\doxysection{memalloc.\+c File Reference}
+\label{memalloc_8c}\index{memalloc.c@{memalloc.c}}
+
+
+Memory allocation and free helper funtions.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}memalloc.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{memalloc_8c_a8e2b0820872fe0491dd554cbd9181ab8}{get\+\_\+mem2D}} (byte $\ast$$\ast$$\ast$array2D, int rows, int columns)
+\begin{DoxyCompactList}\small\item\em Allocate 2D memory array -\/$>$ unsigned char array2D\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{memalloc_8c_ac6df91ee4340f0bd839b1e28b532a3b7}{get\+\_\+mem2\+Dint}} (int $\ast$$\ast$$\ast$array2D, int rows, int columns)
+\begin{DoxyCompactList}\small\item\em Allocate 2D memory array -\/$>$ int array2D\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{memalloc_8c_af311614ae129b47cdeaf8178621db3f2}{get\+\_\+mem2\+Dint64}} (int64 $\ast$$\ast$$\ast$array2D, int rows, int columns)
+\begin{DoxyCompactList}\small\item\em Allocate 2D memory array -\/$>$ int64 array2D\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{memalloc_8c_acca5a77a53fa2bf8acdd82de26f98049}{get\+\_\+mem3D}} (byte $\ast$$\ast$$\ast$$\ast$array3D, int frames, int rows, int columns)
+\begin{DoxyCompactList}\small\item\em Allocate 3D memory array -\/$>$ unsigned char array3D\mbox{[}frames\mbox{]}\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{memalloc_8c_aca1a52f9a97ae2e6c0adda6dfffe0a1e}{get\+\_\+mem3\+Dint}} (int $\ast$$\ast$$\ast$$\ast$array3D, int frames, int rows, int columns)
+\begin{DoxyCompactList}\small\item\em Allocate 3D memory array -\/$>$ int array3D\mbox{[}frames\mbox{]}\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{memalloc_8c_a0d4647fdc4fac7073a51a2124e9a7c21}{get\+\_\+mem3\+Dint64}} (int64 $\ast$$\ast$$\ast$$\ast$array3D, int frames, int rows, int columns)
+\begin{DoxyCompactList}\small\item\em Allocate 3D memory array -\/$>$ int64 array3D\mbox{[}frames\mbox{]}\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{memalloc_8c_a1ab2160a900cd552f02212e5a55a993c}{get\+\_\+mem4\+Dint}} (int $\ast$$\ast$$\ast$$\ast$$\ast$array4D, int idx, int frames, int rows, int columns)
+\begin{DoxyCompactList}\small\item\em Allocate 4D memory array -\/$>$ int array3D\mbox{[}frames\mbox{]}\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}\mbox{[}component\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{memalloc_8c_afc190e2ad02ab16e8b079029afd605b4}\label{memalloc_8c_afc190e2ad02ab16e8b079029afd605b4}} 
+void \mbox{\hyperlink{memalloc_8c_afc190e2ad02ab16e8b079029afd605b4}{free\+\_\+mem2D}} (byte $\ast$$\ast$array2D)
+\begin{DoxyCompactList}\small\item\em free 2D memory array which was alocated with \mbox{\hyperlink{memalloc_8c_a8e2b0820872fe0491dd554cbd9181ab8}{get\+\_\+mem2\+D()}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{memalloc_8c_a1732a6b95ee0ee9a6da2be2e3e6397cc}\label{memalloc_8c_a1732a6b95ee0ee9a6da2be2e3e6397cc}} 
+void \mbox{\hyperlink{memalloc_8c_a1732a6b95ee0ee9a6da2be2e3e6397cc}{free\+\_\+mem2\+Dint}} (int $\ast$$\ast$array2D)
+\begin{DoxyCompactList}\small\item\em free 2D memory array which was alocated with \mbox{\hyperlink{memalloc_8c_ac6df91ee4340f0bd839b1e28b532a3b7}{get\+\_\+mem2\+Dint()}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{memalloc_8c_a6f83eb5966c1275f29eaf92f59d3e08d}\label{memalloc_8c_a6f83eb5966c1275f29eaf92f59d3e08d}} 
+void \mbox{\hyperlink{memalloc_8c_a6f83eb5966c1275f29eaf92f59d3e08d}{free\+\_\+mem2\+Dint64}} (int64 $\ast$$\ast$array2D)
+\begin{DoxyCompactList}\small\item\em free 2D memory array which was alocated with \mbox{\hyperlink{memalloc_8c_af311614ae129b47cdeaf8178621db3f2}{get\+\_\+mem2\+Dint64()}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{memalloc_8c_aa1cd49b8b145e40e39df792f7e15c317}\label{memalloc_8c_aa1cd49b8b145e40e39df792f7e15c317}} 
+void \mbox{\hyperlink{memalloc_8c_aa1cd49b8b145e40e39df792f7e15c317}{free\+\_\+mem3D}} (byte $\ast$$\ast$$\ast$array3D, int frames)
+\begin{DoxyCompactList}\small\item\em free 3D memory array which was alocated with \mbox{\hyperlink{memalloc_8c_acca5a77a53fa2bf8acdd82de26f98049}{get\+\_\+mem3\+D()}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{memalloc_8c_a5054029078148a0603a38d82d560ca4c}\label{memalloc_8c_a5054029078148a0603a38d82d560ca4c}} 
+void \mbox{\hyperlink{memalloc_8c_a5054029078148a0603a38d82d560ca4c}{free\+\_\+mem3\+Dint}} (int $\ast$$\ast$$\ast$array3D, int frames)
+\begin{DoxyCompactList}\small\item\em free 3D memory array which was alocated with \mbox{\hyperlink{memalloc_8c_aca1a52f9a97ae2e6c0adda6dfffe0a1e}{get\+\_\+mem3\+Dint()}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{memalloc_8c_aa4d3554cb7194dac106f97ec6ba22f00}\label{memalloc_8c_aa4d3554cb7194dac106f97ec6ba22f00}} 
+void \mbox{\hyperlink{memalloc_8c_aa4d3554cb7194dac106f97ec6ba22f00}{free\+\_\+mem3\+Dint64}} (int64 $\ast$$\ast$$\ast$array3D, int frames)
+\begin{DoxyCompactList}\small\item\em free 3D memory array which was alocated with \mbox{\hyperlink{memalloc_8c_a0d4647fdc4fac7073a51a2124e9a7c21}{get\+\_\+mem3\+Dint64()}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{memalloc_8c_ad1c081cd86454f455a8600051f6e9e8e}\label{memalloc_8c_ad1c081cd86454f455a8600051f6e9e8e}} 
+void \mbox{\hyperlink{memalloc_8c_ad1c081cd86454f455a8600051f6e9e8e}{free\+\_\+mem4\+Dint}} (int $\ast$$\ast$$\ast$$\ast$array4D, int idx, int frames)
+\begin{DoxyCompactList}\small\item\em free 4D memory array which was alocated with \mbox{\hyperlink{memalloc_8c_a1ab2160a900cd552f02212e5a55a993c}{get\+\_\+mem4\+Dint()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{memalloc_8c_a49e0edaa98a74a14b2c9d25c094bd9a8}{no\+\_\+mem\+\_\+exit}} (char $\ast$where)
+\begin{DoxyCompactList}\small\item\em Exit program if memory allocation failed (using \mbox{\hyperlink{filehandle_8c_a371ec50bd815b00c7670ccebaaa91d0c}{error()}}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Memory allocation and free helper funtions. 
+
+\begin{DoxyAuthor}{Author}
+Main contributors (see contributors.\+h for copyright, address and affiliation details) 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{memalloc_8c_a8e2b0820872fe0491dd554cbd9181ab8}\label{memalloc_8c_a8e2b0820872fe0491dd554cbd9181ab8}} 
+\index{memalloc.c@{memalloc.c}!get\_mem2D@{get\_mem2D}}
+\index{get\_mem2D@{get\_mem2D}!memalloc.c@{memalloc.c}}
+\doxysubsubsection{\texorpdfstring{get\_mem2D()}{get\_mem2D()}}
+{\footnotesize\ttfamily int get\+\_\+mem2D (\begin{DoxyParamCaption}\item[{byte $\ast$$\ast$$\ast$}]{array2D,  }\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+Allocate 2D memory array -\/$>$ unsigned char array2D\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. 
+
+\begin{DoxyParagraph}{Output\+:}
+memory size in bytes 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{memalloc_8c_ac6df91ee4340f0bd839b1e28b532a3b7}\label{memalloc_8c_ac6df91ee4340f0bd839b1e28b532a3b7}} 
+\index{memalloc.c@{memalloc.c}!get\_mem2Dint@{get\_mem2Dint}}
+\index{get\_mem2Dint@{get\_mem2Dint}!memalloc.c@{memalloc.c}}
+\doxysubsubsection{\texorpdfstring{get\_mem2Dint()}{get\_mem2Dint()}}
+{\footnotesize\ttfamily int get\+\_\+mem2\+Dint (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$$\ast$}]{array2D,  }\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+Allocate 2D memory array -\/$>$ int array2D\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. 
+
+\begin{DoxyParagraph}{Output\+:}
+memory size in bytes 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{memalloc_8c_af311614ae129b47cdeaf8178621db3f2}\label{memalloc_8c_af311614ae129b47cdeaf8178621db3f2}} 
+\index{memalloc.c@{memalloc.c}!get\_mem2Dint64@{get\_mem2Dint64}}
+\index{get\_mem2Dint64@{get\_mem2Dint64}!memalloc.c@{memalloc.c}}
+\doxysubsubsection{\texorpdfstring{get\_mem2Dint64()}{get\_mem2Dint64()}}
+{\footnotesize\ttfamily int get\+\_\+mem2\+Dint64 (\begin{DoxyParamCaption}\item[{int64 $\ast$$\ast$$\ast$}]{array2D,  }\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+Allocate 2D memory array -\/$>$ int64 array2D\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. 
+
+\begin{DoxyParagraph}{Output\+:}
+memory size in bytes 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{memalloc_8c_acca5a77a53fa2bf8acdd82de26f98049}\label{memalloc_8c_acca5a77a53fa2bf8acdd82de26f98049}} 
+\index{memalloc.c@{memalloc.c}!get\_mem3D@{get\_mem3D}}
+\index{get\_mem3D@{get\_mem3D}!memalloc.c@{memalloc.c}}
+\doxysubsubsection{\texorpdfstring{get\_mem3D()}{get\_mem3D()}}
+{\footnotesize\ttfamily int get\+\_\+mem3D (\begin{DoxyParamCaption}\item[{byte $\ast$$\ast$$\ast$$\ast$}]{array3D,  }\item[{int}]{frames,  }\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+Allocate 3D memory array -\/$>$ unsigned char array3D\mbox{[}frames\mbox{]}\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. 
+
+\begin{DoxyParagraph}{Output\+:}
+memory size in bytes 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{memalloc_8c_aca1a52f9a97ae2e6c0adda6dfffe0a1e}\label{memalloc_8c_aca1a52f9a97ae2e6c0adda6dfffe0a1e}} 
+\index{memalloc.c@{memalloc.c}!get\_mem3Dint@{get\_mem3Dint}}
+\index{get\_mem3Dint@{get\_mem3Dint}!memalloc.c@{memalloc.c}}
+\doxysubsubsection{\texorpdfstring{get\_mem3Dint()}{get\_mem3Dint()}}
+{\footnotesize\ttfamily int get\+\_\+mem3\+Dint (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$$\ast$$\ast$}]{array3D,  }\item[{int}]{frames,  }\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+Allocate 3D memory array -\/$>$ int array3D\mbox{[}frames\mbox{]}\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. 
+
+\begin{DoxyParagraph}{Output\+:}
+memory size in bytes 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{memalloc_8c_a0d4647fdc4fac7073a51a2124e9a7c21}\label{memalloc_8c_a0d4647fdc4fac7073a51a2124e9a7c21}} 
+\index{memalloc.c@{memalloc.c}!get\_mem3Dint64@{get\_mem3Dint64}}
+\index{get\_mem3Dint64@{get\_mem3Dint64}!memalloc.c@{memalloc.c}}
+\doxysubsubsection{\texorpdfstring{get\_mem3Dint64()}{get\_mem3Dint64()}}
+{\footnotesize\ttfamily int get\+\_\+mem3\+Dint64 (\begin{DoxyParamCaption}\item[{int64 $\ast$$\ast$$\ast$$\ast$}]{array3D,  }\item[{int}]{frames,  }\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+Allocate 3D memory array -\/$>$ int64 array3D\mbox{[}frames\mbox{]}\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}. 
+
+\begin{DoxyParagraph}{Output\+:}
+memory size in bytes 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{memalloc_8c_a1ab2160a900cd552f02212e5a55a993c}\label{memalloc_8c_a1ab2160a900cd552f02212e5a55a993c}} 
+\index{memalloc.c@{memalloc.c}!get\_mem4Dint@{get\_mem4Dint}}
+\index{get\_mem4Dint@{get\_mem4Dint}!memalloc.c@{memalloc.c}}
+\doxysubsubsection{\texorpdfstring{get\_mem4Dint()}{get\_mem4Dint()}}
+{\footnotesize\ttfamily int get\+\_\+mem4\+Dint (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$$\ast$$\ast$$\ast$}]{array4D,  }\item[{int}]{idx,  }\item[{int}]{frames,  }\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+Allocate 4D memory array -\/$>$ int array3D\mbox{[}frames\mbox{]}\mbox{[}rows\mbox{]}\mbox{[}columns\mbox{]}\mbox{[}component\mbox{]}. 
+
+\begin{DoxyParagraph}{Output\+:}
+memory size in bytes 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{memalloc_8c_a49e0edaa98a74a14b2c9d25c094bd9a8}\label{memalloc_8c_a49e0edaa98a74a14b2c9d25c094bd9a8}} 
+\index{memalloc.c@{memalloc.c}!no\_mem\_exit@{no\_mem\_exit}}
+\index{no\_mem\_exit@{no\_mem\_exit}!memalloc.c@{memalloc.c}}
+\doxysubsubsection{\texorpdfstring{no\_mem\_exit()}{no\_mem\_exit()}}
+{\footnotesize\ttfamily void no\+\_\+mem\+\_\+exit (\begin{DoxyParamCaption}\item[{char $\ast$}]{where }\end{DoxyParamCaption})}
+
+
+
+Exit program if memory allocation failed (using \mbox{\hyperlink{filehandle_8c_a371ec50bd815b00c7670ccebaaa91d0c}{error()}}) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em where} & string indicating which memory allocation failed \\
+\hline
+\end{DoxyParams}
