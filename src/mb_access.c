@@ -13,6 +13,9 @@
  */
 
 #include "global.h"
+#include "mbuffer.h"
+
+extern StorablePicture *dec_picture;
 
 /*!
  ************************************************************************
@@ -20,15 +23,16 @@
  *    returns 1 if the macroblock at the given address is available
  ************************************************************************
  */
-int mb_is_available(int mbAddr, int currMbAddr)//mbAddr´ý¼ì²âºê¿éµØÖ·£¬currMbAddrµ±Ç°ºê¿éµØÖ·
+ //mbAddrÊÇ´ý¼ì²âºê¿éµØÖ·          currMbAddrÊÇµ±Ç°ºê¿éµØÖ·
+int mb_is_available(int mbAddr, int currMbAddr)
 {
-  if ((mbAddr < 0) || (mbAddr > ((int)img->PicSizeInMbs - 1)))
+  if ((mbAddr < 0) || (mbAddr > ((int)dec_picture->PicSizeInMbs - 1)))//µØÖ·ÔÚÓÐÐ§·¶Î§ÄÚ
     return 0;
 
   // the following line checks both: slice number and if the mb has been decoded
-  if (!img->DeblockCall)
+  if (!img->DeblockCall)//»Øµ÷º¯ÊýÔÚÅÐ¶Ï¸Ã¿ìÊÇ·ñÔÚÓÃÓÚÈ¥¿éÂË²¨
   {
-    if (img->mb_data[mbAddr].slice_nr != img->mb_data[currMbAddr].slice_nr)
+    if (img->mb_data[mbAddr].slice_nr != img->mb_data[currMbAddr].slice_nr)//ÊÇ·ñÔÚÍ¬Ò»Æ¬ÖÐ
       return 0;
   }
   
@@ -45,44 +49,40 @@ int mb_is_available(int mbAddr, int currMbAddr)//mbAddr´ý¼ì²âºê¿éµØÖ·£¬currMbAdd
  */
 void CheckAvailabilityOfNeighbors()
 {
-  const int mb_nr = img->current_mb_nr;
-  Macroblock *currMB = &img->mb_data[mb_nr];
+  const int mb_nr = img->current_mb_nr;//µ±Ç°ºê¿éµØÖ·ÐòºÅ
+  Macroblock *currMB = &img->mb_data[mb_nr];//µÃµ½µ±Ç°ºê¿éÊý¾Ý
 
   // mark all neighbors as unavailable
-  currMB->mb_available_up   = NULL;
+  currMB->mb_available_up   = NULL;//³õÊ¼»¯
   currMB->mb_available_left = NULL;
-
-  if (img->MbaffFrameFlag)
+/*
+	DBC
+	AX
+  */
+  if (dec_picture->MbaffFrameFlag)
   {
     currMB->mbAddrA = 2 * (mb_nr/2 - 1);
-    currMB->mbAddrB = 2 * (mb_nr/2 - img->PicWidthInMbs);
-    currMB->mbAddrC = 2 * (mb_nr/2 - img->PicWidthInMbs + 1);
-    currMB->mbAddrD = 2 * (mb_nr/2 - img->PicWidthInMbs - 1);
+    currMB->mbAddrB = 2 * (mb_nr/2 - dec_picture->PicWidthInMbs);
+    currMB->mbAddrC = 2 * (mb_nr/2 - dec_picture->PicWidthInMbs + 1);
+    currMB->mbAddrD = 2 * (mb_nr/2 - dec_picture->PicWidthInMbs - 1);
     
-    currMB->mbAvailA = mb_is_available(currMB->mbAddrA, mb_nr) && (((mb_nr/2) % img->PicWidthInMbs)!=0);//¼ì²âA¿éÊÇ·ñ¿ÉÓÃ
+    currMB->mbAvailA = mb_is_available(currMB->mbAddrA, mb_nr) && (((mb_nr/2) % dec_picture->PicWidthInMbs)!=0);
     currMB->mbAvailB = mb_is_available(currMB->mbAddrB, mb_nr);
-    currMB->mbAvailC = mb_is_available(currMB->mbAddrC, mb_nr) && (((mb_nr/2 +1) % img->PicWidthInMbs)!=0);
-    currMB->mbAvailD = mb_is_available(currMB->mbAddrD, mb_nr) && (((mb_nr/2) % img->PicWidthInMbs)!=0);
+    currMB->mbAvailC = mb_is_available(currMB->mbAddrC, mb_nr) && (((mb_nr/2 +1) % dec_picture->PicWidthInMbs)!=0);
+    currMB->mbAvailD = mb_is_available(currMB->mbAddrD, mb_nr) && (((mb_nr/2) % dec_picture->PicWidthInMbs)!=0);
   }
   else
   {
     currMB->mbAddrA = mb_nr - 1;
-    currMB->mbAddrB = mb_nr - img->PicWidthInMbs;
-    currMB->mbAddrC = mb_nr - img->PicWidthInMbs + 1;
-    currMB->mbAddrD = mb_nr - img->PicWidthInMbs - 1;
+    currMB->mbAddrB = mb_nr - dec_picture->PicWidthInMbs;
+    currMB->mbAddrC = mb_nr - dec_picture->PicWidthInMbs + 1;
+    currMB->mbAddrD = mb_nr - dec_picture->PicWidthInMbs - 1;
 
-	/*
-		 D B C
-		 A
-	*/
-    currMB->mbAvailA = mb_is_available(currMB->mbAddrA, mb_nr) && ((mb_nr % img->PicWidthInMbs)!=0);//×ó±ßÔµ
+    currMB->mbAvailA = mb_is_available(currMB->mbAddrA, mb_nr) && ((mb_nr % dec_picture->PicWidthInMbs)!=0);//µ±Ç°ºê¿é²»ÊÇ×î×ó±ßµÄ¿é
     currMB->mbAvailB = mb_is_available(currMB->mbAddrB, mb_nr);
-    currMB->mbAvailC = mb_is_available(currMB->mbAddrC, mb_nr) && (((mb_nr+1) % img->PicWidthInMbs)!=0);//ÓÒÉÏ±ßÔµ
-    currMB->mbAvailD = mb_is_available(currMB->mbAddrD, mb_nr) && ((mb_nr % img->PicWidthInMbs)!=0);//×óÉÏ±ßÔµ
+    currMB->mbAvailC = mb_is_available(currMB->mbAddrC, mb_nr) && (((mb_nr+1) % dec_picture->PicWidthInMbs)!=0);//µ±Ç°ºê¿é²»ÊÇ×îÓÒ±ßµÄ¿é
+    currMB->mbAvailD = mb_is_available(currMB->mbAddrD, mb_nr) && ((mb_nr % dec_picture->PicWidthInMbs)!=0);//µ±Ç°ºê¿é²»ÊÇ×î×ó±ßµÄ¿é
   }
-
-  if (currMB->mbAvailA) currMB->mb_available_left = &(img->mb_data[currMB->mbAddrA]);
-  if (currMB->mbAvailB) currMB->mb_available_up   = &(img->mb_data[currMB->mbAddrB]);
 }
 
 
@@ -92,18 +92,18 @@ void CheckAvailabilityOfNeighbors()
  *    returns the x and y macroblock coordinates for a given MbAddress
  ************************************************************************
  */
-void get_mb_block_pos (int mb_addr, int *x, int*y)//ºê¿é×óÉÏ½ÇµÄºê¿é16*16×ø±ê
+void get_mb_block_pos (int mb_addr, int *x, int*y)//µÃµ½ÒÔÍ¼Ïñ×óÉÏ½ÇÎªÔ­µã  ¸Ãºê¿é×óÉÏ½ÇµÄ16*16ÏñËØ¿é×ø±ê
 {
 
-  if (img->MbaffFrameFlag)
+  if (dec_picture->MbaffFrameFlag)
   {
-    *x = ((mb_addr/2) % img->PicWidthInMbs);
-    *y = ( ((mb_addr/2) / img->PicWidthInMbs)  * 2 + (mb_addr%2));
+    *x = ((mb_addr/2) % dec_picture->PicWidthInMbs);
+    *y = ( ((mb_addr/2) / dec_picture->PicWidthInMbs)  * 2 + (mb_addr%2));
   }
   else
   {
-    *x = (mb_addr % img->PicWidthInMbs);//Ì«´ÏÃ÷À²
-    *y = (mb_addr / img->PicWidthInMbs);
+    *x = (mb_addr % dec_picture->PicWidthInMbs);
+    *y = (mb_addr / dec_picture->PicWidthInMbs);
   }
 }
 
@@ -114,7 +114,7 @@ void get_mb_block_pos (int mb_addr, int *x, int*y)//ºê¿é×óÉÏ½ÇµÄºê¿é16*16×ø±ê
  *    returns the x and y sample coordinates for a given MbAddress
  ************************************************************************
  */
-void get_mb_pos (int mb_addr, int *x, int*y)//ÒÔÍ¼Ïñ×óÉÏ½ÇÎªÔ­µã ºê¿é×óÉÏ½ÇµÄÏñËØ×ø±ê
+void get_mb_pos (int mb_addr, int *x, int*y)//µÃµ½ÒÔÍ¼Ïñ×óÉÏ½ÇÎªÔ­µã  ¸Ãºê¿é×óÉÏ½ÇµÄÏñËØ×ø±ê
 {
   get_mb_block_pos(mb_addr, x, y);
   
@@ -139,44 +139,45 @@ void get_mb_pos (int mb_addr, int *x, int*y)//ÒÔÍ¼Ïñ×óÉÏ½ÇÎªÔ­µã ºê¿é×óÉÏ½ÇµÄÏñË
  *    returns position informations
  ************************************************************************
  */
+ //µ±Ç°ºê¿é×óÉÏ½ÇÎªÔ­µã xN£¬yN±íÊ¾ÕûÏñËØÆ«ÒÆ
 void getNonAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, PixelPos *pix)
 {
   Macroblock *currMb = &img->mb_data[curr_mb_nr];
   int maxWH;
 
   if (luma)
-    maxWH = 16;//ÁÁ¶È¿é
+    maxWH = 16;
   else
-    maxWH = 8;//É«¶È¿é
+    maxWH = 8;
 /*
-	D B C
-	A 
+	DBC
+	AX
   */
-  if ((xN<0)&&(yN<0))//Ñ¡ÖÐDºê¿é
+  if ((xN<0)&&(yN<0))
   {
-    pix->mb_addr   = currMb->mbAddrD;
+    pix->mb_addr   = currMb->mbAddrD;//µ±Ç°ºê¿é×óÉÏ½ÇÎªÔ­µã           ÍùÓÒÉÏ·½Æ«ÒÆºóµÄÏñËØpix pixµÄÐÅÏ¢ÓÐºê¿éDÀ´ÃèÊö 
     pix->available = currMb->mbAvailD;
   }
   else
-  if ((xN<0)&&((yN>=0)&&(yN<maxWH)))//Ñ¡ÖÐAºê¿é
+  if ((xN<0)&&((yN>=0)&&(yN<maxWH)))
   {
     pix->mb_addr  = currMb->mbAddrA;
     pix->available = currMb->mbAvailA;
   }
   else
-  if (((xN>=0)&&(xN<maxWH))&&(yN<0))//Ñ¡ÖÐBºê¿é
+  if (((xN>=0)&&(xN<maxWH))&&(yN<0))
   {
     pix->mb_addr  = currMb->mbAddrB;
     pix->available = currMb->mbAvailB;
   }
   else
-  if (((xN>=0)&&(xN<maxWH))&&((yN>=0)&&(yN<maxWH)))//Ñ¡ÖÐµ±Ç°ºê¿é
+  if (((xN>=0)&&(xN<maxWH))&&((yN>=0)&&(yN<maxWH)))
   {
     pix->mb_addr  = curr_mb_nr;
     pix->available = 1;
   }
   else
-  if ((xN>=maxWH)&&(yN<0))//Ñ¡ÖÐCºê¿é
+  if ((xN>=maxWH)&&(yN<0))
   {
     pix->mb_addr  = currMb->mbAddrC;
     pix->available = currMb->mbAvailC;
@@ -187,17 +188,17 @@ void getNonAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, Pixel
   }
   if (pix->available || img->DeblockCall)
   {
-    pix->x = (xN + maxWH) % maxWH;//Õâ²»ÊÇ¾ÍÊÇµÈÓÚxN£¿
+    pix->x = (xN + maxWH) % maxWH;//xN×÷ÎªÆ«ÒÆÖµÓ¦¸ÃÏÞÖÆÔÚºê¿é´óÐ¡·¶Î§ÄÚ
     pix->y = (yN + maxWH) % maxWH;
-    get_mb_pos(pix->mb_addr, &(pix->pos_x), &(pix->pos_y));//¼ÆËãµ±Ç°¿é×óÉÏ½ÇÏñËØ×ø±ê
+    get_mb_pos(pix->mb_addr, &(pix->pos_x), &(pix->pos_y));//ÒÔÍ¼Ïñ×óÉÏ½ÇÎªÔ­µã    	     µ±Ç°ºê¿é×óÉÏ½ÇµÄÏñËØ×ø±ê
     if (luma)
     {
-      pix->pos_x += pix->x;//¼ÆËã³öµ±Ç°¿éÖÜÎ§ÏñËØµãµÄÏñËØ×ø±ê
+      pix->pos_x += pix->x;//ºê¿é×óÉÏ½ÇµÄÏñËØ×ø±ê¼ÓÉÏÆ«ÒÆ×ø±ê µÃµ½ºê¿é¾ßÌåÏàÁÚÏñËØµÄÏñËØ×ø±ê(Í¼Ïñ×óÉÏ½ÇÎªÔ­µã)
       pix->pos_y += pix->y;
     }
     else
     {
-      pix->pos_x = (pix->pos_x/2) + pix->x;
+      pix->pos_x = (pix->pos_x/2) + pix->x;//u v 
       pix->pos_y = (pix->pos_y/2) + pix->y;
     }
   }
@@ -219,7 +220,7 @@ void getNonAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, Pixel
  *    returns position informations
  ************************************************************************
  */
-void getAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, PixelPos *pix)
+void getAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, PixelPos *pix)//Ö¡³¡×ÔÊÊÓ¦
 {
   Macroblock *currMb = &img->mb_data[curr_mb_nr];
   int maxWH;
@@ -592,12 +593,13 @@ void getAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, PixelPos
  *    returns position informations
  ************************************************************************
  */
+ // xN yN ÊÇÒÔµ±Ç°¿é×óÉÏ½ÇÎªÔ­µãµÄÏñËØ×ø±ê  Æ«ÒÆ×ø±ê
 void getNeighbour(int curr_mb_nr, int xN, int yN, int luma, PixelPos *pix)
 {
   if (curr_mb_nr<0)
     error ("getNeighbour: invalid macroblock number", 100);
 
-  if (img->MbaffFrameFlag)
+  if (dec_picture->MbaffFrameFlag)
     getAffNeighbour(curr_mb_nr, xN, yN, luma, pix);
   else
     getNonAffNeighbour(curr_mb_nr, xN, yN, luma, pix);
@@ -624,16 +626,22 @@ void getNeighbour(int curr_mb_nr, int xN, int yN, int luma, PixelPos *pix)
  */
 void getLuma4x4Neighbour (int curr_mb_nr, int block_x, int block_y, int rel_x, int rel_y, PixelPos *pix)
 {
-  int x = 4* block_x + rel_x;
+/*
+	curr_mb_nr:µ±Ç°16*16ºê¿éµÄµØÖ·±êºÅ
+	block_x£ºÒÔµ±Ç°16*16ºê¿é×óÉÏ½ÇÎªÔ­µã£¬ÒÔ4*4µ¥Î»µÄ¿é×ø±ê(·Ö¿é×óÉÏ½Ç)
+	rel_x:ÒÔµ±Ç°·Ö¿é×óÉÏ½ÇÎªÔ­µã£¬ÒÔÏñËØµ¥Î»µÄÏà¶ÔÆ«ÒÆ×ø±ê£¬ÊÇÏàÁÚÏñËØµÄÏà¶Ô×ø±ê
+	pix:(x,y)×ø±ê¶ÔÓ¦ÏñËØµÄÐÅÏ¢
+*/
+  int x = 4* block_x + rel_x;//ÒÔµ±Ç°16*16ºê¿é×óÉÏ½ÇÎªÔ­µã£¬¶ÔÓ¦ÏñËØµãµÄÏñËØ×ø±ê£¬ºÍrel_xµÄ×ø±êÔ­µã²»Í¬
   int y = 4* block_y + rel_y;
 
   getNeighbour(curr_mb_nr, x, y, 1, pix);
 
   if (pix->available)
   {
-    pix->x /= 4;
+    pix->x /= 4;//³ýÒÔ4Ó¦¸ÃÊÇ×ª»»³É4*4¿é×ø±ê
     pix->y /= 4;
-    pix->pos_x /= 4;
+    pix->pos_x /= 4;// pix->pos_xÊÇÒÔÔ­µãÎª×ø±ê µÄÏñËØ×ø±ê? ÎªÊ²Ã´Òª³ýÒÔ4
     pix->pos_y /= 4;
   }
 }
