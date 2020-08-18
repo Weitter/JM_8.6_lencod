@@ -44,3 +44,5 @@ void getNonAffNeighbour(unsigned int curr_mb_nr, int xN, int yN, int luma, Pixel
     }
     
    ```
+### 关键函数说明<br>
+最近会写一些博客<br>
